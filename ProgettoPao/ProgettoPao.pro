@@ -10,7 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     ainur.cpp \
-    elfi.cpp \
+    elf.cpp \
     entity.cpp \
     hobbit.cpp \
     humanoids.cpp \
@@ -24,7 +24,7 @@ SOURCES += \
 
 HEADERS += \
     ainur.h \
-    elfi.h \
+    elf.h \
     entity.h \
     hobbit.h \
     humanoids.h \
