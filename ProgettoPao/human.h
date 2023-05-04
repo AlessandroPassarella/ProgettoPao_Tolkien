@@ -1,9 +1,9 @@
 #ifndef HUMAN_H
 #define HUMAN_H
 
-#include "humanoids.h"
+#include "humanoid.h"
 
-class Human : public Humanoids{
+class Human : public Humanoid {
 public:
     enum Descent {dunedian, mediani, bardi};
 

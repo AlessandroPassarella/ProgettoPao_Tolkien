@@ -1,9 +1,9 @@
 #ifndef DWARF_H
 #define DWARF_H
 
-#include "humanoids.h"
+#include "humanoid.h"
 
-class Dwarf : public Humanoids
+class Dwarf : public Humanoid
 {
 public:
     enum Lineage {durin, barbafiamma, nerachiave, vastifasci, pugniferro, pediroccia, barbedure};

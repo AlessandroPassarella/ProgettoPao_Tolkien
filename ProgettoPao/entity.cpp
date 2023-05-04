@@ -5,6 +5,10 @@ Entity::Entity(){}
 Entity::Entity(string name, int power, bool state, int age): 
 name(name), power(power), state(state), age(age){}
 
+int Entity::seniority() const{
+    return (getPower()*2) + getAge();
+}
+
 // Metodi get
 string Entity::getName() const{
     return name;

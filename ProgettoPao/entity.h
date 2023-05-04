@@ -7,9 +7,12 @@ class Entity{
 public:
     Entity();
     Entity(string name, int power, bool state, int age);
-    virtual ~Entity() = 0;
+    //virtual ~Entity();
+
+    int seniority() const; 
 
     // Metodi virtuali
+
 
     // Metodi get
     string getName() const;

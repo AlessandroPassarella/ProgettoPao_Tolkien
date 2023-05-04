@@ -1,9 +1,9 @@
 #ifndef ORC_H
 #define ORC_H
 
-#include "humanoids.h"
+#include "humanoid.h"
 
-class Orc : public Humanoids{
+class Orc : public Humanoid {
 public:
     enum Kind {puri, goblin, orchetti};
 
