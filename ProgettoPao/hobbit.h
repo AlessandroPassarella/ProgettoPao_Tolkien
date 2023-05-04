@@ -1,9 +1,9 @@
 #ifndef HOBBIT_H
 #define HOBBIT_H
 
-#include "humanoids.h"
+#include "humanoid.h"
 
-class Hobbit : public Humanoids{
+class Hobbit : public Humanoid{
 public:
     enum Family {halfing, harfoots, sturoi};
 

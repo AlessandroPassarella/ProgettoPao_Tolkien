@@ -1,14 +1,14 @@
-#ifndef HUMANOIDS_H
-#define HUMANOIDS_H
+#ifndef HUMANOID_H
+#define HUMANOID_H
 
 #include "entity.h"
 
-class Humanoids : public Entity{
+class Humanoid : public Entity{
 public:
     enum Ability {}; //da inserire
 
-    Humanoids();
-    Humanoids(string name, int power, bool state, int age, Ability ability);
+    Humanoid();
+    Humanoid(string name, int power, bool state, int age, Ability ability);
 
     // Metodi virtuali
 
@@ -21,4 +21,4 @@ private:
     Ability ability; 
 };
 
-#endif // HUMANOIDS_H
+#endif // HUMANOID_H

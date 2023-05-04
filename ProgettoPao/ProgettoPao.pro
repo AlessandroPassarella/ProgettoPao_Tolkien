@@ -13,7 +13,7 @@ SOURCES += \
     elf.cpp \
     entity.cpp \
     hobbit.cpp \
-    humanoids.cpp \
+    humanoid.cpp \
     maiar.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -27,7 +27,7 @@ HEADERS += \
     elf.h \
     entity.h \
     hobbit.h \
-    humanoids.h \
+    humanoid.h \
     maiar.h \
     mainwindow.h \
     nani.h \

@@ -1,9 +1,9 @@
 #ifndef ELF_H
 #define ELF_H
 
-#include "humanoids.h"
+#include "humanoid.h"
 
-class Elf : public Humanoids{
+class Elf : public Humanoid{
 public:
     enum Bloodline {vanyar, noldor, teleri, avari};
 

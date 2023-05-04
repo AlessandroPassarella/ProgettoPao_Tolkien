@@ -5,7 +5,7 @@
 
 class Valar : public Ainur{
 public:
-    enum Element {aria, acqua, terra, fuoco, morte};
+    enum Element {air, water, earth, fire, death};
 
     Valar();
     Valar(string name, int power, bool state, int age, Level level, Element element);
