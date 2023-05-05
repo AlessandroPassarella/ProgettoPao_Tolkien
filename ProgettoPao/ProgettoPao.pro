@@ -10,29 +10,29 @@ CONFIG += c++17
 
 SOURCES += \
     ainur.cpp \
+    dwarf.cpp \
     elf.cpp \
     entity.cpp \
     hobbit.cpp \
+    human.cpp \
     humanoid.cpp \
     maiar.cpp \
     main.cpp \
     mainwindow.cpp \
-    nani.cpp \
-    orchi.cpp \
-    uomini.cpp \
+    orc.cpp \
     valar.cpp
 
 HEADERS += \
     ainur.h \
+    dwarf.h \
     elf.h \
     entity.h \
     hobbit.h \
+    human.h \
     humanoid.h \
     maiar.h \
     mainwindow.h \
-    nani.h \
-    orchi.h \
-    uomini.h \
+    orc.h \
     valar.h
 
 # Default rules for deployment.

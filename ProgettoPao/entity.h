@@ -6,8 +6,7 @@ using std::string;
 class Entity {
 public:
     Entity();
-    Entity(string name, int power, bool state, int age);
-    virtual ~Entity();
+    Entity(string name, int power, int age);
 
     int seniority() const; 
 
@@ -17,19 +16,16 @@ public:
     // Metodi get
     string getName() const;
     int getPower() const;
-    bool getState() const;
     int getAge() const;
 
     // Metodi set
     void setName(string);
     void setPower(int);
-    void setState(bool);
     void setAge(int);
     
 private:
     string name;
     int power;
-    bool state;
     int age;
 };
 

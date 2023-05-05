@@ -5,10 +5,10 @@
 
 class Human : public Humanoid {
 public:
-    enum Descent {dunedian, mediani, bardi};
+    enum Descent {dunedian, mediano, bardo};
 
     Human();
-    Human(string name, int power, bool state, int age, Ability ability, Descent descent);
+    Human(string name, int power, int age, Role role, Descent descent);
 
     // Metodi virtuali
 

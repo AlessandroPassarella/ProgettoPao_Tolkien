@@ -5,10 +5,10 @@
 
 class Orc : public Humanoid {
 public:
-    enum Kind {puri, goblin, orchetti};
+    enum Kind {pure, goblin, white};
 
     Orc();
-    Orc(string name, int power, bool state, int age, Ability ability, Kind Kind);
+    Orc(string name, int power, int age, Role role, Kind Kind);
 
     // Metodi virtuali
 

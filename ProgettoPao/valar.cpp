@@ -1,8 +1,8 @@
 #include "valar.h"
 
 Valar::Valar(){}
-Valar::Valar(string name, int power, bool state, int age, Level level, Element element):
-Ainur(name, power, state, age, level), element(element){}
+Valar::Valar(string name, int power, int age, Level level, Element element):
+Ainur(name, power, age, level), element(element){}
 
 // Metodi get
 Valar::Element Valar::getElement() const{

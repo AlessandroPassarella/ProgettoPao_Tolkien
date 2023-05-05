@@ -2,8 +2,8 @@
 
 Human::Human(){}
 
-Human::Human(string name, int power, bool state, int age, Ability ability, Descent descent):
-Humanoid(name, power, state, age, ability), descent(descent){}
+Human::Human(string name, int power, int age, Role role, Descent descent):
+Humanoid(name, power, age, role), descent(descent){}
 
 // Metodi get
 Human::Descent Human::getDescent() const{

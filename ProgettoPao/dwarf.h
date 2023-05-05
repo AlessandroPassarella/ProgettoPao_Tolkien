@@ -6,10 +6,10 @@
 class Dwarf : public Humanoid
 {
 public:
-    enum Lineage {durin, barbafiamma, nerachiave, vastifasci, pugniferro, pediroccia, barbedure};
+    enum Lineage {durin, barbafiamma, nerachiave, vastifascio, pugniferro, pediroccia, barbadura};
 
     Dwarf();
-    Dwarf(string name, int power, bool state, int age, Ability ability, Lineage lineage);
+    Dwarf(string name, int power, int age, Role role, Lineage lineage);
 
     // Metodi virtuali
     

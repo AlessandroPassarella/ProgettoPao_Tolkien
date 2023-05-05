@@ -2,8 +2,8 @@
 
 Ainur::Ainur(){}
 
-Ainur::Ainur(string name, int power, bool state, int age, Level level):
-Entity(name, power, state, age), level(level){}
+Ainur::Ainur(string name, int power, int age, Level level):
+Entity(name, power, age), level(level){}
 
 // Metodi virtuali
 

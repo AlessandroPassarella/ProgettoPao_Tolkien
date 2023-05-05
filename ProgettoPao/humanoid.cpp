@@ -2,15 +2,15 @@
 
 Humanoid::Humanoid(){}
 
-Humanoid::Humanoid(string name, int power, bool state, int age, Ability ability):
-Entity(name, power, state, age), ability(ability){}
+Humanoid::Humanoid(string name, int power, int age, Role role):
+Entity(name, power, age), role(role){}
 
 // Metodi get
-Humanoid::Ability Humanoid::getAbility() const{
-    return ability;
+Humanoid::Role Humanoid::getRole() const{
+    return role;
 }
 
 // Metodi set
-void Humanoid::setAbility(Ability ability){
-    this->ability = ability;
+void Humanoid::setRole(Role role){
+    this->role = role;
 }
