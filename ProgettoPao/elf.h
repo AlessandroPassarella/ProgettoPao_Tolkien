@@ -8,7 +8,7 @@ public:
     enum Bloodline {vanyar, noldor, teleri, avari};
 
     Elf();
-    Elf(string name, int power, bool state, int age, Ability ability, Bloodline bloodline);
+    Elf(string name, int power, int age, Role role, Bloodline bloodline);
 
     // Metodi virtuali
 

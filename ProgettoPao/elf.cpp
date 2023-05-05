@@ -2,8 +2,8 @@
 
 Elf::Elf(){}
 
-Elf::Elf(string name, int power, bool state, int age, Ability ability, Bloodline bloodline):
-Humanoid(name, power, state, age, ability), bloodline(bloodline){}
+Elf::Elf(string name, int power, int age, Role role, Bloodline bloodline):
+Humanoid(name, power, age, role), bloodline(bloodline){}
 
 // Metodi get
 Elf::Bloodline Elf::getBloodline() const{

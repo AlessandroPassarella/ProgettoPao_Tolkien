@@ -2,8 +2,8 @@
 
 Dwarf::Dwarf(){}
 
-Dwarf::Dwarf(string name, int power, bool state, int age, Ability ability, Lineage lineage):
-Humanoid(name, power, state, age, ability), lineage(lineage){}
+Dwarf::Dwarf(string name, int power, int age, Role role, Lineage lineage):
+Humanoid(name, power, age, role), lineage(lineage){}
 
 // Metodi get
 Dwarf::Lineage Dwarf::getLineage() const{

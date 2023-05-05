@@ -8,7 +8,7 @@ public:
     enum Family {halfing, harfoots, sturoi};
 
     Hobbit();
-    Hobbit(string name, int power, bool state, int age, Ability ability, Family family);
+    Hobbit(string name, int power, int age, Role role, Family family);
 
     // Metodi virtuali
 

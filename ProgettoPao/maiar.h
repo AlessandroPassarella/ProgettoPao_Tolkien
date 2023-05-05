@@ -5,10 +5,10 @@
 
 class Maiar : public Ainur{
 public:
-    enum Typology {puro, stregone, balrog};
+    enum Typology {pure, wizard, balrog};
 
     Maiar();
-    Maiar(string name, int power, bool state, int age, Level level, Typology typology);
+    Maiar(string name, int power, int age, Level level, Typology typology);
 
     // Metodi virtuali
 

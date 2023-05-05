@@ -2,8 +2,8 @@
 
 Hobbit::Hobbit(){}
 
-Hobbit::Hobbit(string name, int power, bool state, int age, Ability ability, Family family):
-Humanoid(name, power, state, age, ability), family(family){}
+Hobbit::Hobbit(string name, int power, int age, Role role, Family family):
+Humanoid(name, power, age, role), family(family){}
 
 // Metodi get
 Hobbit::Family Hobbit::getFamily() const{

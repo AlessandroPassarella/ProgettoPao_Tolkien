@@ -8,7 +8,7 @@ public:
     enum Level {higher, lower};
 
     Ainur();
-    Ainur(string name, int power, bool state, int age, Level level);
+    Ainur(string name, int power, int age, Level level);
 
     // Metodi virtuali
 

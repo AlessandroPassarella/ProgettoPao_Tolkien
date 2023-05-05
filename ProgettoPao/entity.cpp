@@ -2,8 +2,8 @@
 
 Entity::Entity(){}
 
-Entity::Entity(string name, int power, bool state, int age): 
-name(name), power(power), state(state), age(age){}
+Entity::Entity(string name, int power, int age):
+name(name), power(power), age(age){}
 
 int Entity::seniority() const{
     return (getPower()*2) + getAge();
@@ -16,9 +16,6 @@ string Entity::getName() const{
 int Entity::getPower() const{
     return power;
 }
-bool Entity::getState() const{
-    return state;
-}
 int Entity::getAge() const{
     return age;
 }
@@ -29,9 +26,6 @@ void Entity::setName(string name){
 }
 void Entity::setPower(int power){
     this->power = power;
-}
-void Entity::setState(bool state){
-    this->state = state;
 }
 void Entity::setAge(int age){
     this->age = age;

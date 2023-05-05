@@ -8,7 +8,7 @@ public:
     enum Element {air, water, earth, fire, death};
 
     Valar();
-    Valar(string name, int power, bool state, int age, Level level, Element element);
+    Valar(string name, int power, int age, Level level, Element element);
 
     // Metodi virtuali
 

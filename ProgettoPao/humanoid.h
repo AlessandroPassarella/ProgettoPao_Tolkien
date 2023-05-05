@@ -5,20 +5,20 @@
 
 class Humanoid : public Entity{
 public:
-    enum Ability {}; //da inserire
+    enum Role {hunter, knight, archer, worrior, thief, king, queen, assistant}; //da inserire
 
     Humanoid();
-    Humanoid(string name, int power, bool state, int age, Ability ability);
+    Humanoid(string name, int power, int age, Role role);
 
     // Metodi virtuali
 
     // Metodi get
-    Ability getAbility() const;
+    Role getRole() const;
 
     // Metodi set
-    void setAbility(Ability ability);
+    void setRole(Role role);
 private:
-    Ability ability; 
+    Role role;
 };
 
 #endif // HUMANOID_H
