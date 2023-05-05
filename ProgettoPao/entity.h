@@ -3,11 +3,11 @@
 #include <string>
 using std::string;
 
-class Entity{
+class Entity {
 public:
     Entity();
     Entity(string name, int power, bool state, int age);
-    //virtual ~Entity();
+    virtual ~Entity();
 
     int seniority() const; 
 

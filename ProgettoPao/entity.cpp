@@ -1,6 +1,8 @@
 #include "entity.h"
 
-Entity::Entity(){}
+Entity::Entity() {}
+
+Entity::~Entity() {}
 
 Entity::Entity(string name, int power, bool state, int age): 
 name(name), power(power), state(state), age(age){}
