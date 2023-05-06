@@ -7,11 +7,13 @@ class Entity {
 public:
     Entity();
     Entity(string name, int power, int age);
+    Entity(string serialized);
 
     int seniority() const; 
 
     // Metodi virtuali
-
+    virtual string asString();
+    static Entity* fromString(const string);
 
     // Metodi get
     string getName() const;

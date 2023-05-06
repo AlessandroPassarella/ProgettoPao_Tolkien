@@ -1,5 +1,5 @@
 CC = g++
-args = -O3 -Wall -Wextra -g
+args = -O3 -Wall -Wextra -g -std=c++11
 destination = target
 executable = arda.exe
 
@@ -14,6 +14,7 @@ UNITS = \
 	$(destination)/orc.o\
 	$(destination)/dwarf.o\
 	$(destination)/hobbit.o\
+	$(destination)/qontainer.o\
 
 
 run: $(destination)/$(executable)

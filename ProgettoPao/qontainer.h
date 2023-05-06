@@ -1,3 +1,5 @@
+#include <iostream>
+#include <functional>
 #include "entity.h"
 
 class Qontainer
@@ -7,7 +9,7 @@ private:
     unsigned int length, reserved;
 
 public:
-    Qontainer() : begin(nullptr), length(0) {}
+    Qontainer();
 
     void push(const Entity &entity);
 
@@ -15,7 +17,11 @@ public:
 
     Entity& get(unsigned int i) const;
 
-    bool search() const;
+    unsigned size() const;
+
+    Qontainer search(std::function<bool(const Entity*)> condition) const;
+
+
 
     /*
     copia profonda

@@ -2,8 +2,6 @@
 
 Entity::Entity() {}
 
-Entity::~Entity() {}
-
 Entity::Entity(string name, int power, int age):
 name(name), power(power), age(age){}
 
@@ -31,4 +29,12 @@ void Entity::setPower(int power){
 }
 void Entity::setAge(int age){
     this->age = age;
+}
+string Entity::asString() {
+    return "TODO";
+}
+
+Entity* Entity::fromString(string s) {
+    (void)&s;
+    return nullptr;
 }
