@@ -1,11 +1,11 @@
 {
     "tasks": [
         {
-            "type": "Compile",
-            "label": "C/C++: cpp.exe build active file",
+            "type": "process",
+            "label": "POLLOFRITTO",
             "command": "make",
             "args": [
-                "run"
+                "build"
             ],
             "options": {
                 "cwd": "${fileDirname}"

@@ -5,10 +5,11 @@
 #include "qontainer.h"
 
 int main() {
+
     Entity * valar1 = new Valar("pippo", 5, 15, Ainur::Level::lower, Valar::Element::air);
     Entity * valar2 = new Valar("pluto", 5, 15, Ainur::Level::lower, Valar::Element::fire);
     Entity * valar3 = new Valar("topolino", 5, 15, Ainur::Level::lower, Valar::Element::air);
-    
+
     Qontainer<Entity*> f;
     f.push( valar1 );
     f.push( valar2 );

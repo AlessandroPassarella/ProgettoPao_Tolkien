@@ -20,6 +20,8 @@ UNITS = \
 run: $(destination)/$(executable)
 	@ $(destination)/$(executable)
 
+build: $(destination)/$(executable)
+
 $(destination)/$(executable): $(destination) main.cpp $(UNITS)
 	$(CC) $(args) main.cpp $(wildcard $(destination)/*.o) -o $(destination)/$(executable)
 

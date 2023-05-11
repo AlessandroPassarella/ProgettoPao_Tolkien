@@ -1,5 +1,6 @@
 #include <iostream>
 #include <functional>
+#include <stdexcept>
 #include "entity.h"
 
 template<class T>
@@ -13,6 +14,8 @@ public:
     Qontainer();
 
     Qontainer(const Qontainer &q);
+
+    ~Qontainer();
 
     void push(const T &entity);
 
@@ -37,6 +40,10 @@ begin(new T[q.length]), length(q.length), reserved(q.length) {
         begin[i] = q.begin[i];
 }
 
+template<class T>
+Qontainer<T>::~Qontainer() {
+    delete[] begin;
+}
 
 template<class T>
 void Qontainer<T>::push(const T &entity){
@@ -62,9 +69,9 @@ unsigned Qontainer<T>::size() const {
 }
 
 template<class T>
-void Qontainer<T>::pop(unsigned int i){
+void Qontainer<T>::pop(unsigned int i) {
     if (i >= length)
-        throw "IndexOutOfBoundexception, can't pop neighbour's mail";
+        throw std::out_of_range("can't pop neighbour's mail");
     
     for (unsigned j=i; j<length-1; j++)
         begin[j] = begin[j+1];
@@ -73,20 +80,17 @@ void Qontainer<T>::pop(unsigned int i){
 }
 
 template<class T>
-T& Qontainer<T>::get(unsigned int i) const{
+T& Qontainer<T>::get(unsigned int i) const {
     if (i < length)
         return begin[i];
-    throw "IndexOutOfBoundexception, can't read neighbour's mail";
+    throw std::out_of_range("can't read neighbour's mail");
 }
 
 template<class T>
 Qontainer<T> Qontainer<T>::search(std::function<bool(const T*)> condition) const {
     Qontainer<T> resultSet;
-    
-    for (unsigned int i = 0; i < length; i++) {
-        if(condition(&begin[i])) {
+    for (unsigned int i = 0; i < length; i++)
+        if(condition(&begin[i]))
             resultSet.push(begin[i]);
-        }
-    }
     return resultSet;
 }
