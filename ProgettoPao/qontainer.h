@@ -16,7 +16,7 @@ public:
 
     void push(const T &entity);
 
-    void pop(unsigned int i);
+    void erease(unsigned int i);
 
     T& get(unsigned int i) const;
 
@@ -32,7 +32,7 @@ Qontainer<T>::Qontainer() : begin(nullptr), length(0), reserved(0) {}
 
 template<class T>
 Qontainer<T>::Qontainer(const Qontainer &q) :
-begin(new T[q.length]), length(q.length), reserved(q.length) {
+begin(new T[q.length]), length(q.length), reserved(q.reserved) {
     for(unsigned i = 0;i<length; i++)
         begin[i] = q.begin[i];
 }
@@ -62,7 +62,7 @@ unsigned Qontainer<T>::size() const {
 }
 
 template<class T>
-void Qontainer<T>::pop(unsigned int i){
+void Qontainer<T>::erease(unsigned int i){
     if (i >= length)
         throw "IndexOutOfBoundexception, can't pop neighbour's mail";
     

@@ -12,6 +12,7 @@ public:
     int seniority() const; 
 
     // Metodi virtuali
+    virtual ~Entity() = 0;
     virtual string asString();
     static Entity* fromString(const string);
 

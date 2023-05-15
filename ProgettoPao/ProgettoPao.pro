@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     ainur.cpp \
+    army.cpp \
     dwarf.cpp \
     elf.cpp \
     entity.cpp \
@@ -20,10 +21,12 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     orc.cpp \
+    qontainer.cpp \
     valar.cpp
 
 HEADERS += \
     ainur.h \
+    army.h \
     dwarf.h \
     elf.h \
     entity.h \
@@ -33,6 +36,7 @@ HEADERS += \
     maiar.h \
     mainwindow.h \
     orc.h \
+    qontainer.h \
     valar.h
 
 # Default rules for deployment.
