@@ -19,7 +19,7 @@ public:
 
     void push(const Entity *entity);
 
-    void pop(unsigned int i);
+    void erase(unsigned int i);
 
     Entity* get(unsigned int i) const;
 

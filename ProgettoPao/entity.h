@@ -13,6 +13,7 @@ public:
     virtual Entity* clone() const = 0;
 
     // Metodi virtuali
+    virtual ~Entity() = 0;
     virtual string asString();
     static Entity* fromString(const string);
 

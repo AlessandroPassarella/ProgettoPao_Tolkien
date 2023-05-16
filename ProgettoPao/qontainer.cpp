@@ -31,7 +31,7 @@ void Qontainer::push(const Entity *entity){
     length++;
 }
 
-void Qontainer::pop(unsigned int i) {
+void Qontainer::erase(unsigned int i) {
     if (i >= length)
         throw std::out_of_range("can't pop neighbour's mail");
 
