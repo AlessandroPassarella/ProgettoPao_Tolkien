@@ -5,22 +5,31 @@
 #include "qontainer.h"
 
 int main() {
-
+    
     Entity * valar1 = new Valar("pippo", 5, 15, Ainur::Level::lower, Valar::Element::air);
     Entity * valar2 = new Valar("pluto", 5, 15, Ainur::Level::lower, Valar::Element::fire);
     Entity * valar3 = new Valar("topolino", 5, 15, Ainur::Level::lower, Valar::Element::air);
 
-    Qontainer<Entity*> f;
+    Qontainer f;
     f.push( valar1 );
     f.push( valar2 );
     f.push( valar3 );
 
+    Qontainer g(f);
+    f.get(0)->setName("Sir Niagu");
+
+    std::cout << "g :" << g.get(0)->getName() << '\n';
+    std::cout << "g :" << g.size() << '\n';
+
+    std::cout << "f :" << f.get(0)->getName() << '\n';
+    std::cout << "f :" << f.size() << '\n';
+
     std::cout << "@@@" << f.get(1)->getName() << '\n';
     std::cout << "@@@" << dynamic_cast<Valar*>(f.get(1))->getName() << '\n';
     
-    Qontainer<Entity*> q2 = f.search(
-        [] (Entity*const* x) {
-            return (dynamic_cast<Valar*const>(*x)->getElement() == Valar::Element::air);
+    Qontainer q2 = f.search(
+        [] (Entity const* x) {
+            return (dynamic_cast<Valar const*>(x)->getElement() == Valar::Element::air);
         }
     );
 

@@ -11,6 +11,7 @@ public:
     Elf(string name, int power, int age, Role role, Bloodline bloodline);
 
     // Metodi virtuali
+    Entity* clone() const;
 
     // Metodi get
     Bloodline getBloodline() const;

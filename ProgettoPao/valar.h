@@ -11,7 +11,8 @@ public:
     Valar(string name, int power, int age, Level level, Element element);
 
     // Metodi virtuali
-
+    Entity* clone() const;
+    
     // Metodi get
     Element getElement() const;
 

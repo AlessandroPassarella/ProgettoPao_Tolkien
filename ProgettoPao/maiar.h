@@ -11,6 +11,7 @@ public:
     Maiar(string name, int power, int age, Level level, Typology typology);
 
     // Metodi virtuali
+    Entity* clone() const;
 
     // Metodi get
     Typology getTypology() const;

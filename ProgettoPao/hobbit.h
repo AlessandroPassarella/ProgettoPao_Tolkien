@@ -11,6 +11,7 @@ public:
     Hobbit(string name, int power, int age, Role role, Family family);
 
     // Metodi virtuali
+    Entity* clone() const;
 
     // Metodi get
     Family getFamily() const;

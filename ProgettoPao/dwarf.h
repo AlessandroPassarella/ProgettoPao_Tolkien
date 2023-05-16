@@ -12,6 +12,7 @@ public:
     Dwarf(string name, int power, int age, Role role, Lineage lineage);
 
     // Metodi virtuali
+    Entity* clone() const;
     
     // Metodi get
     Lineage getLineage() const;

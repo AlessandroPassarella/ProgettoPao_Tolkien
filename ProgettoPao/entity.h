@@ -9,7 +9,8 @@ public:
     Entity(string name, int power, int age);
     Entity(string serialized);
 
-    int seniority() const; 
+    int seniority() const;
+    virtual Entity* clone() const = 0;
 
     // Metodi virtuali
     virtual string asString();

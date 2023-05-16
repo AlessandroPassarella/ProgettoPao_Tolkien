@@ -5,12 +5,13 @@
 
 class Human : public Humanoid {
 public:
-    enum Descent {dunedian, mediano, bardo};
+    enum Descent {dunedian, medianum, bard};
 
     Human();
     Human(string name, int power, int age, Role role, Descent descent);
 
     // Metodi virtuali
+    Entity* clone() const;
 
     // Metodi get
     Descent getDescent() const;

@@ -11,7 +11,8 @@ public:
     Orc(string name, int power, int age, Role role, Kind Kind);
 
     // Metodi virtuali
-
+    Entity* clone() const;
+    
     // Metodi get
     Kind getKind() const;
 

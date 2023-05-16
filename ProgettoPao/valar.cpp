@@ -14,3 +14,6 @@ void Valar::setElement(Element element){
     this->element = element;
 }
 
+Entity* Valar::clone() const{
+    return new Valar(getName(), getPower(), getAge(), getLevel(), element);
+}

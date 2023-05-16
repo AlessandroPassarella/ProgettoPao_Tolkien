@@ -1,0 +1,10 @@
+GUI CARTA E PENNA
+testare copy costructor Qontainer
+virtuale clone()=0 su entity + testare
+gerarchia Entity: sticacchio di metodi diversi per le calssi!!
+serialize-deserialize!!
+classe Storage() con metodo statico save(Qontainer q, string filename) e load(string filename)
+
+
+
+

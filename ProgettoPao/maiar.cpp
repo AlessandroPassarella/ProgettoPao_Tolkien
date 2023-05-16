@@ -14,3 +14,8 @@ Maiar::Typology Maiar::getTypology() const{
 void Maiar::setTypology(Typology typology){
     this->typology = typology;
 }
+
+
+Entity* Maiar::clone() const{
+    return new Maiar(getName(), getPower(), getAge(), getLevel(), typology);
+}

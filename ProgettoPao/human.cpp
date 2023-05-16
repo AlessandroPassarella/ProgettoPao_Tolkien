@@ -15,4 +15,6 @@ void Human::setDescent(Descent descent){
     this->descent = descent;
 }
 
-
+Entity* Human::clone() const {
+    return new Human(getName(), getPower(), getAge(), getRole(), descent);
+}

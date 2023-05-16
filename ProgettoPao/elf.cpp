@@ -5,6 +5,10 @@ Elf::Elf(){}
 Elf::Elf(string name, int power, int age, Role role, Bloodline bloodline):
 Humanoid(name, power, age, role), bloodline(bloodline){}
 
+Entity* Elf::clone() const{
+    return new Elf(getName(), getPower(), getAge(), getRole(), bloodline);
+}
+
 // Metodi get
 Elf::Bloodline Elf::getBloodline() const{
     return bloodline;
