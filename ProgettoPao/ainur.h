@@ -11,6 +11,7 @@ public:
     Ainur(string name, int power, int age, Level level);
 
     // Metodi virtuali
+    ~Ainur() = 0;
 
     // Metodi get
     Level getLevel() const;

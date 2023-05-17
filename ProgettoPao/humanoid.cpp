@@ -1,6 +1,7 @@
 #include "humanoid.h"
 
 Humanoid::Humanoid(){}
+Humanoid::~Humanoid() = default;
 
 Humanoid::Humanoid(string name, int power, int age, Role role):
 Entity(name, power, age), role(role){}

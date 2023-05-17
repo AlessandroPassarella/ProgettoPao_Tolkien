@@ -5,23 +5,18 @@
 #include <string>
 using std::string;
 
-class Army
-{
+class Army {
 public:
-    Army();
-    Army(const string& name, const Qontainer<Entity*>& entities = Qontainer<Entity*>());
+    Army(const string&name);
+    Army(const string& name, const Qontainer& entities = Qontainer());
 
     //metodi
     string getName() const;
-    Entity* getEntity(unsigned int index) const;
-    const Qontainer<Entity*>& getEntities() const;
-    Qontainer<Entity*>& getEntities();
-    void addEntity(Entity* const entity);
-    void deleteEntity(unsigned int i);
+    Qontainer& getEntities();
 
 private:
-    string _name;
-    Qontainer<Entity*> _entities;
+    const string name;
+    Qontainer entities;
 };
 
 #endif // ARMY_H

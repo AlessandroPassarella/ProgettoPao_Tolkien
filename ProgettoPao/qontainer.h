@@ -1,14 +1,15 @@
+#ifndef _QONTAINER_H_
+#define _QONATINER_H_
 #include <iostream>
 #include <functional>
 #include <stdexcept>
 #include "entity.h"
 
 
-class Qontainer
-{
+class Qontainer{
 private:
     Entity ** begin;
-    unsigned int length, reserved;
+    unsigned length, reserved;
 
 public:
     Qontainer();
@@ -19,12 +20,15 @@ public:
 
     void push(const Entity *entity);
 
-    void erase(unsigned int i);
+    void erase(unsigned i);
 
-    Entity* get(unsigned int i) const;
+    Entity* get(unsigned i) const;
+    Entity* operator [](unsigned i);
 
     unsigned size() const;
 
     Qontainer search(std::function<bool(const Entity*)> condition) const;
 
 };
+
+#endif

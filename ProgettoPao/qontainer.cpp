@@ -31,7 +31,7 @@ void Qontainer::push(const Entity *entity){
     length++;
 }
 
-void Qontainer::erase(unsigned int i) {
+void Qontainer::erase(unsigned i) {
     if (i >= length)
         throw std::out_of_range("can't pop neighbour's mail");
 
@@ -42,10 +42,14 @@ void Qontainer::erase(unsigned int i) {
     length--;
 }
 
-Entity* Qontainer::get(unsigned int i) const {
+Entity* Qontainer::get(unsigned i) const {
     if (i < length)
         return begin[i];
     throw std::out_of_range("can't read neighbour's mail");
+}
+
+Entity* Qontainer::operator [](unsigned i) {
+    return get(i);
 }
 
 unsigned Qontainer::size() const {
@@ -54,7 +58,7 @@ unsigned Qontainer::size() const {
 
 Qontainer Qontainer::search(std::function<bool(const Entity*)> condition) const {
     Qontainer resultSet;
-    for (unsigned int i = 0; i < length; i++)
+    for (unsigned i = 0; i < length; i++)
         if(condition(begin[i]))
             resultSet.push(begin[i]);
     return resultSet;

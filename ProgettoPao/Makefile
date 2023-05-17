@@ -5,6 +5,7 @@ executable = arda.exe
 
 UNITS = \
 	$(destination)/ainur.o\
+	$(destination)/army.o\
 	$(destination)/valar.o\
 	$(destination)/entity.o\
 	$(destination)/human.o\

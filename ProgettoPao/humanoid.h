@@ -11,6 +11,7 @@ public:
     Humanoid(string name, int power, int age, Role role);
 
     // Metodi virtuali
+    ~Humanoid() = 0;
 
     // Metodi get
     Role getRole() const;

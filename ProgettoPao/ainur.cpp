@@ -1,6 +1,7 @@
 #include "ainur.h"
 
 Ainur::Ainur(){}
+Ainur::~Ainur() = default;
 
 Ainur::Ainur(string name, int power, int age, Level level):
 Entity(name, power, age), level(level){}

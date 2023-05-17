@@ -3,7 +3,7 @@
 
 #include "ainur.h"
 
-class Maiar : public Ainur{
+class Maiar : public Ainur {
 public:
     enum Typology {pure, wizard, balrog};
 

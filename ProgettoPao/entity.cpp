@@ -1,6 +1,7 @@
 #include "entity.h"
 
 Entity::Entity() {}
+Entity::~Entity() = default;
 
 Entity::Entity(string name, int power, int age):
 name(name), power(power), age(age){}
