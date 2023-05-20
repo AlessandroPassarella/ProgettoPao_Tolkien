@@ -2,7 +2,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-CONFIG += c++17
+CONFIG += c++11
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -22,7 +22,8 @@ SOURCES += \
     mainwindow.cpp \
     orc.cpp \
     qontainer.cpp \
-    valar.cpp
+    valar.cpp \
+    serializer.cpp
 
 HEADERS += \
     ainur.h \
@@ -37,7 +38,8 @@ HEADERS += \
     mainwindow.h \
     orc.h \
     qontainer.h \
-    valar.h
+    valar.h \
+    serializer.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
