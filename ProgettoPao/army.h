@@ -7,7 +7,6 @@ using std::string;
 
 class Army {
 public:
-    Army(const string&name);
     Army(const string& name, const Qontainer& entities = Qontainer());
 
     //metodi

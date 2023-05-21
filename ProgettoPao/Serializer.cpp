@@ -1,5 +1,6 @@
 #include "serializer.h"
 
+// Serialize
 void parseEntity(QXmlStreamWriter& stream, const Entity* entity) {
     stream.writeStartElement("entity");
     if (const Humanoid* humanoid = dynamic_cast<const Humanoid*>(entity)) {
@@ -55,8 +56,8 @@ void parseArmy(QXmlStreamWriter& stream, Army* army){
     stream.writeEndElement();
 }
 
-void f(Army* army){
-    QFile file("C:/Users/ana_n/Desktop/ProgettoPao_Tolkien/ProgettoPao/ArmyDatabase.xml");
+void saveArmyToFile(Army* army, const char* const filename){
+    QFile file(filename);
     file.open(QIODevice::WriteOnly | QIODevice::Text);
     QXmlStreamWriter xmlWriter(&file);
     xmlWriter.setAutoFormatting(true);
@@ -68,21 +69,162 @@ void f(Army* army){
     file.close();
 }
 
-/*
-Army* parseFileAsArmy(string filename) {
+// Deserialize
 
+// Classi astratte
+void setEntityProperties(Entity* entity, QString property, QStringView value) {
+    if(property == "name")
+        entity->setName(value.toString().toStdString());
+    else if(property == "power")
+        entity->setPower(value.toInt());
+    else if(property == "age")
+        entity->setAge(value.toInt());
 }
 
-    /*
-
-    -new Army
-    -leggi e setta
-    -foreach file.army.entities
-      --parseQualcosaAsEntity
-
-
-
-Entity* parseQualcosaAsEntity(const string xml_string) {
-
+void setHumanoidProperties(Humanoid* humanoid, QString property, QStringView value) {
+    if (property == "role")
+        humanoid->setRole(static_cast<Humanoid::Role>(value.toInt()));
+    else setEntityProperties(humanoid, property, value);
 }
-*/
+void setAinurProperties(Ainur* ainur, QString property, QStringView value) {
+    if (property == "level")
+        ainur->setLevel(static_cast<Ainur::Level>(value.toInt()));
+    else setEntityProperties(ainur, property, value);
+}
+
+// Classi concrete
+void setElfProperty(Elf* elf, QString property, QStringView value) {
+    if (property == "bloodline")
+        elf->setBloodline(static_cast<Elf::Bloodline>(value.toInt()));
+    else setHumanoidProperties(elf, property, value);
+}
+void setHobbitProperty(Hobbit* hobbit, QString property, QStringView value) {
+    if (property == "family")
+        hobbit->setFamily(static_cast<Hobbit::Family>(value.toInt()));
+    else setHumanoidProperties(hobbit, property, value);
+}
+void setDwarfProperty(Dwarf* dwarf, QString property, QStringView value) {
+    if (property == "lineage")
+        dwarf->setLineage(static_cast<Dwarf::Lineage>(value.toInt()));
+    else setHumanoidProperties(dwarf, property, value);
+}
+void setOrcProperty(Orc* orc, QString property, QStringView value) {
+    if (property == "kind")
+        orc->setKind(static_cast<Orc::Kind>(value.toInt()));
+    else setHumanoidProperties(orc, property, value);
+}
+void setHumanProperty(Human* human, QString property, QStringView value) {
+    if (property == "descent")
+        human->setDescent(static_cast<Human::Descent>(value.toInt()));
+    else setHumanoidProperties(human, property, value);
+}
+void setValarProperty(Valar* valar, QString property, QStringView value) {
+    if (property == "element")
+        valar->setElement(static_cast<Valar::Element>(value.toInt()));
+    else setAinurProperties(valar, property, value);
+}
+void setMaiarProperty(Maiar* maiar, QString property, QStringView value) {
+    if (property == "typology")
+        maiar->setTypology(static_cast<Maiar::Typology>(value.toInt()));
+    else setAinurProperties(maiar, property, value);
+}
+
+
+Army* parseFileAsArmy(const char* const filename) {
+    QFile file(filename);
+    if(file.open(QIODevice::ReadOnly | QIODevice::Text)){
+        QXmlStreamReader xmlReader(&file);
+        xmlReader.readNextStartElement();
+
+        QString armyName = xmlReader.attributes().value("name").toString();
+        Qontainer entities;
+
+        while(!xmlReader.atEnd()){
+            xmlReader.readNextStartElement();
+
+            QString classType = xmlReader.attributes().value("type").toString();
+            xmlReader.readNextStartElement();
+
+            if(classType=="Elf"){
+                Elf elf;
+                QString tagName = xmlReader.name().toString();
+                while (tagName != "entity") {
+                        xmlReader.readNext();
+                        setElfProperty(&elf, tagName, xmlReader.text());
+                        xmlReader.readNext();
+                        xmlReader.readNextStartElement();
+                        tagName = xmlReader.name().toString();
+                }
+                entities.push(&elf);
+            }else if(classType=="Hobbit"){
+                Hobbit hobbit;
+                QString tagName = xmlReader.name().toString();
+                while (tagName != "entity") {
+                        xmlReader.readNext();
+                        setHobbitProperty(&hobbit, tagName, xmlReader.text());
+                        xmlReader.readNext();
+                        xmlReader.readNextStartElement();
+                        tagName = xmlReader.name().toString();
+                }
+                entities.push(&hobbit);
+            }else if(classType=="Dwarf"){
+                Dwarf dwarf;
+                QString tagName = xmlReader.name().toString();
+                while (tagName != "entity") {
+                        xmlReader.readNext();
+                        setDwarfProperty(&dwarf, tagName, xmlReader.text());
+                        xmlReader.readNext();
+                        xmlReader.readNextStartElement();
+                        tagName = xmlReader.name().toString();
+                }
+                entities.push(&dwarf);
+            }else if(classType=="Orc"){
+                Orc orc;
+                QString tagName = xmlReader.name().toString();
+                while (tagName != "entity") {
+                        xmlReader.readNext();
+                        setOrcProperty(&orc, tagName, xmlReader.text());
+                        xmlReader.readNext();
+                        xmlReader.readNextStartElement();
+                        tagName = xmlReader.name().toString();
+                }
+                entities.push(&orc);
+            }else if(classType=="Human"){
+                Human human;
+                QString tagName = xmlReader.name().toString();
+                while (tagName != "entity") {
+                        xmlReader.readNext();
+                        setHumanProperty(&human, tagName, xmlReader.text());
+                        xmlReader.readNext();
+                        xmlReader.readNextStartElement();
+                        tagName = xmlReader.name().toString();
+                }
+                entities.push(&human);
+            }else if(classType=="Valar"){
+                Valar valar;
+                QString tagName = xmlReader.name().toString();
+                while (tagName != "entity") {
+                        xmlReader.readNext();
+                        setValarProperty(&valar, tagName, xmlReader.text());
+                        xmlReader.readNext();
+                        xmlReader.readNextStartElement();
+                        tagName = xmlReader.name().toString();
+                }
+                entities.push(&valar);
+            }else if(classType=="Maiar"){
+                Maiar maiar;
+                QString tagName = xmlReader.name().toString();
+                while (tagName != "entity") {
+                        xmlReader.readNext();
+                        setMaiarProperty(&maiar, tagName, xmlReader.text());
+                        xmlReader.readNext();
+                        xmlReader.readNextStartElement();
+                        tagName = xmlReader.name().toString();
+                }
+                entities.push(&maiar);
+            }
+        }
+        return new Army(armyName.toStdString(), entities);
+    }
+    return nullptr; //eccezione da aggiungere
+}

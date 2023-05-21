@@ -13,8 +13,8 @@ void parseEntity(QXmlStreamWriter& stream, const Entity* entity);
 
 void parseArmy(QXmlStreamWriter& stream, Army* army);
 
-void f(Army* army);
+void saveArmyToFile(Army* army, const char* const filename);
 
-Army* parseFileAsArmy(string filename);
+Army* parseFileAsArmy(const char* const filename);
 
 Entity* parseQualcosaAsEntity(const string xml_string);
