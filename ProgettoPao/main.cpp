@@ -3,9 +3,6 @@
 #include "races.h"
 #include "serializer.h"
 
-using std::cout;
-using std::endl;
-
 int main() {
     
     Qontainer allBeings;
@@ -21,9 +18,19 @@ int main() {
  
     const char* const namefile = "C:/Users/ana_n/Desktop/ProgettoPao_Tolkien/ProgettoPao/ArmyDatabase.xml";
 
-    Army* army = parseFileAsArmy(namefile);
-    cout << army->getName() << endl;
-    Qontainer qontainer = army->getEntities();
+    //SERIALIZE
+    QVector<Army*> armies;
+    armies.push_back(new Army("pollos", allBeings.search([](const Entity* e){return e->getAge()<100;})));
+    armies.push_back(new Army("hermanos", allBeings.search([](const Entity* e){return e->getAge()>=100;})));
+    saveArmiesToFile(armies, namefile);
+
+    //DESERIALIZE
+    QVector<Army*> army = parseFileAsArmy(namefile);
+
+    qDebug() << "found from file " << army.size() << " armies:";
+    for(int i = 0; i < army.size(); i++)
+        qDebug() << "army n." << i+1 << " called "
+                 << army[i]->getName().c_str() << " has " << army[i]->getEntities().size() << " entities";
 
     return 0;
 }

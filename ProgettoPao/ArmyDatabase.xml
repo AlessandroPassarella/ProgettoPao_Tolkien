@@ -1,66 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<army name="barbuti">
-    <entity type="Valar">
-        <element>0</element>
-        <level>1</level>
-        <name>pippo</name>
-        <power>5</power>
-        <age>15</age>
-    </entity>
-    <entity type="Valar">
-        <element>3</element>
-        <level>1</level>
-        <name>pluto</name>
-        <power>5</power>
-        <age>15</age>
-    </entity>
-    <entity type="Valar">
-        <element>0</element>
-        <level>1</level>
-        <name>topolino</name>
-        <power>5</power>
-        <age>15</age>
-    </entity>
-    <entity type="Dwarf">
-        <lineage>0</lineage>
-        <role>0</role>
-        <name>gimli</name>
-        <power>12</power>
-        <age>120</age>
-    </entity>
-    <entity type="Hobbit">
-        <family>0</family>
-        <role>0</role>
-        <name>samgay</name>
-        <power>12</power>
-        <age>120</age>
-    </entity>
-    <entity type="Elf">
-        <bloodline>2</bloodline>
-        <role>6</role>
-        <name>rollo</name>
-        <power>1</power>
-        <age>300</age>
-    </entity>
-    <entity type="Human">
-        <descent>0</descent>
-        <role>5</role>
-        <name>obama binladen</name>
-        <power>120000</power>
-        <age>44</age>
-    </entity>
-    <entity type="Maiar">
-        <typology>1</typology>
-        <level>1</level>
-        <name>ganjalf</name>
-        <power>12000</power>
-        <age>44</age>
-    </entity>
-    <entity type="Orc">
-        <kind>0</kind>
-        <role>6</role>
-        <name>Calippa</name>
-        <power>12000</power>
-        <age>44</age>
-    </entity>
-</army>
+<armies>
+    <army name="pollos">
+        <entity type="Valar">
+            <element>0</element>
+            <level>1</level>
+            <name>pippo</name>
+            <power>5</power>
+            <age>15</age>
+        </entity>
+        <entity type="Valar">
+            <element>3</element>
+            <level>1</level>
+            <name>pluto</name>
+            <power>5</power>
+            <age>15</age>
+        </entity>
+        <entity type="Valar">
+            <element>0</element>
+            <level>1</level>
+            <name>topolino</name>
+            <power>5</power>
+            <age>15</age>
+        </entity>
+        <entity type="Human">
+            <descent>0</descent>
+            <role>5</role>
+            <name>obama binladen</name>
+            <power>120000</power>
+            <age>44</age>
+        </entity>
+        <entity type="Maiar">
+            <typology>1</typology>
+            <level>1</level>
+            <name>ganjalf</name>
+            <power>12000</power>
+            <age>44</age>
+        </entity>
+        <entity type="Orc">
+            <kind>0</kind>
+            <role>6</role>
+            <name>Calippa</name>
+            <power>12000</power>
+            <age>44</age>
+        </entity>
+    </army>
+    <army name="hermanos">
+        <entity type="Dwarf">
+            <lineage>0</lineage>
+            <role>0</role>
+            <name>gimli</name>
+            <power>12</power>
+            <age>120</age>
+        </entity>
+        <entity type="Hobbit">
+            <family>0</family>
+            <role>0</role>
+            <name>samgay</name>
+            <power>12</power>
+            <age>120</age>
+        </entity>
+        <entity type="Elf">
+            <bloodline>2</bloodline>
+            <role>6</role>
+            <name>rollo</name>
+            <power>1</power>
+            <age>300</age>
+        </entity>
+    </army>
+    <armies/>
+</armies>
