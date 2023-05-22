@@ -8,10 +8,11 @@ public:
     enum Kind {pure, goblin, white};
 
     Orc();
-    Orc(string name, int power, int age, Role role, Kind Kind);
+    Orc(string name, int power, unsigned age, Role role, Kind Kind);
 
     // Metodi virtuali
     Entity* clone() const;
+    int combatPower() const;
     
     // Metodi get
     Kind getKind() const;

@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <armies>
     <army name="pollos">
-        <entity type="Valar">
+        <entity type="Vala">
             <element>0</element>
             <level>1</level>
             <name>pippo</name>
             <power>5</power>
             <age>15</age>
         </entity>
-        <entity type="Valar">
+        <entity type="Vala">
             <element>3</element>
             <level>1</level>
             <name>pluto</name>
             <power>5</power>
             <age>15</age>
         </entity>
-        <entity type="Valar">
+        <entity type="Vala">
             <element>0</element>
             <level>1</level>
             <name>topolino</name>
@@ -29,7 +29,7 @@
             <power>120000</power>
             <age>44</age>
         </entity>
-        <entity type="Maiar">
+        <entity type="Maia">
             <typology>1</typology>
             <level>1</level>
             <name>ganjalf</name>

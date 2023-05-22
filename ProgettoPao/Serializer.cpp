@@ -24,14 +24,14 @@ void parseEntity(QXmlStreamWriter& stream, const Entity* entity) {
         stream.writeTextElement("role", QString::number(static_cast<int>(humanoid->getRole())));
     } else{
 
-        if (const Valar* valar = dynamic_cast<const Valar*>(entity)) {
-            stream.writeAttribute("type", "Valar");
-            stream.writeTextElement("element", QString::number(static_cast<int>(valar->getElement())));
-        } else if (const Maiar* maiar = dynamic_cast<const Maiar*>(entity)) {
-            stream.writeAttribute("type", "Maiar");
-            stream.writeTextElement("typology", QString::number(static_cast<int>(maiar->getTypology())));
+        if (const Vala* vala = dynamic_cast<const Vala*>(entity)) {
+            stream.writeAttribute("type", "Vala");
+            stream.writeTextElement("element", QString::number(static_cast<int>(vala->getElement())));
+        } else if (const Maia* maia = dynamic_cast<const Maia*>(entity)) {
+            stream.writeAttribute("type", "Maia");
+            stream.writeTextElement("typology", QString::number(static_cast<int>(maia->getTypology())));
         }
-        stream.writeTextElement("level", QString::number(static_cast<int>((dynamic_cast<const Ainur*>(entity))->getLevel())));
+        stream.writeTextElement("level", QString::number(static_cast<int>((dynamic_cast<const Ainu*>(entity))->getLevel())));
 
     }
     stream.writeTextElement("name", QString::fromStdString(entity->getName()));
@@ -83,10 +83,10 @@ void setHumanoidProperties(Humanoid* humanoid, QString property, QStringView val
         humanoid->setRole(static_cast<Humanoid::Role>(value.toInt()));
     else setEntityProperties(humanoid, property, value);
 }
-void setAinurProperties(Ainur* ainur, QString property, QStringView value) {
+void setAinuProperties(Ainu* ainu, QString property, QStringView value) {
     if (property == "level")
-        ainur->setLevel(static_cast<Ainur::Level>(value.toInt()));
-    else setEntityProperties(ainur, property, value);
+        ainu->setLevel(static_cast<Ainu::Level>(value.toInt()));
+    else setEntityProperties(ainu, property, value);
 }
 
 // Classi concrete
@@ -115,15 +115,15 @@ void setHumanProperty(Human* human, QString property, QStringView value) {
         human->setDescent(static_cast<Human::Descent>(value.toInt()));
     else setHumanoidProperties(human, property, value);
 }
-void setValarProperty(Valar* valar, QString property, QStringView value) {
+void setValaProperty(Vala* vala, QString property, QStringView value) {
     if (property == "element")
-        valar->setElement(static_cast<Valar::Element>(value.toInt()));
-    else setAinurProperties(valar, property, value);
+        vala->setElement(static_cast<Vala::Element>(value.toInt()));
+    else setAinuProperties(vala, property, value);
 }
-void setMaiarProperty(Maiar* maiar, QString property, QStringView value) {
+void setMaiaProperty(Maia* maia, QString property, QStringView value) {
     if (property == "typology")
-        maiar->setTypology(static_cast<Maiar::Typology>(value.toInt()));
-    else setAinurProperties(maiar, property, value);
+        maia->setTypology(static_cast<Maia::Typology>(value.toInt()));
+    else setAinuProperties(maia, property, value);
 }
 
 
@@ -203,28 +203,28 @@ QVector<Army*> parseFileAsArmy(const char* const filename) {
                     tagName = xmlReader.name().toString();
                 }
                 entities.push(&human);
-            }else if(classType=="Valar"){
-                Valar valar;
+            }else if(classType=="Vala"){
+                Vala vala;
                 QString tagName = xmlReader.name().toString();
                 while (tagName != "entity") {
                     xmlReader.readNext();
-                    setValarProperty(&valar, tagName, xmlReader.text());
+                    setValaProperty(&vala, tagName, xmlReader.text());
                     xmlReader.readNext();
                     xmlReader.readNextStartElement();
                     tagName = xmlReader.name().toString();
                 }
-                entities.push(&valar);
-            }else if(classType=="Maiar"){
-                Maiar maiar;
+                entities.push(&vala);
+            }else if(classType=="Maia"){
+                Maia maia;
                 QString tagName = xmlReader.name().toString();
                 while (tagName != "entity") {
                     xmlReader.readNext();
-                    setMaiarProperty(&maiar, tagName, xmlReader.text());
+                    setMaiaProperty(&maia, tagName, xmlReader.text());
                     xmlReader.readNext();
                     xmlReader.readNextStartElement();
                     tagName = xmlReader.name().toString();
                 }
-                entities.push(&maiar);
+                entities.push(&maia);
             }else break;
         }
         vec.push_back(new Army(armyName.toStdString(), entities));

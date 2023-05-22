@@ -8,7 +8,7 @@ public:
     enum Descent {dunedian, medianum, bard};
 
     Human();
-    Human(string name, int power, int age, Role role, Descent descent);
+    Human(string name, int power, unsigned age, Role role, Descent descent);
 
     // Metodi virtuali
     Entity* clone() const;

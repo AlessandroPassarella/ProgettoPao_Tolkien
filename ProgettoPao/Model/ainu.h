@@ -1,17 +1,18 @@
-#ifndef AINUR_H
-#define AINUR_H
+#ifndef AINU_H
+#define AINU_H
 
 #include "entity.h"
 
-class Ainur : public Entity{
+class Ainu : public Entity{
 public:
     enum Level {higher, lower};
 
-    Ainur();
-    Ainur(string name, int power, int age, Level level);
+    Ainu();
+    Ainu(string name, int power, unsigned age, Level level);
 
     // Metodi virtuali
-    ~Ainur() = 0;
+    ~Ainu() = 0;
+    virtual int evilness() const = 0;
 
     // Metodi get
     Level getLevel() const;
@@ -23,4 +24,4 @@ private:
     Level level;
 };
 
-#endif // AINUR_H
+#endif // AINU_H

@@ -1,17 +1,18 @@
-#ifndef VALAR_H
-#define VALAR_H
+#ifndef VALA_H
+#define VALA_H
 
-#include "ainur.h"
+#include "ainu.h"
 
-class Valar : public Ainur{
+class Vala : public Ainu{
 public:
     enum Element {air, water, earth, fire, death};
 
-    Valar();
-    Valar(string name, int power, int age, Level level, Element element);
+    Vala();
+    Vala(string name, int power, unsigned age, Level level, Element element);
 
     // Metodi virtuali
     Entity* clone() const;
+    int evilness() const;
     
     // Metodi get
     Element getElement() const;
@@ -23,4 +24,4 @@ private:
     Element element;
 };
 
-#endif // VALAR_H
+#endif // VALA_H

@@ -2,7 +2,7 @@
 
 Human::Human(){}
 
-Human::Human(string name, int power, int age, Role role, Descent descent):
+Human::Human(string name, int power, unsigned age, Role role, Descent descent):
 Humanoid(name, power, age, role), descent(descent){}
 
 // Metodi get

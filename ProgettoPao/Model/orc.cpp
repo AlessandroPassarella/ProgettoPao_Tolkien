@@ -2,8 +2,13 @@
 
 Orc::Orc() {}
 
-Orc::Orc(string name, int power, int age, Role role, Kind kind) :
+Orc::Orc(string name, int power, unsigned age, Role role, Kind kind) :
     Humanoid(name, power, age, role), kind(kind) {}
+
+// Metodi virtuali
+int Orc::combatPower() const {
+    return Humanoid::combatPower()*3;
+}
 
 // Metodi get
 Orc::Kind Orc::getKind() const {

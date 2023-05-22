@@ -2,7 +2,7 @@
 
 Elf::Elf(){}
 
-Elf::Elf(string name, int power, int age, Role role, Bloodline bloodline):
+Elf::Elf(string name, int power, unsigned age, Role role, Bloodline bloodline):
 Humanoid(name, power, age, role), bloodline(bloodline){}
 
 Entity* Elf::clone() const{

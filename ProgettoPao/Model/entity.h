@@ -6,7 +6,7 @@ using std::string;
 class Entity {
 public:
     Entity();
-    Entity(string name, int power, int age);
+    Entity(string name, int power, unsigned age);
     Entity(string serialized);
 
     int seniority() const;
@@ -20,17 +20,17 @@ public:
     // Metodi get
     string getName() const;
     int getPower() const;
-    int getAge() const;
+    unsigned getAge() const;
 
     // Metodi set
     void setName(string);
     void setPower(int);
-    void setAge(int);
+    void setAge(unsigned);
     
 private:
     string name;
     int power;
-    int age;
+    unsigned age;
 };
 
 #endif // ENTITY_H

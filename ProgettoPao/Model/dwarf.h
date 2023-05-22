@@ -9,7 +9,7 @@ public:
     enum Lineage {durin, barbafiamma, nerachiave, vastifascio, pugniferro, pediroccia, barbadura};
 
     Dwarf();
-    Dwarf(string name, int power, int age, Role role, Lineage lineage);
+    Dwarf(string name, int power, unsigned age, Role role, Lineage lineage);
 
     // Metodi virtuali
     Entity* clone() const;

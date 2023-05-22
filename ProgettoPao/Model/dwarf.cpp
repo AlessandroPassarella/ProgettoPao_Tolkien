@@ -2,7 +2,7 @@
 
 Dwarf::Dwarf(){}
 
-Dwarf::Dwarf(string name, int power, int age, Role role, Lineage lineage):
+Dwarf::Dwarf(string name, int power, unsigned age, Role role, Lineage lineage):
 Humanoid(name, power, age, role), lineage(lineage){}
 
 Entity* Dwarf::clone() const{

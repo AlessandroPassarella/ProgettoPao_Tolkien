@@ -3,7 +3,7 @@
 Entity::Entity() {}
 Entity::~Entity() = default;
 
-Entity::Entity(string name, int power, int age):
+Entity::Entity(string name, int power, unsigned age):
 name(name), power(power), age(age){}
 
 int Entity::seniority() const{
@@ -17,7 +17,7 @@ string Entity::getName() const{
 int Entity::getPower() const{
     return power;
 }
-int Entity::getAge() const{
+unsigned Entity::getAge() const{
     return age;
 }
 
@@ -28,7 +28,7 @@ void Entity::setName(string name){
 void Entity::setPower(int power){
     this->power = power;
 }
-void Entity::setAge(int age){
+void Entity::setAge(unsigned age){
     this->age = age;
 }
 string Entity::asString() {
