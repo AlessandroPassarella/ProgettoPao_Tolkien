@@ -1,7 +1,7 @@
 #ifndef ARMY_H
 #define ARMY_H
 
-#include "qontainer.h"
+#include "../qontainer.h"
 #include <string>
 using std::string;
 

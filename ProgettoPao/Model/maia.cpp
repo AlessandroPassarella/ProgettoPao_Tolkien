@@ -18,6 +18,7 @@ int Maia::evilness() const{
     case Maia::Typology::balrog:
         return getPower()/(getAge()+1)*3 + 80;
     }
+    return 0;
 }
 
 // Metodi get

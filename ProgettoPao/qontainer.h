@@ -3,7 +3,7 @@
 #include <iostream>
 #include <functional>
 #include <stdexcept>
-#include "entity.h"
+#include "Model/entity.h"
 
 
 class Qontainer{
