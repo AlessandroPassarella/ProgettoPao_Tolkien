@@ -9,7 +9,7 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    Model/ainu.cpp \
+    Model/ainur.cpp \
     Model/army.cpp \
     Model/dwarf.cpp \
     Model/elf.cpp \
@@ -17,16 +17,17 @@ SOURCES += \
     Model/hobbit.cpp \
     Model/human.cpp \
     Model/humanoid.cpp \
-    Model/maia.cpp \
+    Model/maiar.cpp \
+    Model/valar.cpp \
     main.cpp \
     mainwindow.cpp \
+    Model/races.cpp \
     Model/orc.cpp \
     qontainer.cpp \
-    serializer.cpp \
-    Model/vala.cpp
+    serializer.cpp
 
 HEADERS += \
-    Model/ainu.h \
+    Model/ainur.h \
     Model/army.h \
     Model/dwarf.h \
     Model/elf.h \
@@ -34,12 +35,13 @@ HEADERS += \
     Model/hobbit.h \
     Model/human.h \
     Model/humanoid.h \
-    Model/maia.h \
+    Model/maiar.h \
+    Model/valar.h \
     mainwindow.h \
+    Model/races.h \
     Model/orc.h \
     qontainer.h \
-    serializer.h \
-    Model/vala.h
+    serializer.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

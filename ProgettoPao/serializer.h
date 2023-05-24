@@ -3,6 +3,7 @@
 #include <QXmlStreamReader>
 #include <QFile>
 #include <QString>
+#include <QStringView>
 #include <QMetaEnum>
 using std::string;
 
