@@ -23,6 +23,7 @@ SOURCES += \
     mainwindow.cpp \
     Model/races.cpp \
     Model/orc.cpp \
+    model.cpp \
     qontainer.cpp \
     serializer.cpp
 
@@ -40,6 +41,7 @@ HEADERS += \
     mainwindow.h \
     Model/races.h \
     Model/orc.h \
+    model.h \
     qontainer.h \
     serializer.h
 

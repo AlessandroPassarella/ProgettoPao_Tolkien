@@ -12,6 +12,8 @@ public:
     //metodi
     string getName() const;
     Qontainer& getEntities();
+    void addEntity(Entity* const entity);
+    void deleteEntity(unsigned int entity);
 
 private:
     const string name;
