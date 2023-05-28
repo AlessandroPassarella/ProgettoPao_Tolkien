@@ -11,7 +11,9 @@ class Model
 {
 public:
     Model();
-    ~Model();
+
+    void open(QString filename);
+    void save(QString filename) const;
 
     QVector<Army*> getArmies() const;
     Army* getArmy(unsigned int idx) const;

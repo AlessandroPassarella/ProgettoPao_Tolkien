@@ -21,7 +21,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     Model/orc.cpp \
-    model.cpp \
+    Model/model.cpp \
     qontainer.cpp \
     serializer.cpp \
     Model/vala.cpp
@@ -38,7 +38,7 @@ HEADERS += \
     Model/maia.h \
     mainwindow.h \
     Model/orc.h \
-    model.h \
+    Model/model.h \
     qontainer.h \
     serializer.h \
     Model/vala.h

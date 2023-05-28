@@ -1,6 +1,15 @@
 #include "model.h"
+#include "serializer.h"
 
-Model::Model() { }
+Model::Model() {}
+
+void Model::open(QString filename) {
+    armies = parseFileAsArmy(filename);
+}
+
+void Model::save(QString filename) const {
+    saveArmiesToFile(armies, filename);
+}
 
 QVector<Army*> Model::getArmies() const {
     return armies;

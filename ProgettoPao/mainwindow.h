@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
+#include "Model/model.h"
 
 class MainWindow : public QMainWindow{
     Q_OBJECT
@@ -11,10 +11,11 @@ public:
     ~MainWindow();
 
 private:
-    QMenu *fileMenu;
+    QString openedFileName;
+    Model model;
 
 private slots:
-    void openNewFile();
+    void openFile();
 
 };
 #endif // MAINWINDOW_H

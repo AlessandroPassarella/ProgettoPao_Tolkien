@@ -50,7 +50,7 @@ void parseArmy(QXmlStreamWriter& stream, Army* army){
     stream.writeEndElement();
 }
 
-void saveArmiesToFile(QVector<Army*> armies, const char* const filename){
+void saveArmiesToFile(QVector<Army*> armies, QString filename){
     QFile file(filename);
     file.open(QIODevice::WriteOnly | QIODevice::Text);
     QXmlStreamWriter xmlWriter(&file);
@@ -125,7 +125,7 @@ void setMaiaProperty(Maia* maia, QString property, QStringView value) {
 }
 
 
-QVector<Army*> parseFileAsArmy(const char* const filename) {
+QVector<Army*> parseFileAsArmy(QString filename) {
     QFile file(filename);
     file.open(QIODevice::ReadOnly | QIODevice::Text);
     QXmlStreamReader xmlReader(&file);
