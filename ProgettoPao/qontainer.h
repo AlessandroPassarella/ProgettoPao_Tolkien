@@ -1,12 +1,12 @@
-#ifndef _QONTAINER_H_
-#define _QONTAINER_H_
+#ifndef _QONTAINER_H
+#define _QONTAINER_H
 #include <iostream>
 #include <functional>
 #include <stdexcept>
 #include "Model/entity.h"
 
 
-class Qontainer{
+class Qontainer {
 private:
     Entity ** begin;
     unsigned length, reserved;

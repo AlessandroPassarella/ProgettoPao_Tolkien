@@ -3,7 +3,7 @@
 
 #include <qontainer.h>
 #include <Model/army.h>
-#include <vector>
+#include <QVector>
 
 using std::vector;
 
@@ -13,7 +13,7 @@ public:
     Model();
     ~Model();
 
-    vector<Army*> getArmies() const;
+    QVector<Army*> getArmies() const;
     Army* getArmy(unsigned int idx) const;
 
     void addArmy(Army* const army);
@@ -26,7 +26,7 @@ public:
 //    Entity* removeEntity(unsigned int army, unsigned int entity);
 
 private:
-    vector<Army*> armies;
+    QVector<Army*> armies;
 };
 
 #endif // MODEL_H

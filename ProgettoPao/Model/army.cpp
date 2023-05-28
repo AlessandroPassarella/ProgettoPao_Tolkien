@@ -7,17 +7,19 @@ string Army::getName() const{
     return name;
 }
 
-Qontainer& Army::getEntities(){
-    return entities;
-}
-
-void Army::addEntity(Entity * const entity)
-{
+void Army::addEntity(Entity * const entity) {
     entities.push(entity);
 }
 
-void Army::deleteEntity(unsigned int entity)
-{
+void Army::deleteEntity(unsigned int entity) {
     entities.erase(entity);
+}
+
+unsigned Army::size() const {
+    return entities.size();
+}
+
+Entity* Army::get(unsigned i) const {
+    return entities.get(i);
 }
 

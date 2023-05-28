@@ -1,14 +1,14 @@
-#ifndef MAIAR_H
-#define MAIAR_H
+#ifndef MAIA_H
+#define MAIA_H
 
-#include "ainur.h"
+#include "ainu.h"
 
-class Maiar : public Ainur {
+class Maia : public Ainu {
 public:
     enum Typology {pure, wizard, balrog};
 
-    Maiar();
-    Maiar(string name, int power, unsigned age, Level level, Typology typology);
+    Maia();
+    Maia(string name, int power, unsigned age, Level level, Typology typology);
 
     // Metodi virtuali implementati
     Entity* clone() const;
@@ -23,4 +23,4 @@ private:
     Typology typology;
 };
 
-#endif // MAIAR_H
+#endif // MAIA_H
