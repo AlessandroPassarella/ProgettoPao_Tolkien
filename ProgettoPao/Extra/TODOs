@@ -1,1 +1,23 @@
-Immagine GUI: schermata Army, schermata Entity, schermata EntityDetail, dove mettere i bottoni
+ARMIES_VIEW
+
+-finire delete army e add army, che la view rappresenti il modello dopo i cambi!
+  opzione1: reload totale
+  opzione2: shift celle
+
+-modificare il QTableWidgetItem affiche mostri non solo il nome ma sia un widget complesso con struttura interna
+  (powerLevel, layouts, tutto quello che serve)
+
+-esternalizzare i pezzi di creazione della view a una o piu classi esterne, lasciando al costruttore di MainWindow
+  il ruolo di GESTIRE l'immissione e la creazione di pezzi: tabella, bottoniera, ecc.
+  (sorgerà il problema delle referenze tra i pezzi, ex: la bottoniera dovrà avere la referenza della tabella (oltre
+  che del Model) ) ---> posso usare signals customizzati per la cosa, a seconda di come mi gira (vedi altri gruppi?)
+
+
+ENTITIES_VIEW:
+
+-stessa cosa della prima view, componenti e pezzi esternalizzati in una/più classi esterne (MOOOOLTO LUNGOOOOO)
+
+
+
+IN PARALLELO:
+-pensare al css e allineamenti e layout delle cose per infighettarle come si deve

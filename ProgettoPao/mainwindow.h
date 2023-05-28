@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTableWidget>
 #include "Model/model.h"
 
 class MainWindow : public QMainWindow {
@@ -13,6 +14,8 @@ public:
 private:
     QString openedFileName;
     Model model;
+    QTableWidget* armiesTable;
+
 
 private slots:
     void openFile();

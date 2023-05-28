@@ -4,6 +4,8 @@
 #include <QFileDialog>
 #include <QtWidgets>
 
+MainWindow::~MainWindow() {}
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
@@ -57,28 +59,35 @@ MainWindow::MainWindow(QWidget *parent)
 
     // TABLE ARMIES
 
-    QTableWidget* armiesTable = new QTableWidget(this);
+    armiesTable = new QTableWidget(this);
+    armiesTable->setSelectionMode( QAbstractItemView::SingleSelection );
     armiesTable->horizontalHeader()->hide();
     armiesTable->verticalHeader()->hide();
     armiesTable->setColumnCount(2);
-    armiesTable->setRowCount(model.getArmies().size()/2);
-    armiesTable->setItem(0, 0, new QTableWidgetItem("posto00"));
-    armiesTable->setItem(0, 1, new QTableWidgetItem("posto01"));
+    armiesTable->setRowCount((model.getArmies().size()+1)/2);
+    for(unsigned i = 0; i < model.getArmies().size(); i++)
+        armiesTable->setItem(i/2, i%2, new QTableWidgetItem(QString::fromStdString(model.getArmies()[i]->getName())));
     mainLayout->addWidget(armiesTable);
 
 
 
     // BUTTONS
+
     QHBoxLayout* buttonBar = new QHBoxLayout;
     QPushButton* addArmyBtn = new QPushButton("+");
     QPushButton* delArmyBtn = new QPushButton("-");
     buttonBar->addWidget(addArmyBtn);
     buttonBar->addWidget(delArmyBtn);
+    connect(delArmyBtn, &QPushButton::clicked, [this](){
+       int index = 2 * armiesTable->currentRow() + armiesTable->currentColumn();
+       if (index < model.getArmies().size()) {
+           delete armiesTable->selectedItems()[0];
+           model.removeArmy(index);
+       }
+    });
     mainLayout->addLayout(buttonBar);
 
 }
-
-MainWindow::~MainWindow() {}
 
 void MainWindow::openFile() {
     openedFileName = QFileDialog::getOpenFileName(this, "Apri salvataggio", "/home", "Salvataggio armate (*.xml)").toStdString().c_str();
