@@ -9,16 +9,28 @@ MainWindow::MainWindow(QWidget *parent)
 {
     openFile();
 
-    QWidget* w = new QWidget(this);
+
+    // CENTRAL LAYOUT AND HEADER
+
+    QWidget* centralWidget = new QWidget(this);
     resize(550, 550);
 
-    QVBoxLayout* l1 = new QVBoxLayout;
-    w->setLayout(l1);
+    setCentralWidget(centralWidget);
 
-    QLabel* label = new QLabel("ciao");
-    l1->addWidget(label);
+    QVBoxLayout* mainLayout = new QVBoxLayout;
+    centralWidget->setLayout(mainLayout);
 
-    QMenuBar* menu = new QMenuBar(w);
+    QHBoxLayout* labelLayout = new QHBoxLayout;
+    QLabel* label = new QLabel("<h1>Armies</h1>");
+    label->setFixedWidth(300);
+    //label->setFont(QFont("Arial", 22));
+    labelLayout->addWidget(label, Qt::AlignCenter);
+    mainLayout->addLayout(labelLayout);
+
+
+    // MENU
+
+    QMenuBar* menu = new QMenuBar(centralWidget);
 
     QMenu* fileMenu = new QMenu("File");
     QAction* newFileAction = new QAction("New File", fileMenu);
@@ -37,9 +49,33 @@ MainWindow::MainWindow(QWidget *parent)
     menu->addMenu(fileMenu);
     menu->addMenu(editMenu);
 
-    //QHBoxLayout* mainLayout = new QHBoxLayout(w);
-
     connect(openFileAction, &QAction::triggered, this, &MainWindow::openFile);
+    connect(saveFileAction, &QAction::triggered, this, &MainWindow::saveFile);
+
+
+
+
+    // TABLE ARMIES
+
+    QTableWidget* armiesTable = new QTableWidget(this);
+    armiesTable->horizontalHeader()->hide();
+    armiesTable->verticalHeader()->hide();
+    armiesTable->setColumnCount(2);
+    armiesTable->setRowCount(model.getArmies().size()/2);
+    armiesTable->setItem(0, 0, new QTableWidgetItem("posto00"));
+    armiesTable->setItem(0, 1, new QTableWidgetItem("posto01"));
+    mainLayout->addWidget(armiesTable);
+
+
+
+    // BUTTONS
+    QHBoxLayout* buttonBar = new QHBoxLayout;
+    QPushButton* addArmyBtn = new QPushButton("+");
+    QPushButton* delArmyBtn = new QPushButton("-");
+    buttonBar->addWidget(addArmyBtn);
+    buttonBar->addWidget(delArmyBtn);
+    mainLayout->addLayout(buttonBar);
+
 }
 
 MainWindow::~MainWindow() {}
@@ -49,4 +85,8 @@ void MainWindow::openFile() {
     if(openedFileName == "")  return;
     model.open(openedFileName);
     qDebug() << "Opened file " << openedFileName;
+}
+
+void MainWindow::saveFile() {
+    model.save(openedFileName);
 }
