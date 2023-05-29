@@ -9,6 +9,8 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Components/backtopbar.cpp \
+    Components/basetopbar.cpp \
     Model/ainu.cpp \
     Model/army.cpp \
     Model/dwarf.cpp \
@@ -18,6 +20,8 @@ SOURCES += \
     Model/human.cpp \
     Model/humanoid.cpp \
     Model/maia.cpp \
+    View/armiesview.cpp \
+    View/viewinterface.cpp \
     main.cpp \
     mainwindow.cpp \
     Model/orc.cpp \
@@ -27,6 +31,8 @@ SOURCES += \
     Model/vala.cpp
 
 HEADERS += \
+    Components/backtopbar.h \
+    Components/basetopbar.h \
     Model/ainu.h \
     Model/army.h \
     Model/dwarf.h \
@@ -36,6 +42,8 @@ HEADERS += \
     Model/human.h \
     Model/humanoid.h \
     Model/maia.h \
+    View/armiesview.h \
+    View/viewinterface.h \
     mainwindow.h \
     Model/orc.h \
     Model/model.h \
