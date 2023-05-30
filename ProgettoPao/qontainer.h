@@ -23,7 +23,8 @@ public:
     void erase(unsigned i);
 
     Entity* get(unsigned i) const;
-    Entity* operator [](unsigned i);
+    Entity* operator[](unsigned i);
+    Entity* operator[](unsigned i) const;
 
     unsigned size() const;
 

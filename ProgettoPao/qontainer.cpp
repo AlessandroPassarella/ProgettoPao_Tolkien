@@ -48,7 +48,11 @@ Entity* Qontainer::get(unsigned i) const {
     throw std::out_of_range("can't read neighbour's mail");
 }
 
-Entity* Qontainer::operator [](unsigned i) {
+Entity* Qontainer::operator[](unsigned i) {
+    return get(i);
+}
+
+Entity* Qontainer::operator[](unsigned i) const {
     return get(i);
 }
 

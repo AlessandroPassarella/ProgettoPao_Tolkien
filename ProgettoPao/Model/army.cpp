@@ -19,7 +19,7 @@ unsigned Army::size() const {
     return entities.size();
 }
 
-Entity* Army::get(unsigned i) const {
-    return entities.get(i);
+Entity* Army::getEntity(unsigned i) const {
+    return entities[i];
 }
 

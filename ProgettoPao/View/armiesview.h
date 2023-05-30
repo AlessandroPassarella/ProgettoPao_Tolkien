@@ -3,6 +3,7 @@
 
 #include "Components/basetopbar.h"
 #include "viewinterface.h"
+//#include "Model/army.h"      //per metodo reload
 #include <QWidget>
 #include <QTableWidget>
 #include <QPushButton>

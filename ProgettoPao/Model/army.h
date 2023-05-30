@@ -14,7 +14,7 @@ public:
     void addEntity(Entity* const entity);
     void deleteEntity(unsigned int entity);
     unsigned size() const;
-    Entity* get(unsigned i) const;
+    Entity* getEntity(unsigned i) const;
 
 private:
     const string name;

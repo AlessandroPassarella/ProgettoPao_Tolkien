@@ -29,13 +29,13 @@ connect(_deleteButton, &QPushButton::clicked, this, [this]() {
 }
 
 void ArmiesView::reload() {
-    Array<Citta*> cities = _controller->getCities();
-    _table->setRowCount(cities.size());
+//    QVector<Army*> armies = _controller->getCities(); //metodo della classe controller
+//    _table->setRowCount(armies.size());
 
-    for (int i = 0; i < _table->rowCount(); i++) {
-        _table->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(cities[i]->getNome())));
-        _table->setItem(i, 1, new QTableWidgetItem(QString::number(cities[i]->getVeicoli().size())));
-    }
+//    for (int i = 0; i < _table->rowCount(); i++) {
+//        _table->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(armies[i]->getName())));
+//        _table->setItem(i, 1, new QTableWidgetItem(QString::number(armies[i]->size())));
+//    }
 }
 
 void ArmiesView::setHederStrings(const QStringList& headerStrings) {

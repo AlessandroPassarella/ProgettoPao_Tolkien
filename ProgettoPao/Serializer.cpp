@@ -45,7 +45,7 @@ void parseArmy(QXmlStreamWriter& stream, Army* army){
     stream.writeAttribute("name", QString::fromStdString(army->getName()));
 
     for(unsigned i=0; i<army->size(); i++){
-        parseEntity(stream, army->get(i));
+        parseEntity(stream, army->getEntity(i));
     }
     stream.writeEndElement();
 }

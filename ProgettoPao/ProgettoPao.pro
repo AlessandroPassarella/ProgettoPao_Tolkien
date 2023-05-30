@@ -21,6 +21,7 @@ SOURCES += \
     Model/humanoid.cpp \
     Model/maia.cpp \
     View/armiesview.cpp \
+    View/entitiesview.cpp \
     View/viewinterface.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -43,6 +44,7 @@ HEADERS += \
     Model/humanoid.h \
     Model/maia.h \
     View/armiesview.h \
+    View/entitiesview.h \
     View/viewinterface.h \
     mainwindow.h \
     Model/orc.h \
