@@ -29,7 +29,8 @@ SOURCES += \
     Model/model.cpp \
     qontainer.cpp \
     serializer.cpp \
-    Model/vala.cpp
+    Model/vala.cpp \
+    view.cpp
 
 HEADERS += \
     Components/backtopbar.h \
@@ -51,7 +52,8 @@ HEADERS += \
     Model/model.h \
     qontainer.h \
     serializer.h \
-    Model/vala.h
+    Model/vala.h \
+    view.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
