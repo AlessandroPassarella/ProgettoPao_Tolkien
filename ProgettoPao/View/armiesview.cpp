@@ -2,7 +2,7 @@
 
 ArmiesView::ArmiesView(Controller* controller, const QString& title, const QStringList& headerStrings, QWidget *parent)
     : ViewInterface(parent), _controller(controller), _topBar(new BaseTopBar(title, parent)), _table(new QTableWidget(parent)),
-    _deleteButton(new QPushButton("Elimina armata", parent)) {
+    _addButton(new QPushButton("Aggiungi armata", parent)), _deleteButton(new QPushButton("Elimina armata", parent)) {
     setupTable(headerStrings);
 setupButton();
 
@@ -17,7 +17,14 @@ connect(_table, &QTableWidget::itemSelectionChanged, this, [this]() {
 connect(_table, &QTableWidget::itemDoubleClicked, this, [=](QTableWidgetItem* item) {
     emit rowClicked(item->row());
     _table->clearSelection();
+    _addButton->setDisabled(true);
     _deleteButton->setDisabled(true);
+});
+connect(_addButton, &QPushButton::clicked, this, [this]() {
+    emit addArmyButtonClicked();
+    _table->clearSelection();
+    _addButton->setDisabled(true);
+
 });
 connect(_deleteButton, &QPushButton::clicked, this, [this]() {
     if (_table->selectedItems().size() > 0) {
@@ -64,6 +71,8 @@ void ArmiesView::setupTable(const QStringList& headerStrings) {
 }
 
 void ArmiesView::setupButton() {
+    _addButton->setMaximumWidth(250);
+    _addButton->setDisabled(true);
     _deleteButton->setMaximumWidth(250);
     _deleteButton->setDisabled(true);
 }
@@ -73,6 +82,7 @@ void ArmiesView::setupLayout() {
 
     layout->addWidget(_topBar);
     layout->addWidget(_table);
+    layout->addWidget(_addButton);
     layout->addWidget(_deleteButton);
 
     setLayout(layout);

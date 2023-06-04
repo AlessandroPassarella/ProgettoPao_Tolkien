@@ -30,15 +30,11 @@ private:
     Controller* _controller;
     BackTopBar* _topBar;
     QTableWidget* _table;
-    Qt::SortOrder _order;
 
     void setupTable(const QStringList& headerStrings);
     void setupLayout();
 
     const QString getIconPath(const Entity& entity) const;
-
-signals:
-    void sort(bool ascending);
 };
 
 #endif // ENTITIESVIEW_H

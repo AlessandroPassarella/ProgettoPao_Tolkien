@@ -8,7 +8,7 @@
 #include "./qontainer.h"
 
 EntitiesView::EntitiesView(Controller* controller, const QString& title, const QStringList& headerStrings, QWidget *parent):
-    ViewInterface(parent), _controller(controller), _topBar(new BackTopBar(title, parent)), _table(new QTableWidget(parent)), _order(Qt::SortOrder::AscendingOrder) {
+    ViewInterface(parent), _controller(controller), _topBar(new BackTopBar(title, parent)), _table(new QTableWidget(parent)) {
     setupTable(headerStrings);
 
     setupLayout();
@@ -18,25 +18,12 @@ EntitiesView::EntitiesView(Controller* controller, const QString& title, const Q
     connect(_topBar, &BaseTopBar::showAddEntityWizard, this, &ViewInterface::showAddEntityWizard);
     connect(_topBar, &BackTopBar::backButtonClicked, this, [=]() {
         emit backButtonClicked();
-        _order = Qt::SortOrder::DescendingOrder;
         QHeaderView* header = _table->horizontalHeader();
         const QSignalBlocker blocker(header);
-        header->setSortIndicator(2, _order);
     });
     connect(_table, &QTableWidget::itemDoubleClicked, this, [=](QTableWidgetItem* item) {
         emit rowClicked(item->row());
         _table->clearSelection();
-    });
-    connect(_table->horizontalHeader(), &QHeaderView::sortIndicatorChanged, this, [=](int index, Qt::SortOrder order) {
-        if (index != 2) {
-            QHeaderView* header = _table->horizontalHeader();
-            const QSignalBlocker blocker(header);
-            header->setSortIndicator(2, _order);
-        } else {
-            _order = order;
-            _table->sortItems(index, _order);
-            emit sort(order == Qt::SortOrder::AscendingOrder);
-        }
     });
 }
 
@@ -51,8 +38,6 @@ void EntitiesView::setHederStrings(const QStringList& headerStrings) {
     QHeaderView *header = _table->horizontalHeader();
     header->setSectionResizeMode(QHeaderView::Stretch);
     header->setStretchLastSection(true);
-    header->setSortIndicator(2, _order);
-    header->setSortIndicatorShown(true);
 }
 
 QString EntitiesView::title() const {

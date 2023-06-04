@@ -30,6 +30,7 @@ private:
     Controller* _controller;
     BaseTopBar* _topBar;
     QTableWidget* _table;
+    QPushButton* _addButton;
     QPushButton* _deleteButton;
 
     void setupTable(const QStringList& headerStrings);
@@ -37,6 +38,7 @@ private:
     void setupLayout();
 
 signals:
+    void addArmyButtonClicked();
     void deleteArmyButtonClicked(unsigned row);
 };
 

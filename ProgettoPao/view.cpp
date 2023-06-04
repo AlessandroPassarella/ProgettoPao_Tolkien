@@ -6,10 +6,10 @@
 View::View(Controller* controller, QWidget *parent) : QStackedWidget(parent),
     _armiesView(new ArmiesView(controller, "Armata", { "Armata", "Numero entita" })),
     _entitiesView(new EntitiesView(controller)),
-    _controller(controller), _titoloApp("CitySharing"), _altezza(1000), _larghezza(700) {
+    _controller(controller), title("CitySharing"), heigh(1000), width(700) {
 
-    setFixedSize(_altezza, _larghezza);
-    setWindowTitle(_titoloApp);
+    setFixedSize(heigh, width);
+    setWindowTitle(title);
 
     addWidget(_armiesView);
     addWidget(_entitiesView);

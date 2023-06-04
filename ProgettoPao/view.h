@@ -34,9 +34,9 @@ private:
 
     void setupStyle();
 
-    const QString _titoloApp;
-    const unsigned int _altezza;
-    const unsigned int _larghezza;
+    const QString title;
+    const unsigned int heigh;
+    const unsigned int width;
 
 private slots:
     void createWizard(bool addArmyMode = false);
