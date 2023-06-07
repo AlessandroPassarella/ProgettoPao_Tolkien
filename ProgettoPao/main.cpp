@@ -4,6 +4,7 @@
 #include "Model/races.h"
 #include "serializer.h"
 #include "mainwindow.h"
+#include "view.h"
 
 int GUI_launch(int argc, char *argv[]);
 void noGUI_launch();
@@ -43,17 +44,30 @@ void noGUI_launch(){
     const char* const namefile = "C:/Users/ana_n/Desktop/ProgettoPao_Tolkien/ProgettoPao/ArmyDatabase.xml";
 
     //SERIALIZE
-    QVector<Army*> armies;
-    armies.push_back(new Army("pollos", allBeings.search([](const Entity* e){return e->getAge()<100;})));
-    armies.push_back(new Army("hermanos", allBeings.search([](const Entity* e){return e->getAge()>=100;})));
-    saveArmiesToFile(armies, namefile);
+//    QVector<Army*> armies;
+//    armies.push_back(new Army("pollos", allBeings.search([](const Entity* e){return e->getAge()<100;})));
+//    armies.push_back(new Army("hermanos", allBeings.search([](const Entity* e){return e->getAge()>=100;})));
+//    saveArmiesToFile(armies, namefile);
+
+    Model model; // usando model funziona ed ha piu senso (secondo me)
+
+    model.addArmy(new Army("pollos", allBeings.search([](const Entity* e){return e->getAge()<100;})));
+    model.addArmy(new Army("hermanos", allBeings.search([](const Entity* e){return e->getAge()>=100;})));
+    saveArmiesToFile(model.getArmies(), namefile);
 
     //DESERIALIZE
-    QVector<Army*> army = parseFileAsArmy(namefile);
+//    QVector<Army*> army = parseFileAsArmy(namefile);
 
-    qDebug() << "found from file " << army.size() << " armies:";
-    for(int i = 0; i < army.size(); i++)
+//    qDebug() << "found from file " << army.size() << " armies:";
+//    for(int i = 0; i < army.size(); i++)
+//        qDebug() << "army n." << i+1 << " called "
+//                 << army[i]->getName().c_str() << " has " << army[i]->size() << " entities";
+
+    model.open(namefile);
+
+    qDebug() << "found from file " << model.getArmies().size() << " armies:";
+    for(int i = 0; i < model.getArmies().size(); i++)
         qDebug() << "army n." << i+1 << " called "
-                 << army[i]->getName().c_str() << " has " << army[i]->size() << " entities";
+                 << model.getArmy(i)->getName().c_str() << " has " << model.getArmy(i)->size() << " entities";
 
 }

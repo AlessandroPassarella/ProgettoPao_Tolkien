@@ -1,6 +1,7 @@
 #ifndef VIEW_H
 #define VIEW_H
 
+#include "Model/model.h"
 #include "View/armiesview.h"
 #include "View/entitiesview.h"
 #include <QStackedWidget>
@@ -32,6 +33,10 @@ private:
     EntitiesView* _entitiesView;
     Controller* _controller;
 
+    QString openedFileName;
+    Model model;
+    //QTableWidget* armiesTable; sarebbe armiesView
+
     void setupStyle();
 
     const QString title;
@@ -40,6 +45,9 @@ private:
 
 private slots:
     void createWizard(bool addArmyMode = false);
+
+    void openFile();
+    void saveFile();
 };
 
 #endif // VIEW_H

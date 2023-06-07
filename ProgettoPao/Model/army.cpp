@@ -23,3 +23,8 @@ Entity* Army::getEntity(unsigned i) const {
     return entities[i];
 }
 
+Qontainer Army::getEntities() const
+{
+    return entities;
+}
+

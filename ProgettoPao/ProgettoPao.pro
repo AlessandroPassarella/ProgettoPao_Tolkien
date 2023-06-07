@@ -23,6 +23,7 @@ SOURCES += \
     View/armiesview.cpp \
     View/entitiesview.cpp \
     View/viewinterface.cpp \
+    controller.cpp \
     main.cpp \
     mainwindow.cpp \
     Model/orc.cpp \
@@ -47,6 +48,7 @@ HEADERS += \
     View/armiesview.h \
     View/entitiesview.h \
     View/viewinterface.h \
+    controller.h \
     mainwindow.h \
     Model/orc.h \
     Model/model.h \

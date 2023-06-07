@@ -3,6 +3,8 @@
 #include "View/armiesview.h"
 #include "View/entitiesview.h"
 
+#include <QFileDialog>
+
 View::View(Controller* controller, QWidget *parent) : QStackedWidget(parent),
     _armiesView(new ArmiesView(controller, "Armata", { "Armata", "Numero entita" })),
     _entitiesView(new EntitiesView(controller)),
@@ -67,4 +69,15 @@ void View::createWizard(bool addArmyMode) {
     //CityWizard* wizard = new CityWizard(addCityMode, _controller, this);
     //wizard->show();
     //wizard->activateWindow();
+}
+
+void View::openFile() {
+    openedFileName = QFileDialog::getOpenFileName(this, "Apri salvataggio", "/home", "Salvataggio armate (*.xml)").toStdString().c_str();
+    if(openedFileName == "")  return;
+    model.open(openedFileName);
+    qDebug() << "Opened file " << openedFileName;
+}
+
+void View::saveFile() {
+    model.save(openedFileName);
 }
