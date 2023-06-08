@@ -8,7 +8,7 @@
 View::View(Controller* controller, QWidget *parent) : QStackedWidget(parent),
     _armiesView(new ArmiesView(controller, "Armata", { "Armata", "Numero entita" })),
     _entitiesView(new EntitiesView(controller)),
-    _controller(controller), title("CitySharing"), heigh(1000), width(700) {
+    _controller(controller), title("talkienUniverse"), heigh(1000), width(700) { // titolo modificabile
 
     setFixedSize(heigh, width);
     setWindowTitle(title);

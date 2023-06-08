@@ -14,7 +14,7 @@ public:
 private:
     QString openedFileName;
     Model model;
-    QTableWidget* armiesTable;
+    QTableWidget* armiesTable; //usare armiesview, in mainwindow.cpp togliere le parti per creare la armiestable che si fa in armiesview.cpp
 
 
 private slots:

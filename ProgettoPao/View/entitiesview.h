@@ -30,11 +30,17 @@ private:
     Controller* _controller;
     BackTopBar* _topBar;
     QTableWidget* _table;
+    QPushButton* _addButton;
+    QPushButton* _deleteButton;
 
     void setupTable(const QStringList& headerStrings);
+    void setupButton();
     void setupLayout();
 
     const QString getIconPath(const Entity& entity) const;
+signals:
+    void addEntityButtonClicked();
+    void deleteEntityButtonClicked(unsigned row);
 };
 
 #endif // ENTITIESVIEW_H

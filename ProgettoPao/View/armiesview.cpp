@@ -3,36 +3,35 @@
 ArmiesView::ArmiesView(Controller* controller, const QString& title, const QStringList& headerStrings, QWidget *parent)
     : ViewInterface(parent), _controller(controller), _topBar(new BaseTopBar(title, parent)), _table(new QTableWidget(parent)),
     _addButton(new QPushButton("Aggiungi armata", parent)), _deleteButton(new QPushButton("Elimina armata", parent)) {
-    setupTable(headerStrings);
-setupButton();
+        setupTable(headerStrings);
+        setupButton();
 
-setupLayout();
+        setupLayout();
 
-connect(_topBar, &BaseTopBar::closeSignal, this, &ViewInterface::closeSignal);
-connect(_topBar, &BaseTopBar::showAddArmyWizard, this, &ViewInterface::showAddArmyWizard);
-connect(_topBar, &BaseTopBar::showAddEntityWizard, this, &ViewInterface::showAddEntityWizard);
-connect(_table, &QTableWidget::itemSelectionChanged, this, [this]() {
-    _deleteButton->setDisabled(false);
-});
-connect(_table, &QTableWidget::itemDoubleClicked, this, [=](QTableWidgetItem* item) {
-    emit rowClicked(item->row());
-    _table->clearSelection();
-    _addButton->setDisabled(true);
-    _deleteButton->setDisabled(true);
-});
-connect(_addButton, &QPushButton::clicked, this, [this]() {
-    emit addArmyButtonClicked();
-    _table->clearSelection();
-    _addButton->setDisabled(true);
-
-});
-connect(_deleteButton, &QPushButton::clicked, this, [this]() {
-    if (_table->selectedItems().size() > 0) {
-        emit deleteArmyButtonClicked(_table->selectedItems().first()->row());
-        _table->clearSelection();
-        _deleteButton->setDisabled(true);
-    }
-});
+        connect(_topBar, &BaseTopBar::closeSignal, this, &ViewInterface::closeSignal);
+        connect(_topBar, &BaseTopBar::showAddArmyWizard, this, &ViewInterface::showAddArmyWizard);
+        connect(_topBar, &BaseTopBar::showAddEntityWizard, this, &ViewInterface::showAddEntityWizard);
+        connect(_table, &QTableWidget::itemSelectionChanged, this, [this]() {
+            _deleteButton->setDisabled(false);
+        });
+        connect(_table, &QTableWidget::itemDoubleClicked, this, [=](QTableWidgetItem* item) {
+            emit rowClicked(item->row());
+            _table->clearSelection();
+            _addButton->setDisabled(true);
+            _deleteButton->setDisabled(true);
+        });
+        connect(_addButton, &QPushButton::clicked, this, [this]() {
+            emit addArmyButtonClicked();
+            _table->clearSelection();
+            _addButton->setDisabled(true);
+        });
+        connect(_deleteButton, &QPushButton::clicked, this, [this]() {
+            if (_table->selectedItems().size() > 0) {
+                emit deleteArmyButtonClicked(_table->selectedItems().first()->row());
+                _table->clearSelection();
+                _deleteButton->setDisabled(true);
+            }
+        });
 }
 
 void ArmiesView::reload() {
@@ -72,7 +71,6 @@ void ArmiesView::setupTable(const QStringList& headerStrings) {
 
 void ArmiesView::setupButton() {
     _addButton->setMaximumWidth(250);
-    _addButton->setDisabled(true);
     _deleteButton->setMaximumWidth(250);
     _deleteButton->setDisabled(true);
 }

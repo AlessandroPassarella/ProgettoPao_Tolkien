@@ -8,8 +8,10 @@
 #include "./qontainer.h"
 
 EntitiesView::EntitiesView(Controller* controller, const QString& title, const QStringList& headerStrings, QWidget *parent):
-    ViewInterface(parent), _controller(controller), _topBar(new BackTopBar(title, parent)), _table(new QTableWidget(parent)) {
+    ViewInterface(parent), _controller(controller), _topBar(new BackTopBar(title, parent)), _table(new QTableWidget(parent)),
+    _addButton(new QPushButton("Aggiungi personaggio", parent)), _deleteButton(new QPushButton("Elimina personaggio", parent)) {
     setupTable(headerStrings);
+    setupButton();
 
     setupLayout();
 
@@ -20,10 +22,23 @@ EntitiesView::EntitiesView(Controller* controller, const QString& title, const Q
         emit backButtonClicked();
         QHeaderView* header = _table->horizontalHeader();
         const QSignalBlocker blocker(header);
+        _addButton->setDisabled(true);
+        _deleteButton->setDisabled(true);
     });
-    connect(_table, &QTableWidget::itemDoubleClicked, this, [=](QTableWidgetItem* item) {
-        emit rowClicked(item->row());
+    connect(_table, &QTableWidget::itemSelectionChanged, this, [this]() {
+        _deleteButton->setDisabled(false);
+    });
+    connect(_addButton, &QPushButton::clicked, this, [this]() {
+        emit addEntityButtonClicked();
         _table->clearSelection();
+        _addButton->setDisabled(true);
+    });
+    connect(_deleteButton, &QPushButton::clicked, this, [this]() {
+        if (_table->selectedItems().size() > 0) {
+            emit deleteEntityButtonClicked(_table->selectedItems().first()->row());
+            _table->clearSelection();
+            _deleteButton->setDisabled(true);
+        }
     });
 }
 
@@ -58,11 +73,20 @@ void EntitiesView::setupTable(const QStringList& headerStrings) {
     _table->verticalHeader()->hide();
 }
 
+void EntitiesView::setupButton()
+{
+    _addButton->setMaximumWidth(250);
+    _deleteButton->setMaximumWidth(250);
+    _deleteButton->setDisabled(true);
+}
+
 void EntitiesView::setupLayout() {
     QVBoxLayout* layout = new QVBoxLayout;
 
     layout->addWidget(_topBar);
     layout->addWidget(_table);
+    layout->addWidget(_addButton);
+    layout->addWidget(_deleteButton);
 
     setLayout(layout);
 }
