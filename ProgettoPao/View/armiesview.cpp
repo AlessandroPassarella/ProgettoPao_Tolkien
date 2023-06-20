@@ -1,15 +1,20 @@
 
 #include "armiesview.h"
+#include "qlineedit.h"
 #include <QHBoxLayout>
 #include <QHeaderView>
 #include <QPushButton>
+#include <QInputDialog>
+#include <QDir>
 #include <QWidget>
 
 ArmiesView::ArmiesView(QWidget *parent, ArmiesController *armiesController)
     : QWidget(parent), armiesController(armiesController) {
   QVBoxLayout *armiesLayout = new QVBoxLayout(this);
   armiesTable = new QTableWidget(parent);
+  armiesTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
   armiesTable->setSelectionMode(QAbstractItemView::SingleSelection);
+  armiesTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
   armiesTable->horizontalHeader()->hide();
   armiesTable->verticalHeader()->hide();
   armiesTable->setColumnCount(2);
@@ -25,6 +30,15 @@ ArmiesView::ArmiesView(QWidget *parent, ArmiesController *armiesController)
     if (index >=0 && index < this->armiesController->getArmies().size())
       this->armiesController->deleteArmy(index);
     load();
+  });
+
+  connect(addArmyBtn, &QPushButton::clicked, [this,parent]() {
+      bool ok;
+      QString text = QInputDialog::getText(parent, "Nuova armata",
+            "Nome:", QLineEdit::Normal, "", &ok);
+      if (!ok) return;
+      this->armiesController->addArmy(text);
+      load();
   });
 
   armiesLayout->addWidget(armiesTable);
