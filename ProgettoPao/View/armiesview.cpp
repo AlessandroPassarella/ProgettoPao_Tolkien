@@ -1,87 +1,44 @@
+
 #include "armiesview.h"
+#include <QHBoxLayout>
+#include <QHeaderView>
+#include <QPushButton>
+#include <QWidget>
 
-ArmiesView::ArmiesView(Controller* controller, const QString& title, const QStringList& headerStrings, QWidget *parent)
-    : ViewInterface(parent), _controller(controller), _topBar(new BaseTopBar(title, parent)), _table(new QTableWidget(parent)),
-    _addButton(new QPushButton("Aggiungi armata", parent)), _deleteButton(new QPushButton("Elimina armata", parent)) {
-        setupTable(headerStrings);
-        setupButton();
+ArmiesView::ArmiesView(QWidget *parent, ArmiesController *armiesController)
+    : QWidget(parent), armiesController(armiesController) {
+  QVBoxLayout *armiesLayout = new QVBoxLayout(this);
+  armiesTable = new QTableWidget(parent);
+  armiesTable->setSelectionMode(QAbstractItemView::SingleSelection);
+  armiesTable->horizontalHeader()->hide();
+  armiesTable->verticalHeader()->hide();
+  armiesTable->setColumnCount(2);
 
-        setupLayout();
+  QHBoxLayout *buttonBar = new QHBoxLayout;
+  QPushButton *addArmyBtn = new QPushButton("+");
+  QPushButton *delArmyBtn = new QPushButton("-");
+  buttonBar->addWidget(addArmyBtn);
+  buttonBar->addWidget(delArmyBtn);
 
-        connect(_topBar, &BaseTopBar::closeSignal, this, &ViewInterface::closeSignal);
-        connect(_topBar, &BaseTopBar::showAddArmyWizard, this, &ViewInterface::showAddArmyWizard);
-        connect(_topBar, &BaseTopBar::showAddEntityWizard, this, &ViewInterface::showAddEntityWizard);
-        connect(_table, &QTableWidget::itemSelectionChanged, this, [this]() {
-            _deleteButton->setDisabled(false);
-        });
-        connect(_table, &QTableWidget::itemDoubleClicked, this, [=](QTableWidgetItem* item) {
-            emit rowClicked(item->row());
-            _table->clearSelection();
-            _addButton->setDisabled(true);
-            _deleteButton->setDisabled(true);
-        });
-        connect(_addButton, &QPushButton::clicked, this, [this]() {
-            emit addArmyButtonClicked();
-            _table->clearSelection();
-            _addButton->setDisabled(true);
-        });
-        connect(_deleteButton, &QPushButton::clicked, this, [this]() {
-            if (_table->selectedItems().size() > 0) {
-                emit deleteArmyButtonClicked(_table->selectedItems().first()->row());
-                _table->clearSelection();
-                _deleteButton->setDisabled(true);
-            }
-        });
+  connect(delArmyBtn, &QPushButton::clicked, [this]() {
+    int index = 2 * armiesTable->currentRow() + armiesTable->currentColumn();
+    if (index >=0 && index < this->armiesController->getArmies().size())
+      this->armiesController->deleteArmy(index);
+    load();
+  });
+
+  armiesLayout->addWidget(armiesTable);
+  armiesLayout->addLayout(buttonBar);
+
+  load();
 }
 
-void ArmiesView::reload() {
-//    QVector<Army*> armies = _controller->getCities(); //metodo della classe controller
-//    _table->setRowCount(armies.size());
-
-//    for (int i = 0; i < _table->rowCount(); i++) {
-//        _table->setItem(i, 0, new QTableWidgetItem(QString::fromStdString(armies[i]->getName())));
-//        _table->setItem(i, 1, new QTableWidgetItem(QString::number(armies[i]->size())));
-//    }
-}
-
-void ArmiesView::setHederStrings(const QStringList& headerStrings) {
-    _table->setColumnCount(headerStrings.size());
-    _table->setHorizontalHeaderLabels(headerStrings);
-    QHeaderView *header = _table->horizontalHeader();
-    header->setSectionResizeMode(QHeaderView::Stretch);
-    header->setStretchLastSection(true);
-}
-
-QString ArmiesView::title() const {
-    return _topBar->title();
-}
-
-void ArmiesView::setTitle(const QString &title) {
-    _topBar->setTitle(title);
-}
-
-void ArmiesView::setupTable(const QStringList& headerStrings) {
-    setHederStrings(headerStrings);
-    _table->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    _table->setSelectionBehavior(QAbstractItemView::SelectRows);
-    _table->setSelectionMode(QAbstractItemView::SingleSelection);
-    _table->setAlternatingRowColors(true);
-    _table->verticalHeader()->hide();
-}
-
-void ArmiesView::setupButton() {
-    _addButton->setMaximumWidth(250);
-    _deleteButton->setMaximumWidth(250);
-    _deleteButton->setDisabled(true);
-}
-
-void ArmiesView::setupLayout() {
-    QVBoxLayout* layout = new QVBoxLayout;
-
-    layout->addWidget(_topBar);
-    layout->addWidget(_table);
-    layout->addWidget(_addButton);
-    layout->addWidget(_deleteButton);
-
-    setLayout(layout);
+void ArmiesView::load() {
+  QVector<Army *> armies = armiesController->getArmies();
+  armiesTable->setRowCount(0);
+  armiesTable->setRowCount((armies.size() + 1) / 2);
+  for (unsigned i = 0; i < armies.size(); i++)
+    armiesTable->setItem(
+        i / 2, i % 2,
+        new QTableWidgetItem(QString::fromStdString(armies[i]->getName())));
 }

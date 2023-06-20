@@ -1,45 +1,23 @@
 #ifndef ARMIESVIEW_H
 #define ARMIESVIEW_H
 
-#include "Components/basetopbar.h"
-#include "viewinterface.h"
-//#include "Model/army.h"      //per metodo reload
-#include <QWidget>
+#include "Controller/armiescontroller.h"
+#include "Model/army.h"
 #include <QTableWidget>
-#include <QPushButton>
-#include <QHeaderView>
+#include <QWidget>
 
-class Controller;
-
-class ArmiesView : public ViewInterface
-{
+class ArmiesView : public QWidget {
     Q_OBJECT
 
+    QTableWidget* armiesTable;
+
+    ArmiesController* armiesController;
+
 public:
-    explicit ArmiesView(Controller* controller, const QString& title = "Armies",
-                            const QStringList& headerStrings = {}, QWidget *parent = nullptr);
+    ArmiesView(QWidget *parent, ArmiesController* armiesController);
 
-    void reload() override;
+    void load();
 
-    void setHederStrings(const QStringList& headerStrings);
-
-    QString title() const;
-    void setTitle(const QString& title);
-
-private:
-    Controller* _controller;
-    BaseTopBar* _topBar;
-    QTableWidget* _table;
-    QPushButton* _addButton;
-    QPushButton* _deleteButton;
-
-    void setupTable(const QStringList& headerStrings);
-    void setupButton();
-    void setupLayout();
-
-signals:
-    void addArmyButtonClicked();
-    void deleteArmyButtonClicked(unsigned row);
 };
 
 #endif // ARMIESVIEW_H

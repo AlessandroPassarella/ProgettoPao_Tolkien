@@ -3,7 +3,9 @@
 
 #include <QMainWindow>
 #include <QTableWidget>
-#include "Model/model.h"
+#include "View/armiesview.h"
+#include "datasave.h"
+#include "Controller/armiescontroller.h"
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -13,8 +15,9 @@ public:
 
 private:
     QString openedFileName;
-    Model model;
-    QTableWidget* armiesTable; //usare armiesview, in mainwindow.cpp togliere le parti per creare la armiestable che si fa in armiesview.cpp
+    DataSave model;
+    ArmiesController* armiesController;
+    ArmiesView* armiesView;
 
 
 private slots:

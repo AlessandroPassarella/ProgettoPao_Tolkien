@@ -4,7 +4,6 @@
 #include "Model/races.h"
 #include "serializer.h"
 #include "mainwindow.h"
-#include "view.h"
 
 int GUI_launch(int argc, char *argv[]);
 void noGUI_launch();
@@ -16,6 +15,8 @@ int main(int argc, char *argv[]) {
         GUI_launch(argc,argv);
     else
         noGUI_launch();
+
+    return 0;
 }
 
 int GUI_launch(int argc, char *argv[]) {
@@ -48,8 +49,8 @@ void noGUI_launch(){
 //    armies.push_back(new Army("pollos", allBeings.search([](const Entity* e){return e->getAge()<100;})));
 //    armies.push_back(new Army("hermanos", allBeings.search([](const Entity* e){return e->getAge()>=100;})));
 //    saveArmiesToFile(armies, namefile);
-
-    Model model; // usando model funziona ed ha piu senso (secondo me)
+    
+    DataSave model; // usando model funziona ed ha piu senso (secondo me)
 
     model.addArmy(new Army("pollos", allBeings.search([](const Entity* e){return e->getAge()<100;})));
     model.addArmy(new Army("hermanos", allBeings.search([](const Entity* e){return e->getAge()>=100;})));
