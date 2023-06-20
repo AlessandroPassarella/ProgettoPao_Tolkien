@@ -22,8 +22,10 @@ ArmiesView::ArmiesView(QWidget *parent, ArmiesController *armiesController)
   QHBoxLayout *buttonBar = new QHBoxLayout;
   QPushButton *addArmyBtn = new QPushButton("+");
   QPushButton *delArmyBtn = new QPushButton("-");
+  QPushButton *editArmyBtn = new QPushButton("->");
   buttonBar->addWidget(addArmyBtn);
   buttonBar->addWidget(delArmyBtn);
+  buttonBar->addWidget(editArmyBtn);
 
   connect(delArmyBtn, &QPushButton::clicked, [this]() {
     int index = 2 * armiesTable->currentRow() + armiesTable->currentColumn();
@@ -35,10 +37,14 @@ ArmiesView::ArmiesView(QWidget *parent, ArmiesController *armiesController)
   connect(addArmyBtn, &QPushButton::clicked, [this,parent]() {
       bool ok;
       QString text = QInputDialog::getText(parent, "Nuova armata",
-            "Nome:", QLineEdit::Normal, "", &ok);
+                                           "Nome:", QLineEdit::Normal, "", &ok);
       if (!ok) return;
       this->armiesController->addArmy(text);
       load();
+  });
+
+  connect(editArmyBtn, &QPushButton::clicked, [this](){
+      // TODO passare alla view entityView
   });
 
   armiesLayout->addWidget(armiesTable);
@@ -54,5 +60,5 @@ void ArmiesView::load() {
   for (unsigned i = 0; i < armies.size(); i++)
     armiesTable->setItem(
         i / 2, i % 2,
-        new QTableWidgetItem(QString::fromStdString(armies[i]->getName())));
+          new QTableWidgetItem(QString::fromStdString(armies[i]->getName())));
 }

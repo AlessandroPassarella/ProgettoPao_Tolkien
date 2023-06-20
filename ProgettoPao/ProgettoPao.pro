@@ -10,42 +10,42 @@ CONFIG += c++11
 
 SOURCES += \
     Controller/armiescontroller.cpp \
-    Model/ainu.cpp \
-    Model/army.cpp \
-    datasave.cpp \
-    Model/dwarf.cpp \
-    Model/elf.cpp \
-    Model/entity.cpp \
-    Model/hobbit.cpp \
-    Model/human.cpp \
-    Model/humanoid.cpp \
-    Model/maia.cpp \
-    View/armiesview.cpp \
-    main.cpp \
-    mainwindow.cpp \
-    Model/orc.cpp \
-    qontainer.cpp \
-    serializer.cpp \
-    Model/vala.cpp
+	Model/ainu.cpp \
+	Model/army.cpp \
+	datasave.cpp \
+	Model/dwarf.cpp \
+	Model/elf.cpp \
+	Model/entity.cpp \
+	Model/hobbit.cpp \
+	Model/human.cpp \
+	Model/humanoid.cpp \
+	Model/maia.cpp \
+	View/armiesview.cpp \
+	main.cpp \
+	mainwindow.cpp \
+	Model/orc.cpp \
+	qontainer.cpp \
+	serializer.cpp \
+	Model/vala.cpp
 
 HEADERS += \
     Controller/armiescontroller.h \
-    Model/ainu.h \
-    Model/army.h \
-    datasave.h \
-    Model/dwarf.h \
-    Model/elf.h \
-    Model/entity.h \
-    Model/hobbit.h \
-    Model/human.h \
-    Model/humanoid.h \
-    Model/maia.h \
-    View/armiesview.h \
-    mainwindow.h \
-    Model/orc.h \
-    qontainer.h \
-    serializer.h \
-    Model/vala.h
+	Model/ainu.h \
+	Model/army.h \
+	datasave.h \
+	Model/dwarf.h \
+	Model/elf.h \
+	Model/entity.h \
+	Model/hobbit.h \
+	Model/human.h \
+	Model/humanoid.h \
+	Model/maia.h \
+	View/armiesview.h \
+	mainwindow.h \
+	Model/orc.h \
+	qontainer.h \
+	serializer.h \
+	Model/vala.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

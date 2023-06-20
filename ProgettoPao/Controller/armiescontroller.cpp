@@ -13,7 +13,6 @@ void ArmiesController::addArmy(QString name) {
     dataSave.addArmy(newArmy);
 }
 
-
 QVector<Army*> ArmiesController::getArmies() {
     return dataSave.getArmies();
 }
