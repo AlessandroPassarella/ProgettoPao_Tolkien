@@ -1,4 +1,4 @@
-
+#include "Model/army.h"
 #include "armiesview.h"
 #include "qlineedit.h"
 #include <QHBoxLayout>
@@ -10,55 +10,68 @@
 
 ArmiesView::ArmiesView(QWidget *parent, ArmiesController *armiesController)
     : QWidget(parent), armiesController(armiesController) {
-  QVBoxLayout *armiesLayout = new QVBoxLayout(this);
-  armiesTable = new QTableWidget(parent);
-  armiesTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
-  armiesTable->setSelectionMode(QAbstractItemView::SingleSelection);
-  armiesTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-  armiesTable->horizontalHeader()->hide();
-  armiesTable->verticalHeader()->hide();
-  armiesTable->setColumnCount(2);
 
-  QHBoxLayout *buttonBar = new QHBoxLayout;
-  QPushButton *addArmyBtn = new QPushButton("+");
-  QPushButton *delArmyBtn = new QPushButton("-");
-  QPushButton *editArmyBtn = new QPushButton("->");
-  buttonBar->addWidget(addArmyBtn);
-  buttonBar->addWidget(delArmyBtn);
-  buttonBar->addWidget(editArmyBtn);
+    QVBoxLayout *armiesLayout = new QVBoxLayout(this);
 
-  connect(delArmyBtn, &QPushButton::clicked, [this]() {
-    int index = 2 * armiesTable->currentRow() + armiesTable->currentColumn();
-    if (index >=0 && index < this->armiesController->getArmies().size())
-      this->armiesController->deleteArmy(index);
-    load();
-  });
+    armiesTable = new QTableWidget(parent);
+    armiesTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    armiesTable->setSelectionMode(QAbstractItemView::SingleSelection);
+    armiesTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
-  connect(addArmyBtn, &QPushButton::clicked, [this,parent]() {
+    const QStringList& headerStrings = { "Army", "Soldiers" , "Power" };
+    armiesTable->setColumnCount(headerStrings.size());
+    armiesTable->setHorizontalHeaderLabels(headerStrings);
+    armiesTable->setStyleSheet("QHeaderView::section{border-style:solid; font-weight:bold;}");
+    armiesTable->verticalHeader()->hide();
+    armiesTable->setSelectionBehavior(QAbstractItemView::SelectRows);
+
+    QHBoxLayout *buttonBar = new QHBoxLayout;
+    QPushButton *addArmyBtn = new QPushButton("+");
+    QPushButton *delArmyBtn = new QPushButton("-");
+    QPushButton *editArmyBtn = new QPushButton("->");
+    buttonBar->addWidget(addArmyBtn);
+    buttonBar->addWidget(delArmyBtn);
+    buttonBar->addWidget(editArmyBtn);
+
+    connect(delArmyBtn, &QPushButton::clicked, [this]() {
+      int index = armiesTable->currentRow();
+      if (index >= 0 && index < this->armiesController->getArmies().size())
+        this->armiesController->deleteArmy(index);
+      load();
+    });
+
+    connect(addArmyBtn, &QPushButton::clicked, [this, parent]() {
       bool ok;
       QString text = QInputDialog::getText(parent, "Nuova armata",
                                            "Nome:", QLineEdit::Normal, "", &ok);
-      if (!ok) return;
-      this->armiesController->addArmy(text);
-      load();
-  });
+      if (ok){
+          this->armiesController->addArmy(text);
+          load();
+      }
+    });
 
-  connect(editArmyBtn, &QPushButton::clicked, [this](){
+    connect(editArmyBtn, &QPushButton::clicked, [this]() {
       // TODO passare alla view entityView
-  });
+    });
 
-  armiesLayout->addWidget(armiesTable);
-  armiesLayout->addLayout(buttonBar);
+    armiesLayout->addWidget(armiesTable);
+    armiesLayout->addLayout(buttonBar);
 
-  load();
+    load();
 }
 
 void ArmiesView::load() {
   QVector<Army *> armies = armiesController->getArmies();
   armiesTable->setRowCount(0);
-  armiesTable->setRowCount((armies.size() + 1) / 2);
-  for (unsigned i = 0; i < armies.size(); i++)
-    armiesTable->setItem(
-        i / 2, i % 2,
-          new QTableWidgetItem(QString::fromStdString(armies[i]->getName())));
+  armiesTable->setRowCount(armies.size());
+  for (unsigned i = 0; i < armies.size(); i++){
+    armiesTable->setItem( i, 0, new QTableWidgetItem(QString::fromStdString(armies[i]->getName())));
+    armiesTable->setItem( i, 1, new QTableWidgetItem(QString::number(armies[i]->size())));
+    armiesTable->setItem( i, 2, new QTableWidgetItem(QString::number(armies[i]->getTotalPower())));
+    armiesTable->item(i, 0)->setTextAlignment(Qt::AlignCenter);
+    armiesTable->item(i, 1)->setTextAlignment(Qt::AlignCenter);
+    armiesTable->item(i, 2)->setTextAlignment(Qt::AlignCenter);
+  }
+
+
 }

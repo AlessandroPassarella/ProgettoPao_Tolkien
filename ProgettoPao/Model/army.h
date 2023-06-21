@@ -17,6 +17,8 @@ public:
     Entity* getEntity(unsigned i) const;
     Qontainer getEntities() const;
 
+    int getTotalPower() const;
+
 private:
     const string name;
     Qontainer entities;

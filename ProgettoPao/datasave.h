@@ -3,6 +3,7 @@
 
 #include <qontainer.h>
 #include <Model/army.h>
+#include <Model/entity.h>
 #include <QVector>
 
 using std::vector;

@@ -1,6 +1,6 @@
 #include "army.h"
 
-Army::Army(const std::string &name, const Qontainer& entities) : 
+Army::Army(const std::string &name, const Qontainer& entities) :
     name(name), entities(entities){}
 
 string Army::getName() const{
@@ -26,5 +26,13 @@ Entity* Army::getEntity(unsigned i) const {
 Qontainer Army::getEntities() const
 {
     return entities;
+}
+
+int Army::getTotalPower() const{
+    int totPower = 0;
+    for(unsigned i=0; i < entities.size(); i++){
+        totPower += entities[i]->getPower();
+    }
+    return totPower;
 }
 

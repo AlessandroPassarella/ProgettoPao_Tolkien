@@ -22,7 +22,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
   QHBoxLayout *labelLayout = new QHBoxLayout;
   QLabel *label = new QLabel("<h1>Armies</h1>");
-  //label->setFixedWidth(300);
+  // label->setFixedWidth(300);
   // label->setFont(QFont("Arial", 22));
   labelLayout->addWidget(label, 0, Qt::AlignCenter);
   mainLayout->addLayout(labelLayout);

@@ -1,7 +1,6 @@
 #ifndef ENTITIESVIEW_H
 #define ENTITIESVIEW_H
 
-#include "viewinterface.h"
 #include "Model/entity.h"
 #include "Components/backtopbar.h"
 #include <typeinfo>
@@ -12,14 +11,14 @@
 
 class Controller;
 
-class EntitiesView: public ViewInterface {
+class EntitiesView: public QWidget {
     Q_OBJECT
 
 public:
-    explicit EntitiesView(Controller* controller, const QString& title = "Entities",
+    EntitiesView(Controller* controller, const QString& title = "Entities",
                              const QStringList& headerStrings = {}, QWidget *parent = nullptr);
 
-    void reload() override;
+    void load();
 
     void setHederStrings(const QStringList& headerStrings);
 

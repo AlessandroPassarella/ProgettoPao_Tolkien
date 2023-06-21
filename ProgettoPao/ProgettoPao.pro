@@ -10,6 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     Controller/armiescontroller.cpp \
+    Controller/entitiescontroller.cpp \
 	Model/ainu.cpp \
 	Model/army.cpp \
 	datasave.cpp \
@@ -30,6 +31,7 @@ SOURCES += \
 
 HEADERS += \
     Controller/armiescontroller.h \
+    Controller/entitiescontroller.h \
 	Model/ainu.h \
 	Model/army.h \
 	datasave.h \

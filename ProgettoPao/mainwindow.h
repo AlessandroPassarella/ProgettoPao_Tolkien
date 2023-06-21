@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QTableWidget>
 #include "View/armiesview.h"
+#include "View/entitiesview.h"
+
 #include "datasave.h"
 #include "Controller/armiescontroller.h"
 
@@ -18,7 +20,7 @@ private:
     DataSave model;
     ArmiesController* armiesController;
     ArmiesView* armiesView;
-
+    EntitiesView* entitiesView;
 
 private slots:
     void openFile();

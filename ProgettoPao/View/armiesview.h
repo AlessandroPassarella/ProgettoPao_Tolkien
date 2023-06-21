@@ -2,7 +2,6 @@
 #define ARMIESVIEW_H
 
 #include "Controller/armiescontroller.h"
-#include "Model/army.h"
 #include <QTableWidget>
 #include <QWidget>
 
