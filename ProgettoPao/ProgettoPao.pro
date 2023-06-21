@@ -13,6 +13,8 @@ SOURCES += \
 	Controller/entitiescontroller.cpp \
 	Model/ainu.cpp \
 	Model/army.cpp \
+    View/entitydetailview.cpp \
+    View/entitylistview.cpp \
 	datasave.cpp \
 	Model/dwarf.cpp \
 	Model/elf.cpp \
@@ -35,6 +37,8 @@ HEADERS += \
 	Controller/entitiescontroller.h \
 	Model/ainu.h \
 	Model/army.h \
+    View/entitydetailview.h \
+    View/entitylistview.h \
 	datasave.h \
 	Model/dwarf.h \
 	Model/elf.h \

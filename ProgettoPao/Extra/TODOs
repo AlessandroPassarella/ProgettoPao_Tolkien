@@ -1,7 +1,2 @@
-0) trasformare il ventilatore in un condizionatore
-
-1) entrare e uscire in entitiesview, entitiescontroller
-2) passare correttamente i dati all'entities view
-3) grafica entitiesview splittata, due classi entitieslistview entitiesdetailview
-4) connettere gli edit interni alla struttura dati
-5)
+- costruire lista entity
+- connettere gli edit interni alla struttura dati

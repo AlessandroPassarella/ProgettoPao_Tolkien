@@ -15,6 +15,8 @@ class MainWindow : public QMainWindow {
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void openArmiesView();
+    void openEntitiesView(int i);
 
 private:
     QString openedFileName;
@@ -23,8 +25,6 @@ private:
     EntitiesController* entitiesController;
     ArmiesView* armiesView;
     EntitiesView* entitiesView;
-    void openArmiesView();
-    void openEntitiesView(int i);
 
 private slots:
     void openFile();

@@ -11,7 +11,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
   // CENTRAL LAYOUT AND HEADER
 
-  setWindowFlags(Qt::Window | Qt::MSWindowsFixedSizeDialogHint);
+  // ridimensiona finestrra con mouse drag?
+  // setWindowFlags(Qt::Window | Qt::MSWindowsFixedSizeDialogHint);
+
   QWidget *centralWidget = new QWidget(this);
   setCentralWidget(centralWidget);
 
@@ -48,11 +50,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
   armiesView = new ArmiesView(this, armiesController);
   mainLayout->addWidget(armiesView);
 
-  entitiesController = new EntitiesController();
+  entitiesController = new EntitiesController(model);
   entitiesView = new EntitiesView(this, entitiesController);
   mainLayout->addWidget(entitiesView);
 
   openArmiesView();
+//  openEntitiesView(0);
 }
 
 void MainWindow::openFile() {
@@ -61,8 +64,10 @@ void MainWindow::openFile() {
                                    "Salvataggio armate (*.xml)")
           .toStdString()
           .c_str();
-  if (openedFileName == "")
+  if (openedFileName == "") {
+    openFile();
     return;
+  }
   model.open(openedFileName);
   qDebug() << "Opened file " << openedFileName;
 }
@@ -78,5 +83,5 @@ void MainWindow::openEntitiesView(int i) {
   armiesView->hide();
   resize(650, 550);
   entitiesView->show();
-  entitiesView->load(model.getArmies()[i]);
+  entitiesView->load(i);
 }

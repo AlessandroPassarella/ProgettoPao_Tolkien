@@ -1,5 +1,6 @@
 #include "Model/army.h"
 #include "armiesview.h"
+#include "mainwindow.h"
 #include "qlineedit.h"
 #include <QHBoxLayout>
 #include <QHeaderView>
@@ -31,13 +32,17 @@ ArmiesView::ArmiesView(QWidget *parent, ArmiesController *armiesController)
     armiesTable->verticalHeader()->hide();
     armiesTable->setSelectionBehavior(QAbstractItemView::SelectRows);
 
+    connect(armiesTable, &QTableWidget::cellDoubleClicked, this, [this, parent]() {
+        if (armiesTable->selectionModel()->hasSelection())
+            dynamic_cast<MainWindow *>(parent)->openEntitiesView(
+                this->armiesTable->currentRow());
+    });
+
     QHBoxLayout *buttonBar = new QHBoxLayout;
     QPushButton *addArmyBtn = new QPushButton("+");
     QPushButton *delArmyBtn = new QPushButton("-");
-    QPushButton *editArmyBtn = new QPushButton("->");
     buttonBar->addWidget(addArmyBtn);
     buttonBar->addWidget(delArmyBtn);
-    buttonBar->addWidget(editArmyBtn);
 
     connect(delArmyBtn, &QPushButton::clicked, [this]() {
       int index = armiesTable->currentRow();
@@ -47,17 +52,16 @@ ArmiesView::ArmiesView(QWidget *parent, ArmiesController *armiesController)
     });
 
     connect(addArmyBtn, &QPushButton::clicked, [this, parent]() {
-      bool ok;
-      QString text = QInputDialog::getText(parent, "Nuova armata",
-                                           "Nome:", QLineEdit::Normal, "", &ok);
-      if (ok && text.length() > 3 && text.length() < 14){
-          this->armiesController->addArmy(text);
-          load();
-      }
-    });
-
-    connect(editArmyBtn, &QPushButton::clicked, [this]() {
-      // TODO passare alla view entityView
+      bool ok = false;
+      QString text = "";
+      do {
+        text = QInputDialog::getText(parent, "Nuova armata",
+                                     "Nome:", QLineEdit::Normal, "", &ok);
+        if (!ok)
+          return;
+      } while (text.length() < 3 || text.length() > 14);
+      this->armiesController->addArmy(text);
+      load();
     });
 
     armiesLayout->addWidget(armiesTable);
