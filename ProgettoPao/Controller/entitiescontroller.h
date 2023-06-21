@@ -6,10 +6,9 @@
 
 class EntitiesController
 {
-    DataSave& dataSave;
 
 public:
-    EntitiesController(DataSave &dataSave);
+    EntitiesController();
     void deleteEntity(int index);
     void addEntity(QString name);
 };

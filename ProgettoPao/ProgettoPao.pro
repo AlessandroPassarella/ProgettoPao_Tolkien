@@ -10,7 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     Controller/armiescontroller.cpp \
-    Controller/entitiescontroller.cpp \
+	Controller/entitiescontroller.cpp \
 	Model/ainu.cpp \
 	Model/army.cpp \
 	datasave.cpp \
@@ -22,6 +22,7 @@ SOURCES += \
 	Model/humanoid.cpp \
 	Model/maia.cpp \
 	View/armiesview.cpp \
+	View/entitiesview.cpp \
 	main.cpp \
 	mainwindow.cpp \
 	Model/orc.cpp \
@@ -31,7 +32,7 @@ SOURCES += \
 
 HEADERS += \
     Controller/armiescontroller.h \
-    Controller/entitiescontroller.h \
+	Controller/entitiescontroller.h \
 	Model/ainu.h \
 	Model/army.h \
 	datasave.h \
@@ -43,6 +44,7 @@ HEADERS += \
 	Model/humanoid.h \
 	Model/maia.h \
 	View/armiesview.h \
+	View/entitiesview.h \
 	mainwindow.h \
 	Model/orc.h \
 	qontainer.h \

@@ -7,11 +7,17 @@
 #include <QInputDialog>
 #include <QDir>
 #include <QWidget>
+#include <QLabel>
 
 ArmiesView::ArmiesView(QWidget *parent, ArmiesController *armiesController)
     : QWidget(parent), armiesController(armiesController) {
 
     QVBoxLayout *armiesLayout = new QVBoxLayout(this);
+
+    QHBoxLayout *labelLayout = new QHBoxLayout;
+    QLabel *label = new QLabel("<h1>Armies</h1>");
+    labelLayout->addWidget(label, 0, Qt::AlignCenter);
+    armiesLayout->addLayout(labelLayout);
 
     armiesTable = new QTableWidget(parent);
     armiesTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -44,7 +50,7 @@ ArmiesView::ArmiesView(QWidget *parent, ArmiesController *armiesController)
       bool ok;
       QString text = QInputDialog::getText(parent, "Nuova armata",
                                            "Nome:", QLineEdit::Normal, "", &ok);
-      if (ok){
+      if (ok && text.length() > 3 && text.length() < 14){
           this->armiesController->addArmy(text);
           load();
       }
@@ -57,7 +63,6 @@ ArmiesView::ArmiesView(QWidget *parent, ArmiesController *armiesController)
     armiesLayout->addWidget(armiesTable);
     armiesLayout->addLayout(buttonBar);
 
-    load();
 }
 
 void ArmiesView::load() {

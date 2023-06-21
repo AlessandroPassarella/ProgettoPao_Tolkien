@@ -8,6 +8,7 @@
 
 #include "datasave.h"
 #include "Controller/armiescontroller.h"
+#include "Controller/entitiescontroller.h"
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -19,12 +20,13 @@ private:
     QString openedFileName;
     DataSave model;
     ArmiesController* armiesController;
+    EntitiesController* entitiesController;
     ArmiesView* armiesView;
     EntitiesView* entitiesView;
+    void openArmiesView();
+    void openEntitiesView(int i);
 
 private slots:
     void openFile();
-    void saveFile();
-
 };
 #endif // MAINWINDOW_H

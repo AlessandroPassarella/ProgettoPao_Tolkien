@@ -1,8 +1,7 @@
 #include "entitiescontroller.h"
 
 
-EntitiesController::EntitiesController(DataSave& dataSave):
-    dataSave(dataSave) {
+EntitiesController::EntitiesController() {
 }
 
 void deleteEntity(int index){
@@ -10,4 +9,5 @@ void deleteEntity(int index){
 }
 
 void addEntity(QString name){
+
 }
