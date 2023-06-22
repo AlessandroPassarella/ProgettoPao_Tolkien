@@ -29,12 +29,15 @@ public:
     unsigned size() const;
 
 
-    struct SearchResult {
+    struct IndexedSearchResult {
         Entity* e;
         unsigned index;
     };
-
-    std::vector<SearchResult> search(std::function<bool(const Entity*)> condition) const;
+    struct SearchResults {
+        IndexedSearchResult* results;
+        unsigned size;
+    };
+    SearchResults search(std::function<bool(const Entity*)> condition) const;
 
 };
 

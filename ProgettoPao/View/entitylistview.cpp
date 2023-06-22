@@ -25,6 +25,7 @@ EntityListView::EntityListView(EntitiesController* entitiesController, QWidget *
     QComboBox* comboBox = new QComboBox();
     QStringList stringList;
 
+    stringList.append("");
     stringList.append("Elf");
     stringList.append("Hobbit");
     stringList.append("Dwarf");
@@ -33,54 +34,51 @@ EntityListView::EntityListView(EntitiesController* entitiesController, QWidget *
     stringList.append("Vala");
     stringList.append("Maia");
 
-    comboBox->addItem("");
-    connect(comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), [comboBox](int index){
-        if(index == 0) {
-            comboBox->setCurrentIndex(-1);
-        }
-    });
     comboBox->addItems(stringList);
 
-    comboBox->setCurrentIndex(-1);
     entityListLayout->addWidget(comboBox);
 
     connect(comboBox, &QComboBox::activated, this, [this, parent, comboBox](int i){
         bool ok = false;
         QString name = "";
+        if (!i)
+            return;
         do {
             name = QInputDialog::getText(parent, "New Soldier",
                                          "Nome:", QLineEdit::Normal, "", &ok);
-            if (!ok)
+            if (!ok) {
+                comboBox->setCurrentIndex(0);
                 return;
+            }
         } while (name.length() < 3 || name.length() > 14);
 
         if (ok) {
             Entity* e = nullptr;
             switch (i) {
-            case 0:
+            case 1:
                 e = new Elf(name.toStdString(),0,0, Humanoid::Role::queen, Elf::Bloodline::teleri);
                 break;
-            case 1:
+            case 2:
                 e = new Hobbit(name.toStdString(),0,0, Humanoid::Role::hunter, Hobbit::Family::halfing);
                 break;
-            case 2:
+            case 3:
                 e = new Dwarf(name.toStdString(),0,0, Humanoid::Role::hunter, Dwarf::Lineage::durin);
                 break;
-            case 3:
+            case 4:
                 e = new Orc(name.toStdString(),0,0, Humanoid::Role::queen, Orc::Kind::pure);
                 break;
-            case 4:
+            case 5:
                 e = new Human(name.toStdString(),0,0, Humanoid::Role::king, Human::Descent::dunedian);
                 break;
-            case 5:
+            case 6:
                 e = new Vala(name.toStdString(),0,0, Ainu::Level::lower, Vala::Element::fire);
                 break;
-            case 6:
+            case 7:
                 e = new Maia(name.toStdString(),0,0, Ainu::Level::lower, Maia::Typology::wizard);
                 break;
             }
+            comboBox->setCurrentIndex(0);
             this->entitiesController->addEntity(army, e);
-            comboBox->setCurrentIndex(-1);
             load(army);
         }
     });
@@ -119,9 +117,8 @@ EntityListView::EntityListView(EntitiesController* entitiesController, QWidget *
     entitiesTable->verticalHeader()->hide();
     entitiesTable->setSelectionBehavior(QAbstractItemView::SelectRows);
     connect(entitiesTable, &QTableWidget::cellClicked, this, [this](){
-        qDebug() << entitiesTable;
-        qDebug() << this->selectedItems[entitiesTable->currentRow()].index;
-        qDebug() << QString::fromStdString(this->selectedItems[entitiesTable->currentRow()].e->getName());
+        qDebug() << this->selectedItems.results[entitiesTable->currentRow()].index;
+        qDebug() << QString::fromStdString(this->selectedItems.results[entitiesTable->currentRow()].e->getName());
     });
 
     entityListLayout->addWidget(entitiesTable);
@@ -132,9 +129,9 @@ void EntityListView::load(int army) {
     selectedItems = entitiesController->getEntities(army).search([this](const Entity* e) {
         return QString::fromStdString(e->getName()).contains(searchByName->text(), Qt::CaseInsensitive);
     });
-    entitiesTable->setRowCount(selectedItems.size());
-    for(unsigned i = 0; i < selectedItems.size(); i++) {
-        entitiesTable->setItem( i, 1, new QTableWidgetItem(QString::fromStdString(selectedItems[i].e->getName())));
-        entitiesTable->setItem( i, 2, new QTableWidgetItem(QString::number(selectedItems[i].e->getPower())));
+    entitiesTable->setRowCount(selectedItems.size);
+    for(unsigned i = 0; i < selectedItems.size; i++) {
+        entitiesTable->setItem( i, 1, new QTableWidgetItem(QString::fromStdString(selectedItems.results[i].e->getName())));
+        entitiesTable->setItem( i, 2, new QTableWidgetItem(QString::number(selectedItems.results[i].e->getPower())));
     }
 }

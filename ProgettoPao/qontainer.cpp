@@ -60,14 +60,21 @@ unsigned Qontainer::size() const {
     return length;
 }
 
-std::vector<Qontainer::SearchResult> Qontainer::search(std::function<bool(const Entity*)> condition) const {
-    std::vector<SearchResult> results;
+Qontainer::SearchResults Qontainer::search(std::function<bool(const Entity*)> condition) const {
+    SearchResults results;
+    int count = 0;
+    for (unsigned i = 0; i < length; i++)
+        if(condition(begin[i]))
+            count++;
+
+    results.size = count;
+    results.results = new IndexedSearchResult[count];
+    int j = 0;
     for (unsigned i = 0; i < length; i++)
         if(condition(begin[i])) {
-            SearchResult result;
-            result.e = get(i);
-            result.index = i;
-            results.push_back(result);
+            results.results[j].e = get(i);
+            results.results[j].index = i;
+            j++;
         }
     return results;
 }
