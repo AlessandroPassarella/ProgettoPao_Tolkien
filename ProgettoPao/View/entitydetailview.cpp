@@ -18,7 +18,7 @@ EntityDetailView::EntityDetailView(EntitiesController* entitiesController, QWidg
     entityDetailLayout->addLayout(titleLayout);
 
     //
-    QLabel* raceLayout = new QLabel("Race : Humanoide_prova");
+    QLabel* raceLayout = new QLabel("Race : ");
     entityDetailLayout->addWidget(raceLayout);
 
     //
@@ -88,8 +88,11 @@ EntityDetailView::EntityDetailView(EntitiesController* entitiesController, QWidg
 
 }
 
-void EntityDetailView::load(Entity* entity){
-    this->entity = entity;
-    title->setText(QString::fromStdString("<h2>" + entity->getName() + "</h2>"));
 
+void EntityDetailView::load(int army, int entity){
+    this->army = army;
+    this->entity = entity;
+
+    title->setText(QString::fromStdString("<h2>" + entitiesController->getEntity(army,entity)->getName() + "</h2>"));
 }
+

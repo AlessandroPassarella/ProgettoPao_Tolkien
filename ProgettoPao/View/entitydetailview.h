@@ -12,11 +12,15 @@ class EntityDetailView : public QWidget
 private:
     EntitiesController* entitiesController;
     QLabel* title;
-    Entity* entity;
+
+    int army;
+    int entity;
+
 public:
     explicit EntityDetailView(EntitiesController* entitiesController, QWidget *parent = nullptr);
 
-    void load(Entity* entity);
+public slots:
+    void load(int army, int entity);
 
 };
 

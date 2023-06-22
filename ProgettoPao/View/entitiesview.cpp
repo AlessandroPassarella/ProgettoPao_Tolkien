@@ -25,10 +25,13 @@ EntitiesView::EntitiesView(QWidget *parent, EntitiesController* controller):
     QHBoxLayout *labelLayout = new QHBoxLayout;
     QPushButton *backBtn = new QPushButton("< All Armies");
     labelLayout->addWidget(backBtn);
-    connect(backBtn, &QPushButton::clicked,  [this, parent](){
+    connect(backBtn, &QPushButton::clicked, this, [parent](){
         dynamic_cast<MainWindow*>(parent)->openArmiesView();
     });
     mainLayout->addLayout(labelLayout);
+
+    connect(listView, &EntityListView::entityChanged, detailView, &EntityDetailView::load);
+
 
 }
 

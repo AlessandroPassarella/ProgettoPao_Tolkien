@@ -117,8 +117,8 @@ EntityListView::EntityListView(EntitiesController* entitiesController, QWidget *
     entitiesTable->verticalHeader()->hide();
     entitiesTable->setSelectionBehavior(QAbstractItemView::SelectRows);
     connect(entitiesTable, &QTableWidget::cellClicked, this, [this](){
-        qDebug() << this->selectedItems.results[entitiesTable->currentRow()].index;
-        qDebug() << QString::fromStdString(this->selectedItems.results[entitiesTable->currentRow()].e->getName());
+        int entity = this->selectedItems.results[entitiesTable->currentRow()].index;
+        emit entityChanged(army, entity);
     });
 
     entityListLayout->addWidget(entitiesTable);

@@ -19,6 +19,9 @@ public:
     EntityListView(EntitiesController* entitiesController, QWidget *parent = nullptr);
     void load(int army);
 
+signals:
+    void entityChanged(int army, int entity);
+
 };
 
 #endif // ENTITYLISTVIEW_H
