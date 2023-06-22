@@ -12,6 +12,7 @@ private:
 public:
     EntitiesController(DataSave& dataSave);
     Entity* getEntity(int army, int index);
+    Qontainer getEntities(int i);
     void deleteEntity(int army, int index);
     void addEntity(int army, QString name);
     QString getName(int army);

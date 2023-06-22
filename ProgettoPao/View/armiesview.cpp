@@ -81,6 +81,4 @@ void ArmiesView::load() {
     armiesTable->item(i, 1)->setTextAlignment(Qt::AlignCenter);
     armiesTable->item(i, 2)->setTextAlignment(Qt::AlignCenter);
   }
-
-
 }

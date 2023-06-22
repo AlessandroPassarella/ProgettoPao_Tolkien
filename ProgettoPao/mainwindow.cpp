@@ -44,6 +44,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
   connect(openFileAction, &QAction::triggered, this, &MainWindow::openFile);
   connect(saveFileAction, &QAction::triggered, this, [this](){this->model.save(openedFileName);});
 
+
   // TABLE ARMIES
 
   armiesController = new ArmiesController(model);
@@ -55,7 +56,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
   mainLayout->addWidget(entitiesView);
 
   openArmiesView();
-//  openEntitiesView(0);
 }
 
 void MainWindow::openFile() {

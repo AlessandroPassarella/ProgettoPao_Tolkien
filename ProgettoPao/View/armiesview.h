@@ -8,6 +8,7 @@
 class ArmiesView : public QWidget {
     Q_OBJECT
 
+private:
     QTableWidget* armiesTable;
 
     ArmiesController* armiesController;

@@ -20,3 +20,7 @@ void EntitiesController::addEntity(int army, QString name){
 QString EntitiesController::getName(int army) {
     return QString::fromStdString(dataSave.getArmies()[army]->getName());
 }
+
+Qontainer EntitiesController::getEntities(int i) {
+    return dataSave.getArmies()[i]->getEntities();
+}
