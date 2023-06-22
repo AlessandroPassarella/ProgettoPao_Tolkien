@@ -14,10 +14,10 @@ EntitiesView::EntitiesView(QWidget *parent, EntitiesController* controller):
 
     QHBoxLayout* lowerLayout = new QHBoxLayout;
 
-    listView = new EntityListView(this);
+    listView = new EntityListView(entitiesController, this);
     lowerLayout->addWidget(listView);
 
-    detailView = new EntityDetailView(controller, this);
+    detailView = new EntityDetailView(entitiesController, this);
     lowerLayout->addWidget(detailView);
 
     mainLayout->addLayout(lowerLayout);
@@ -32,7 +32,7 @@ EntitiesView::EntitiesView(QWidget *parent, EntitiesController* controller):
 
 }
 
-void EntitiesView::load(int i) {
-    title->setText("<h1>" + entitiesController->getName(i) + "</h1>");
-    listView->load(entitiesController->getEntities(i));
+void EntitiesView::load(int army) {
+    title->setText("<h1>" + entitiesController->getName(army) + "</h1>");
+    listView->load(army);
 }

@@ -44,14 +44,14 @@ ArmiesView::ArmiesView(QWidget *parent, ArmiesController *armiesController)
     buttonBar->addWidget(addArmyBtn);
     buttonBar->addWidget(delArmyBtn);
 
-    connect(delArmyBtn, &QPushButton::clicked, [this]() {
+    connect(delArmyBtn, &QPushButton::clicked, this, [this]() {
       int index = armiesTable->currentRow();
       if (index >= 0 && index < this->armiesController->getArmies().size())
         this->armiesController->deleteArmy(index);
       load();
     });
 
-    connect(addArmyBtn, &QPushButton::clicked, [this, parent]() {
+    connect(addArmyBtn, &QPushButton::clicked, this, [this, parent]() {
       bool ok = false;
       QString text = "";
       do {

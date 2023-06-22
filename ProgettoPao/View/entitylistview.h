@@ -2,7 +2,6 @@
 #define ENTITYLISTVIEW_H
 
 #include "Controller/entitiescontroller.h"
-#include "qontainer.h"
 #include <QTableWidget>
 #include <QObject>
 #include <QWidget>
@@ -11,11 +10,13 @@ class EntityListView : public QWidget{
     Q_OBJECT
 
 private:
+    int army;
     QTableWidget* entitiesTable;
-
+    EntitiesController* entitiesController;
+    QLineEdit* searchByName;
 public:
-    EntityListView(QWidget *parent = nullptr);
-    void load(const Qontainer& entities);
+    EntityListView(EntitiesController* entitiesController, QWidget *parent = nullptr);
+    void load(int army);
 
 };
 

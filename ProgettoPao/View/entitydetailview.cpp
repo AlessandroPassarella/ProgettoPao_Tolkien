@@ -13,7 +13,7 @@ EntityDetailView::EntityDetailView(EntitiesController* entitiesController, QWidg
     setLayout(entityDetailLayout);
 
     QHBoxLayout *titleLayout = new QHBoxLayout;
-    QLabel* title = new QLabel("<h2>Name entity</h2>");
+    title = new QLabel("<h2>Name entity</h2>");
     titleLayout->addWidget(title, 0, Qt::AlignCenter);
     entityDetailLayout->addLayout(titleLayout);
 
@@ -30,24 +30,8 @@ EntityDetailView::EntityDetailView(EntitiesController* entitiesController, QWidg
     stringList.append("ciao3");
     comboBox->addItems(stringList);
     entityDetailLayout->addWidget(comboBox);
-/*   connect(comboBox, &QComboBox::activated, [this, parent](int i){
-        bool ok;
-        QString text = QInputDialog::getText(parent, "Name",
-                              "Nome:", QLineEdit::Normal, "", &ok);
-        if(ok){
-            Entity* e;
-            switch (i) {
-            case 0:
 
-                break;
-            default:
-                break;
-            }
-            this->entitiesController->addEntity(?)
-        }
 
-    });
-*/
 
     QLabel* name = new QLabel("name : ");
     entityDetailLayout->addWidget(name);
@@ -63,9 +47,13 @@ EntityDetailView::EntityDetailView(EntitiesController* entitiesController, QWidg
 
     QHBoxLayout *buttonBar = new QHBoxLayout;
     QPushButton *DeleteSoldierBtn = new QPushButton("Delete Soldier");
-    QPushButton *SaveChangesBtn = new QPushButton("Save Changes");
     buttonBar->addWidget(DeleteSoldierBtn);
-    buttonBar->addWidget(SaveChangesBtn);
     entityDetailLayout->addLayout(buttonBar);
+
+}
+
+void EntityDetailView::load(Entity* entity){
+    this->entity = entity;
+    title->setText(QString::fromStdString("<h2>" + entity->getName() + "</h2>"));
 
 }

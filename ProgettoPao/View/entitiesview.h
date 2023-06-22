@@ -20,7 +20,7 @@ class EntitiesView: public QWidget {
 
 public:
     EntitiesView(QWidget *parent, EntitiesController* entitiesController);
-    void load(int i);
+    void load(int army);
 
 private:
     EntitiesController* entitiesController;

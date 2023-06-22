@@ -26,3 +26,9 @@ void DataSave::addArmy(Army * const army) {
 void DataSave::removeArmy(unsigned int i) {
     armies.remove(i);
 }
+
+void DataSave::addEntity(int army, Entity* entity){
+    armies[army]->addEntity(entity);
+}
+
+

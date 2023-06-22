@@ -22,6 +22,8 @@ public:
     void addArmy(Army* const army);
     void removeArmy(unsigned int army);
 
+    void addEntity(int army, Entity* entity);
+
 private:
     QVector<Army*> armies;
 };
