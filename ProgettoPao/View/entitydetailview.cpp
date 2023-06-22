@@ -17,24 +17,60 @@ EntityDetailView::EntityDetailView(EntitiesController* entitiesController, QWidg
     titleLayout->addWidget(title, 0, Qt::AlignCenter);
     entityDetailLayout->addLayout(titleLayout);
 
-    QLabel* l = new QLabel("cellofatta zioooooooooooooooooooooooooooooooooooo");
-    entityDetailLayout->addWidget(l);
+    //
+    QLabel* raceLayout = new QLabel("Race : Humanoide_prova");
+    entityDetailLayout->addWidget(raceLayout);
 
-    QLabel* race = new QLabel("race : ");
-    entityDetailLayout->addWidget(race);
+    //
+    QHBoxLayout* nameLayout = new QHBoxLayout;
+    QLabel* name = new QLabel("Name : ");
+    QLineEdit* insertName = new QLineEdit("", this);
+    nameLayout->addWidget(name);
+    nameLayout->addWidget(insertName);
+    entityDetailLayout->addLayout(nameLayout);
 
-    QComboBox* comboBox = new QComboBox();
-    QStringList stringList;
-    stringList.append("ciao1");
-    stringList.append("ciao2");
-    stringList.append("ciao3");
-    comboBox->addItems(stringList);
-    entityDetailLayout->addWidget(comboBox);
+    //
+    QHBoxLayout* ageLayout = new QHBoxLayout;
+
+    entityDetailLayout->addLayout(ageLayout);
+    //
+    QHBoxLayout* powerLayout = new QHBoxLayout;
+
+    entityDetailLayout->addLayout(powerLayout);
+
+    //
+    QHBoxLayout* elementLayout = new QHBoxLayout;
+    QLabel* element = new QLabel("Element : ");
+
+    QComboBox* elementMenu = new QComboBox();
+    QStringList stringListElement;
+    stringListElement.append("air");
+    stringListElement.append("water");
+    stringListElement.append("earth");
+    stringListElement.append("fire");
+    stringListElement.append("death");
+    elementMenu->addItems(stringListElement);
+
+    elementLayout->addWidget(element);
+    elementLayout->addWidget(elementMenu);
+    entityDetailLayout->addLayout(elementLayout);
+
+    //
+    QHBoxLayout* levelLayout = new QHBoxLayout;
+    QLabel* level = new QLabel("Level : ");
+
+    QComboBox* levelMenu = new QComboBox();
+    QStringList stringListLevel;
+    stringListLevel.append("higher");
+    stringListLevel.append("lower");
+    levelMenu->addItems(stringListLevel);
+
+    levelLayout->addWidget(level);
+    levelLayout->addWidget(levelMenu);
+    entityDetailLayout->addLayout(levelLayout);
 
 
-
-    QLabel* name = new QLabel("name : ");
-    entityDetailLayout->addWidget(name);
+    //
 
     QLabel* power = new QLabel("power : ");
     entityDetailLayout->addWidget(power);

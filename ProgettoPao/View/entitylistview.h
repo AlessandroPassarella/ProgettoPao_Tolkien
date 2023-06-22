@@ -11,6 +11,7 @@ class EntityListView : public QWidget{
 
 private:
     int army;
+    Qontainer currentDisplayedEntities;
     QTableWidget* entitiesTable;
     EntitiesController* entitiesController;
     QLineEdit* searchByName;

@@ -18,8 +18,9 @@ EntityListView::EntityListView(EntitiesController* entitiesController, QWidget *
 
 
     //COMBO BOX
-    //QPushButton *addEntityBtn = new QPushButton("+");
-    //buttonBar->addWidget(addEntityBtn);
+    QHBoxLayout *newEntityLayout = new QHBoxLayout;
+
+    QLabel* newSoldier = new QLabel("Add new soldier : ");
 
     QComboBox* comboBox = new QComboBox();
     QStringList stringList;
@@ -32,12 +33,18 @@ EntityListView::EntityListView(EntitiesController* entitiesController, QWidget *
     stringList.append("Vala");
     stringList.append("Maia");
 
+    comboBox->addItem("");
+    connect(comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), [comboBox](int index){
+        if(index == 0) {
+            comboBox->setCurrentIndex(-1);
+        }
+    });
     comboBox->addItems(stringList);
-    //comboBox->setCurrentIndex(2);
 
+    comboBox->setCurrentIndex(-1);
     entityListLayout->addWidget(comboBox);
 
-    connect(comboBox, &QComboBox::activated, this, [this, parent](int i){
+    connect(comboBox, &QComboBox::activated, this, [this, parent, comboBox](int i){
         bool ok = false;
         QString name = "";
         do {
@@ -73,10 +80,16 @@ EntityListView::EntityListView(EntitiesController* entitiesController, QWidget *
                 break;
             }
             this->entitiesController->addEntity(army, e);
+            comboBox->setCurrentIndex(-1);
             load(army);
         }
-
     });
+
+
+    newEntityLayout->addWidget(newSoldier);
+    newEntityLayout->addWidget(comboBox);
+    entityListLayout->addLayout(newEntityLayout);
+
 
 
 
@@ -116,9 +129,7 @@ EntityListView::EntityListView(EntitiesController* entitiesController, QWidget *
 
 void EntityListView::load(int army) {
     this->army = army;
-    Qontainer currentDisplayedEntities = entitiesController->getEntities(army).search([this](const Entity* e){
-        return e->getName().find(this->searchByName->text().toStdString()) != std::string::npos;
-    });
+    Qontainer currentDisplayedEntities = entitiesController->getEntities(army);
     entitiesTable->setRowCount(currentDisplayedEntities.size());
     for(unsigned i = 0; i < currentDisplayedEntities.size(); i++){
         entitiesTable->setItem( i, 1, new QTableWidgetItem(QString::fromStdString(currentDisplayedEntities[i]->getName())));
