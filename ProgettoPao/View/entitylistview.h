@@ -11,10 +11,10 @@ class EntityListView : public QWidget{
 
 private:
     int army;
-    Qontainer currentDisplayedEntities;
     QTableWidget* entitiesTable;
     EntitiesController* entitiesController;
     QLineEdit* searchByName;
+    std::vector<Qontainer::SearchResult> selectedItems;
 public:
     EntityListView(EntitiesController* entitiesController, QWidget *parent = nullptr);
     void load(int army);

@@ -38,7 +38,7 @@ void Qontainer::erase(unsigned i) {
     delete begin[i];
     for (unsigned j=i; j<length-1; j++)
         begin[j] = begin[j+1];
-    
+
     length--;
 }
 
@@ -60,10 +60,14 @@ unsigned Qontainer::size() const {
     return length;
 }
 
-Qontainer Qontainer::search(std::function<bool(const Entity*)> condition) const {
-    Qontainer resultSet;
+std::vector<Qontainer::SearchResult> Qontainer::search(std::function<bool(const Entity*)> condition) const {
+    std::vector<SearchResult> results;
     for (unsigned i = 0; i < length; i++)
-        if(condition(begin[i]))
-            resultSet.push(begin[i]);
-    return resultSet;
+        if(condition(begin[i])) {
+            SearchResult result;
+            result.e = get(i);
+            result.index = i;
+            results.push_back(result);
+        }
+    return results;
 }

@@ -96,7 +96,7 @@ EntityListView::EntityListView(EntitiesController* entitiesController, QWidget *
     //SEARCH BAR
     QHBoxLayout *buttonBar = new QHBoxLayout;
     searchByName = new QLineEdit("", this);
-    connect(searchByName, &QLineEdit::returnPressed, this, [this](){
+    connect(searchByName, &QLineEdit::textEdited, this, [this](){
         this->load(this->army);
     });
     buttonBar->addWidget(new QLabel("Search by name:"));
@@ -118,21 +118,23 @@ EntityListView::EntityListView(EntitiesController* entitiesController, QWidget *
     entitiesTable->setStyleSheet("QHeaderView::section{border-style:solid; font-weight:bold;}");
     entitiesTable->verticalHeader()->hide();
     entitiesTable->setSelectionBehavior(QAbstractItemView::SelectRows);
-//    connect(entitiesTable, &QTableWidget::cellClicked, this, [this](){
-//        qDebug() << entitiesTable;
-//        qDebug() << entitiesTable->currentRow();
-//        qDebug() << QString::fromStdString(this->currentDisplayedEntities.get(entitiesTable->currentRow())->getName());
-//    });
+    connect(entitiesTable, &QTableWidget::cellClicked, this, [this](){
+        qDebug() << entitiesTable;
+        qDebug() << this->selectedItems[entitiesTable->currentRow()].index;
+        qDebug() << QString::fromStdString(this->selectedItems[entitiesTable->currentRow()].e->getName());
+    });
 
     entityListLayout->addWidget(entitiesTable);
 }
 
 void EntityListView::load(int army) {
     this->army = army;
-    Qontainer currentDisplayedEntities = entitiesController->getEntities(army);
-    entitiesTable->setRowCount(currentDisplayedEntities.size());
-    for(unsigned i = 0; i < currentDisplayedEntities.size(); i++){
-        entitiesTable->setItem( i, 1, new QTableWidgetItem(QString::fromStdString(currentDisplayedEntities[i]->getName())));
-        entitiesTable->setItem( i, 2, new QTableWidgetItem(QString::number(currentDisplayedEntities[i]->getPower())));
+    selectedItems = entitiesController->getEntities(army).search([this](const Entity* e) {
+        return QString::fromStdString(e->getName()).contains(searchByName->text(), Qt::CaseInsensitive);
+    });
+    entitiesTable->setRowCount(selectedItems.size());
+    for(unsigned i = 0; i < selectedItems.size(); i++) {
+        entitiesTable->setItem( i, 1, new QTableWidgetItem(QString::fromStdString(selectedItems[i].e->getName())));
+        entitiesTable->setItem( i, 2, new QTableWidgetItem(QString::number(selectedItems[i].e->getPower())));
     }
 }

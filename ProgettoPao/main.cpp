@@ -28,8 +28,8 @@ int GUI_launch(int argc, char *argv[]) {
 
     return a.exec();
 }
-
 void noGUI_launch(){
+    /*
 
     Qontainer allBeings;
     allBeings.push( new Vala("pippo", 5, 15, Ainu::Level::lower, Vala::Element::air) );
@@ -49,7 +49,7 @@ void noGUI_launch(){
 //    armies.push_back(new Army("pollos", allBeings.search([](const Entity* e){return e->getAge()<100;})));
 //    armies.push_back(new Army("hermanos", allBeings.search([](const Entity* e){return e->getAge()>=100;})));
 //    saveArmiesToFile(armies, namefile);
-    
+
     DataSave model; // usando model funziona ed ha piu senso (secondo me)
 
     model.addArmy(new Army("pollos", allBeings.search([](const Entity* e){return e->getAge()<100;})));
@@ -71,4 +71,5 @@ void noGUI_launch(){
         qDebug() << "army n." << i+1 << " called "
                  << model.getArmy(i)->getName().c_str() << " has " << model.getArmy(i)->size() << " entities";
 
+*/
 }

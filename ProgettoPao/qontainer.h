@@ -28,7 +28,13 @@ public:
 
     unsigned size() const;
 
-    Qontainer search(std::function<bool(const Entity*)> condition) const;
+
+    struct SearchResult {
+        Entity* e;
+        unsigned index;
+    };
+
+    std::vector<SearchResult> search(std::function<bool(const Entity*)> condition) const;
 
 };
 

@@ -15,7 +15,7 @@ public:
     void deleteEntity(unsigned int entity);
     unsigned size() const;
     Entity* getEntity(unsigned i) const;
-    Qontainer getEntities() const;
+    const Qontainer& getEntities() const;
 
     int getTotalPower() const;
 
