@@ -5,12 +5,12 @@ EntitiesController::EntitiesController(DataSave& dataSave) :
     dataSave(dataSave) {
 }
 
-const Entity* EntitiesController::getEntity(int army, int index) {
+Entity* EntitiesController::getEntity(int army, int index) {
     return dataSave.getArmy(army)->getEntity(index);
 }
 
 void EntitiesController::deleteEntity(int army, int index){
-
+    dataSave.getArmy(army)->deleteEntity(index);
 }
 
 void EntitiesController::addEntity(int army, Entity* entity){

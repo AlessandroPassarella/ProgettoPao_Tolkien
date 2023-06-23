@@ -11,7 +11,7 @@ private:
 
 public:
     EntitiesController(DataSave& dataSave);
-    const Entity * getEntity(int army, int index);
+    Entity* getEntity(int army, int index);
     const Qontainer& getEntities(int i);
     void deleteEntity(int army, int index);
     void addEntity(int army, Entity* entity);

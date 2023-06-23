@@ -17,10 +17,12 @@ private:
     Qontainer::SearchResults selectedItems;
 public:
     EntityListView(EntitiesController* entitiesController, QWidget *parent = nullptr);
-    void load(int army);
 
 signals:
     void entityChanged(int army, int entity);
+
+public slots:
+    void load(int army);
 
 };
 

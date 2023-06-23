@@ -31,6 +31,7 @@ EntitiesView::EntitiesView(QWidget *parent, EntitiesController* controller):
     mainLayout->addLayout(labelLayout);
 
     connect(listView, &EntityListView::entityChanged, detailView, &EntityDetailView::load);
+    connect(detailView, &EntityDetailView::deletedEntity, listView, &EntityListView::load);
 
 
 }

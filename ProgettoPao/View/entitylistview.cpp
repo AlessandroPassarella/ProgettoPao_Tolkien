@@ -16,7 +16,6 @@ EntityListView::EntityListView(EntitiesController* entitiesController, QWidget *
     setLayout(entityListLayout);
 
 
-
     //COMBO BOX
     QHBoxLayout *newEntityLayout = new QHBoxLayout;
 
@@ -89,8 +88,6 @@ EntityListView::EntityListView(EntitiesController* entitiesController, QWidget *
     entityListLayout->addLayout(newEntityLayout);
 
 
-
-
     //SEARCH BAR
     QHBoxLayout *buttonBar = new QHBoxLayout;
     searchByName = new QLineEdit("", this);
@@ -101,7 +98,6 @@ EntityListView::EntityListView(EntitiesController* entitiesController, QWidget *
     buttonBar->addWidget(searchByName);
 
     entityListLayout->addLayout(buttonBar);
-
 
 
     //TABLE ENTITIES

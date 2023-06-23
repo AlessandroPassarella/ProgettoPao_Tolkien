@@ -13,6 +13,16 @@ SOURCES += \
 	Controller/entitiescontroller.cpp \
 	Model/ainu.cpp \
 	Model/army.cpp \
+    View/EntityView/ainudetailshard.cpp \
+    View/EntityView/dwarfdetailshard.cpp \
+    View/EntityView/elfdetailshard.cpp \
+    View/EntityView/entitydetailshard.cpp \
+    View/EntityView/hobbitdetailshard.cpp \
+    View/EntityView/humandetailshard.cpp \
+    View/EntityView/humanoiddetailshard.cpp \
+    View/EntityView/maiadetailshard.cpp \
+    View/EntityView/orcdetailshard.cpp \
+    View/EntityView/valadetailshard.cpp \
     View/entitydetailview.cpp \
     View/entitylistview.cpp \
 	datasave.cpp \
@@ -37,6 +47,16 @@ HEADERS += \
 	Controller/entitiescontroller.h \
 	Model/ainu.h \
 	Model/army.h \
+    View/EntityView/ainudetailshard.h \
+    View/EntityView/dwarfdetailshard.h \
+    View/EntityView/elfdetailshard.h \
+    View/EntityView/entitydetailshard.h \
+    View/EntityView/hobbitdetailshard.h \
+    View/EntityView/humandetailshard.h \
+    View/EntityView/humanoiddetailshard.h \
+    View/EntityView/maiadetailshard.h \
+    View/EntityView/orcdetailshard.h \
+    View/EntityView/valadetailshard.h \
     View/entitydetailview.h \
     View/entitylistview.h \
 	datasave.h \
