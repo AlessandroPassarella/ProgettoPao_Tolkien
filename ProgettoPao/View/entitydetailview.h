@@ -24,7 +24,7 @@ public:
     EntityDetailShard* shard;
 
 signals:
-    void deletedEntity(int army);
+    void updatedEntity(int army);
 
 public slots:
     void load(int army, int entity);

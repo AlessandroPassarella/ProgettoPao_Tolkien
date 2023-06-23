@@ -17,32 +17,25 @@
 EntityDetailView::EntityDetailView(EntitiesController* entitiesController, QWidget *parent)
     : QWidget(parent), entitiesController(entitiesController), shard(nullptr)
 {
-    QVBoxLayout *entityDetailLayout = new QVBoxLayout;
-    setLayout(entityDetailLayout);
-    //entityDetailLayout->setSizeConstraint(QLayout::SetFixedSize);
+    QVBoxLayout *entityDetailLayout = new QVBoxLayout(this);
 
     shardLayout = new QVBoxLayout;
     entityDetailLayout->addLayout(shardLayout);
 
     //DELETE
-    QHBoxLayout *buttonBar = new QHBoxLayout(this);
+    QHBoxLayout *buttonBar = new QHBoxLayout;
     QPushButton *delSoldierBtn = new QPushButton("Delete Soldier");
     buttonBar->addWidget(delSoldierBtn);
     entityDetailLayout->addLayout(buttonBar);
 
     connect(delSoldierBtn, &QPushButton::clicked, this, [this](){
         this->entitiesController->deleteEntity(army, entity);
-        emit deletedEntity(army);
-
+        emit updatedEntity(army);
         if(shard) {
             delete shard;
             shard = nullptr;
         }
-
     });
-
-    //connect(shard, &EntityDetailShard::reloadListView, this, &EntityDetailView::load);
-
 
 }
 
@@ -69,9 +62,12 @@ void EntityDetailView::load(int army, int entity){
     else if (Maia* m = dynamic_cast<Maia *>(entitiesController->getEntity(army, entity)))
         shard = new MaiaDetailShard(m, this);
 
-
     if(shard)
-            shardLayout->addWidget(shard);
-//    delete shardLayout->takeAt(0); SERVE ??
+        shardLayout->addWidget(shard);
+
+    connect(shard, &EntityDetailShard::reloadViews, this, [this](){
+        emit updatedEntity(this->army);
+        this->load(this->army, this->entity);
+    });
 }
 

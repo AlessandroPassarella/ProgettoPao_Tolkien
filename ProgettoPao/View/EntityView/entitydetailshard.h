@@ -19,7 +19,7 @@ protected:
     QVBoxLayout *entityDetailLayout;
     QLabel* raceLayout;
 signals:
-    void reloadListView(int army, int entity);
+    void reloadViews();
 };
 
 #endif // ENTITYDETAILSHARD_H

@@ -69,7 +69,6 @@ void MainWindow::openFile() {
     return;
   }
   model.open(openedFileName);
-  qDebug() << "Opened file " << openedFileName;
 }
 
 void MainWindow::openArmiesView() {
