@@ -41,6 +41,9 @@ EntityDetailView::EntityDetailView(EntitiesController* entitiesController, QWidg
 
     });
 
+    //connect(shard, &EntityDetailShard::reloadListView, this, &EntityDetailView::load);
+
+
 }
 
 

@@ -8,7 +8,7 @@
 class HumanoidDetailShard : public EntityDetailShard
 {
 public:
-    HumanoidDetailShard(Humanoid* e, QWidget *parent);
+    HumanoidDetailShard(Humanoid* h, QWidget *parent);
 };
 
 #endif // HUMANOIDDETAILSHARD_H

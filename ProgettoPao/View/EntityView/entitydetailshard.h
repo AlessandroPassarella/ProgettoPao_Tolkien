@@ -6,18 +6,20 @@
 #include "Model/races.h"
 #include "qboxlayout.h"
 #include "qlabel.h"
+#include <QObject>
+#include <QWidget>
 
 class EntityDetailShard : public QWidget
 {
     Q_OBJECT
 public:
-    explicit EntityDetailShard(Entity* e, QWidget *parent = nullptr);
 protected:
+    explicit EntityDetailShard(Entity* e, QWidget *parent = nullptr);
     Entity* entity;
     QVBoxLayout *entityDetailLayout;
     QLabel* raceLayout;
 signals:
-
+    void reloadListView(int army, int entity);
 };
 
 #endif // ENTITYDETAILSHARD_H

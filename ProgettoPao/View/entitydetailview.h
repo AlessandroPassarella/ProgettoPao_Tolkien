@@ -14,13 +14,14 @@ private:
     EntitiesController* entitiesController;
 
     QVBoxLayout* shardLayout;
-    EntityDetailShard* shard;
 
-    int army;
-    int entity;
 
 public:
+    int army;
+    int entity;
     explicit EntityDetailView(EntitiesController* entitiesController, QWidget *parent = nullptr);
+
+    EntityDetailShard* shard;
 
 signals:
     void deletedEntity(int army);

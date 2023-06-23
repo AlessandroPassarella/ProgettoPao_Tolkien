@@ -32,7 +32,7 @@ EntitiesView::EntitiesView(QWidget *parent, EntitiesController* controller):
 
     connect(listView, &EntityListView::entityChanged, detailView, &EntityDetailView::load);
     connect(detailView, &EntityDetailView::deletedEntity, listView, &EntityListView::load);
-
+    //connect(detailView->shard, &EntityDetailShard::reloadListView, listView, &EntityListView::load);
 
 }
 

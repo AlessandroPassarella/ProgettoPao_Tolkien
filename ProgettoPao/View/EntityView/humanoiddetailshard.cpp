@@ -1,8 +1,8 @@
 #include "humanoiddetailshard.h"
 #include "qcombobox.h"
 
-HumanoidDetailShard::HumanoidDetailShard(Humanoid* e, QWidget *parent):
-    EntityDetailShard(e, parent)
+HumanoidDetailShard::HumanoidDetailShard(Humanoid* h, QWidget *parent):
+    EntityDetailShard(h, parent)
 {
     QHBoxLayout* humanoidLayout = new QHBoxLayout;
     QLabel* roleLabel = new QLabel("Role : ");
@@ -17,8 +17,14 @@ HumanoidDetailShard::HumanoidDetailShard(Humanoid* e, QWidget *parent):
     stringListElement.append("queen");
     stringListElement.append("assistant");
     roleMenu->addItems(stringListElement);
+    roleMenu->setCurrentIndex(h->getRole());
     humanoidLayout->addWidget(roleLabel);
     humanoidLayout->addWidget(roleMenu);
 
     entityDetailLayout->addLayout(humanoidLayout);
+
+    connect(roleMenu, &QComboBox::activated, this, [h](int i){
+            h->setRole(static_cast<Humanoid::Role>(i));
+
+    });
 }
