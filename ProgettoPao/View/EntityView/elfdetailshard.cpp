@@ -15,8 +15,13 @@ ElfDetailShard::ElfDetailShard(Elf* e, QWidget *parent):
     stringListElement.append("teleri");
     stringListElement.append("avari");
     bloodlineMenu->addItems(stringListElement);
+    bloodlineMenu->setCurrentIndex(e->getBloodline());
     elfLayout->addWidget(bloolineLabel);
     elfLayout->addWidget(bloodlineMenu);
 
     entityDetailLayout->addLayout(elfLayout);
+
+    connect(bloodlineMenu, &QComboBox::activated, this, [e](int i){
+        e->setBloodline(static_cast<Elf::Bloodline>(i));
+    });
 }

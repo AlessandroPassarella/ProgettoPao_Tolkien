@@ -14,8 +14,13 @@ HobbitDetailShard::HobbitDetailShard(Hobbit *h, QWidget *parent):
     stringListElement.append("harfoots");
     stringListElement.append("sturoi");
     familyMenu->addItems(stringListElement);
+    familyMenu->setCurrentIndex(h->getFamily());
     hobbitLayout->addWidget(familyLabel);
     hobbitLayout->addWidget(familyMenu);
 
     entityDetailLayout->addLayout(hobbitLayout);
+
+    connect(familyMenu, &QComboBox::activated, this, [h](int i){
+        h->setFamily(static_cast<Hobbit::Family>(i));
+    });
 }

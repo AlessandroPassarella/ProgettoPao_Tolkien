@@ -16,8 +16,13 @@ ValaDetailShard::ValaDetailShard(Vala *v, QWidget *parent):
     stringListElement.append("fire");
     stringListElement.append("death");
     elementMenu->addItems(stringListElement);
+    elementMenu->setCurrentIndex(v->getElement());
     valaLayout->addWidget(elementLabel);
     valaLayout->addWidget(elementMenu);
 
     entityDetailLayout->addLayout(valaLayout);
+
+    connect(elementMenu, &QComboBox::activated, this, [v](int i){
+        v->setElement(static_cast<Vala::Element>(i));
+    });
 }

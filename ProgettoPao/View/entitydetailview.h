@@ -4,6 +4,7 @@
 #include "Controller/entitiescontroller.h"
 #include "View/EntityView/entitydetailshard.h"
 #include "qboxlayout.h"
+#include "qpushbutton.h"
 #include <QObject>
 #include <QWidget>
 
@@ -14,6 +15,7 @@ private:
     EntitiesController* entitiesController;
 
     QVBoxLayout* shardLayout;
+    QPushButton *delSoldierBtn;
 
 
 public:

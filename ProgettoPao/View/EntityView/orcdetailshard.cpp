@@ -14,8 +14,13 @@ OrcDetailShard::OrcDetailShard(Orc *o, QWidget *parent):
     stringListElement.append("goblin");
     stringListElement.append("white");
     kindMenu->addItems(stringListElement);
+    kindMenu->setCurrentIndex(o->getKind());
     orcLayout->addWidget(kindLabel);
     orcLayout->addWidget(kindMenu);
 
     entityDetailLayout->addLayout(orcLayout);
+
+    connect(kindMenu, &QComboBox::activated, this, [o](int i){
+        o->setKind(static_cast<Orc::Kind>(i));
+    });
 }

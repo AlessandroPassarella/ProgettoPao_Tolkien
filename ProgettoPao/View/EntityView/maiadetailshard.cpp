@@ -14,8 +14,13 @@ MaiaDetailShard::MaiaDetailShard(Maia* v, QWidget *parent):
     stringListElement.append("wizard");
     stringListElement.append("balrog");
     typologyMenu->addItems(stringListElement);
+    typologyMenu->setCurrentIndex(v->getTypology());
     maiaLayout->addWidget(typologyLabel);
     maiaLayout->addWidget(typologyMenu);
 
     entityDetailLayout->addLayout(maiaLayout);
+
+    connect(typologyMenu, &QComboBox::activated, this, [v](int i){
+        v->setTypology(static_cast<Maia::Typology>(i));
+    });
 }

@@ -14,8 +14,13 @@ HumanDetailShard::HumanDetailShard(Human* h, QWidget *parent):
     stringListElement.append("medianum");
     stringListElement.append("bard");
     descentMenu->addItems(stringListElement);
+    descentMenu->setCurrentIndex(h->getDescent());
     humanLayout->addWidget(descentLabel);
     humanLayout->addWidget(descentMenu);
 
     entityDetailLayout->addLayout(humanLayout);
+
+    connect(descentMenu, &QComboBox::activated, this, [h](int i){
+        h->setDescent(static_cast<Human::Descent>(i));
+    });
 }

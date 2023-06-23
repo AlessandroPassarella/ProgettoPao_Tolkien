@@ -1,2 +1,11 @@
-- costruire lista entity
-- connettere gli edit interni alla struttura dati
+- connettere power di detailView a listView
+- add search by class
+- icone
+- deselezionare quando serve riga entity list
+
+
+se ho tempo e voglia:
+- add new entity in popup
+- resize colonne entityView
+- grafica entity details view
+
