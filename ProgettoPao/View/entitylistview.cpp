@@ -120,6 +120,25 @@ EntityListView::EntityListView(EntitiesController* entitiesController, QWidget *
     entityListLayout->addWidget(entitiesTable);
 }
 
+const QString getIconPath(const Entity& entity) {
+    if (typeid(entity) == typeid(Elf))
+        return "elf";
+    if (typeid(entity) == typeid(Hobbit))
+        return "hobbit";
+    if (typeid(entity) == typeid(Dwarf))
+        return "dwarf";
+    if (typeid(entity) == typeid(Human))
+        return "human";
+    if (typeid(entity) == typeid(Orc))
+        return "orc";
+    if (typeid(entity) == typeid(Vala))
+        return "vala";
+    if (typeid(entity) == typeid(Maia))
+        return "maia";
+    else
+        return "";
+}
+
 void EntityListView::load(int army) {
     this->army = army;
     entitiesTable->setCurrentItem(nullptr);
@@ -134,8 +153,13 @@ void EntityListView::load(int army) {
 
     for(unsigned i = 0; i < selectedItems.size; i++) {
 
-//        int h = 10, w = 10;
-        QString iconFileName = ":/Extra/icons/orcC.png";
+      // a color attivare la stringa 'C', in B/W la striga 'BW'
+        QString colorSchema = "C";
+//      QString colorSchema = "BW";
+
+        QString iconFileName = ":/Extra/icons/" +
+                               getIconPath(*selectedItems.results[i].e) +
+                               colorSchema + ".png";
         QFile file(iconFileName);
         qDebug() << "path: " << iconFileName;
         qDebug() << "esiste?" << file.exists();
@@ -143,27 +167,13 @@ void EntityListView::load(int army) {
         QTableWidgetItem *item = new QTableWidgetItem;
         item->setIcon(icon);
 
-        entitiesTable->setItem( i, 0, item);
-        entitiesTable->setItem( i, 1, new QTableWidgetItem(QString::fromStdString(selectedItems.results[i].e->getName())));
-        entitiesTable->setItem( i, 2, new QTableWidgetItem(QString::number(selectedItems.results[i].e->getPower())));
+        entitiesTable->setItem(i, 0, item);
+        entitiesTable->setItem(i, 1,
+                               new QTableWidgetItem(QString::fromStdString(
+                                   selectedItems.results[i].e->getName())));
+        entitiesTable->setItem(i, 2,
+                               new QTableWidgetItem(QString::number(
+                                   selectedItems.results[i].e->getPower())));
     }
 }
 
-const QString EntityListView::getIconPath(const Entity& entity) const {
-    QString basePath = "Icons/";
-
-    if (typeid(entity) == typeid(Elf))
-        return basePath + "elf.png";
-    else if (typeid(entity) == typeid(Hobbit))
-        return basePath + "hobbit.png";
-    else if (typeid(entity) == typeid(Dwarf))
-        return basePath + "dwarf.png";
-    else if (typeid(entity) == typeid(Human))
-        return basePath + "human.png";
-    else if (typeid(entity) == typeid(Orc))
-        return basePath + "orc.png";
-    else if (typeid(entity) == typeid(Vala))
-        return basePath + "vala.png";
-    else
-        return basePath + "maia.png";
-}

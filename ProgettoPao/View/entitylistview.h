@@ -18,8 +18,6 @@ private:
 public:
     EntityListView(EntitiesController* entitiesController, QWidget *parent = nullptr);
 
-    const QString getIconPath(const Entity& entity) const;
-
 signals:
     void entityChanged(int army, int entity);
 
