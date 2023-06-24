@@ -1,7 +1,7 @@
 - icone
-- rinominare il Qontainer
 - controllo information hiding
 
+- FATTO rinominare il Qontainer
 - FATTO edit -> ?? cancella tutte le armate/ cancella tutte le entita
 - FATTO connettere power di detailView a listView
 - FATTO deselezionare quando serve riga entity list
@@ -14,4 +14,3 @@ se ho tempo e voglia:
 - add new entity in popup
 - resize colonne entityView
 - grafica entity details view
-

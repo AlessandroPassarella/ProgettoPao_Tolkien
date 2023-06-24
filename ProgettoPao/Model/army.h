@@ -1,13 +1,13 @@
 #ifndef ARMY_H
 #define ARMY_H
 
-#include "../qontainer.h"
+#include "../entityvector.h"
 #include <string>
 using std::string;
 
 class Army {
 public:
-    Army(const string& name, const Qontainer& entities = Qontainer());
+    Army(const string& name, const EntityVector& entities = EntityVector());
 
     //metodi
     string getName() const;
@@ -15,13 +15,13 @@ public:
     void deleteEntity(unsigned int entity);
     unsigned size() const;
     Entity* getEntity(unsigned i) const;
-    const Qontainer& getEntities() const;
+    const EntityVector& getEntities() const;
 
     int getTotalPower() const;
 
 private:
     const string name;
-    Qontainer entities;
+    EntityVector entities;
 };
 
 #endif // ARMY_H

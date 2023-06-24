@@ -137,7 +137,7 @@ QVector<Army*> parseFileAsArmy(QString filename) {
 
     while(xmlReader.name().toString() != "armies") {
         QString armyName = xmlReader.attributes().value("name").toString();
-        Qontainer entities;
+        EntityVector entities;
         QString classType;
         while(true) {
 

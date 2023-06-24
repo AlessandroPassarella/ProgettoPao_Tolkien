@@ -1,20 +1,20 @@
-#include "qontainer.h"
+#include "entityvector.h"
 
-Qontainer::Qontainer() : begin(nullptr), length(0), reserved(0) {}
+EntityVector::EntityVector() : begin(nullptr), length(0), reserved(0) {}
 
-Qontainer::Qontainer(const Qontainer &q) :
+EntityVector::EntityVector(const EntityVector &q) :
 begin(new Entity*[q.length]), length(q.length), reserved(q.length) {
     for(unsigned i = 0;i<length; i++)
         begin[i] = q.begin[i]->clone();
 }
 
-Qontainer::~Qontainer() {
+EntityVector::~EntityVector() {
     for(unsigned i=0; i<length; i++)
         delete begin[i];
     delete[] begin;
 }
 
-void Qontainer::push(const Entity *entity){
+void EntityVector::push(const Entity *entity){
     if (reserved==length) {
         //e se 0??
         if (reserved)
@@ -31,7 +31,7 @@ void Qontainer::push(const Entity *entity){
     length++;
 }
 
-void Qontainer::erase(unsigned i) {
+void EntityVector::erase(unsigned i) {
     if (i >= length)
         throw std::out_of_range("can't pop neighbour's mail");
 
@@ -42,25 +42,25 @@ void Qontainer::erase(unsigned i) {
     length--;
 }
 
-Entity* Qontainer::get(unsigned i) const {
+Entity* EntityVector::get(unsigned i) const {
     if (i < length)
         return begin[i];
     throw std::out_of_range("can't read neighbour's mail");
 }
 
-Entity* Qontainer::operator[](unsigned i) {
+Entity* EntityVector::operator[](unsigned i) {
     return get(i);
 }
 
-Entity* Qontainer::operator[](unsigned i) const {
+Entity* EntityVector::operator[](unsigned i) const {
     return get(i);
 }
 
-unsigned Qontainer::size() const {
+unsigned EntityVector::size() const {
     return length;
 }
 
-Qontainer::SearchResults Qontainer::search(std::function<bool(const Entity*)> condition) const {
+EntityVector::SearchResults EntityVector::search(std::function<bool(const Entity*)> condition) const {
     SearchResults results;
     int count = 0;
     for (unsigned i = 0; i < length; i++)

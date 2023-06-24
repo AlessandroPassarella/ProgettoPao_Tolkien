@@ -21,6 +21,6 @@ QString EntitiesController::getName(int army) {
     return QString::fromStdString(dataSave.getArmies()[army]->getName());
 }
 
-const Qontainer& EntitiesController::getEntities(int i) {
+const EntityVector& EntitiesController::getEntities(int i) {
     return dataSave.getArmies()[i]->getEntities();
 }

@@ -14,7 +14,7 @@ private:
     QTableWidget* entitiesTable;
     EntitiesController* entitiesController;
     QLineEdit* searchByName;
-    Qontainer::SearchResults selectedItems;
+    EntityVector::SearchResults selectedItems;
 public:
     EntityListView(EntitiesController* entitiesController, QWidget *parent = nullptr);
 

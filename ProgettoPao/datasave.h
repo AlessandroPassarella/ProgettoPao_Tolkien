@@ -1,7 +1,7 @@
 #ifndef DATASAVE_H
 #define DATASAVE_H
 
-#include <qontainer.h>
+#include <entityvector.h>
 #include <Model/army.h>
 #include <Model/entity.h>
 #include <QVector>

@@ -1,22 +1,22 @@
-#ifndef _QONTAINER_H
-#define _QONTAINER_H
+#ifndef _ENTITYVECTOR_H
+#define _ENTITYVECTOR_H
 #include <iostream>
 #include <functional>
 #include <stdexcept>
 #include "Model/entity.h"
 
 
-class Qontainer {
+class EntityVector {
 private:
     Entity ** begin;
     unsigned length, reserved;
 
 public:
-    Qontainer();
+    EntityVector();
 
-    Qontainer(const Qontainer &q);
+    EntityVector(const EntityVector &q);
 
-    virtual ~Qontainer();
+    virtual ~EntityVector();
 
     void push(const Entity *entity);
 

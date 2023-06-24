@@ -143,7 +143,7 @@ void MainWindow::openArmiesView() {
 
 void MainWindow::openEntitiesView(int i) {
   armiesView->hide();
-  resize(650, 550);
+  resize(650, 450);
   entitiesView->show();
   entitiesView->load(i);
 }

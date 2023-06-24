@@ -35,7 +35,6 @@ EntityDetailView::EntityDetailView(EntitiesController* entitiesController, QWidg
         this->entitiesController->deleteEntity(army, entity);
         emit updatedEntity(army);
         this->deleteShard();
-
     });
 
 }

@@ -1,6 +1,6 @@
 #include "army.h"
 
-Army::Army(const std::string &name, const Qontainer& entities) :
+Army::Army(const std::string &name, const EntityVector& entities) :
     name(name), entities(entities){}
 
 string Army::getName() const{
@@ -23,7 +23,7 @@ Entity* Army::getEntity(unsigned i) const {
     return entities[i];
 }
 
-const Qontainer& Army::getEntities() const
+const EntityVector& Army::getEntities() const
 {
     return entities;
 }

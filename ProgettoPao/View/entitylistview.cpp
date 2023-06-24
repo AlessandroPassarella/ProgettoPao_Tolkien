@@ -7,6 +7,8 @@
 #include <QTableWidget>
 #include <QBoxLayout>
 #include <QPushButton>
+#include <QCoreApplication>
+#include <QFile>
 
 EntityListView::EntityListView(EntitiesController* entitiesController, QWidget *parent)
     : QWidget(parent), entitiesController(entitiesController)
@@ -105,7 +107,7 @@ EntityListView::EntityListView(EntitiesController* entitiesController, QWidget *
     entitiesTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
     entitiesTable->setSelectionMode(QAbstractItemView::SingleSelection);
     entitiesTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    const QStringList& headerStrings = { "" , "Name", "Power" };
+    const QStringList& headerStrings = { "Race" , "Name", "Power" };
     entitiesTable->setColumnCount(headerStrings.size());
     entitiesTable->setHorizontalHeaderLabels(headerStrings);
     entitiesTable->setStyleSheet("QHeaderView::section{border-style:solid; font-weight:bold;}");
@@ -132,13 +134,14 @@ void EntityListView::load(int army) {
 
     for(unsigned i = 0; i < selectedItems.size; i++) {
 
+//        int h = 10, w = 10;
+        QString iconFileName = ":/Extra/icons/orcC.png";
+        QFile file(iconFileName);
+        qDebug() << "path: " << iconFileName;
+        qDebug() << "esiste?" << file.exists();
+        QIcon icon(iconFileName);
         QTableWidgetItem *item = new QTableWidgetItem;
-        QPixmap* icon = new QPixmap(getIconPath(*(selectedItems.results[i].e)));
-        if(icon) std::cout << "puntatore funzionante";
-        int h = 10, w = 10;
-
-        item->setData(Qt::DecorationRole, icon->scaled(h ,w)); // NON VAAAAAAA
-        if(!icon->scaled(h ,w)) std::cout << "puntatore nullo";
+        item->setIcon(icon);
 
         entitiesTable->setItem( i, 0, item);
         entitiesTable->setItem( i, 1, new QTableWidgetItem(QString::fromStdString(selectedItems.results[i].e->getName())));
