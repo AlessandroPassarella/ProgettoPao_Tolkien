@@ -1,7 +1,7 @@
 #include "Model/army.h"
 #include "armiesview.h"
 #include "mainwindow.h"
-#include "qlineedit.h"
+#include <QLineEdit>
 #include <QHBoxLayout>
 #include <QHeaderView>
 #include <QPushButton>

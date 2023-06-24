@@ -4,8 +4,8 @@
 #include <QObject>
 #include <QWidget>
 #include "Model/races.h"
-#include "qboxlayout.h"
-#include "qlabel.h"
+#include <QBoxLayout>
+#include <QLabel>
 #include <QObject>
 #include <QWidget>
 

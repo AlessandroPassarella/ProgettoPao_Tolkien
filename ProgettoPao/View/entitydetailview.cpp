@@ -8,7 +8,7 @@
 #include "View/EntityView/orcdetailshard.h"
 #include "View/EntityView/valadetailshard.h"
 #include "entitydetailview.h"
-#include <QPushbutton>
+#include <QPushButton>
 #include <QInputDialog>
 #include <QBoxLayout>
 #include <QComboBox>

@@ -1,5 +1,5 @@
 #include "valadetailshard.h"
-#include "qcombobox.h"
+#include <QComboBox>
 
 ValaDetailShard::ValaDetailShard(Vala *v, QWidget *parent):
     AinuDetailShard(v, parent)

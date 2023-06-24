@@ -1,5 +1,5 @@
 #include "maiadetailshard.h"
-#include "qcombobox.h"
+#include <QComboBox>
 
 MaiaDetailShard::MaiaDetailShard(Maia* v, QWidget *parent):
     AinuDetailShard(v, parent)

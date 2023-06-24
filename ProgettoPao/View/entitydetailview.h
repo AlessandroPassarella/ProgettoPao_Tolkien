@@ -3,8 +3,8 @@
 
 #include "Controller/entitiescontroller.h"
 #include "View/EntityView/entitydetailshard.h"
-#include "qboxlayout.h"
-#include "qpushbutton.h"
+#include <QBoxLayout>
+#include <QPushButton>
 #include <QObject>
 #include <QWidget>
 

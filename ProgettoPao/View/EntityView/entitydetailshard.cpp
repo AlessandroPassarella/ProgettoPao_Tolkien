@@ -1,8 +1,7 @@
 #include "entitydetailshard.h"
-#include "View/entitydetailview.h"
-#include "qlabel.h"
-#include "qlineedit.h"
-#include "qspinbox.h"
+#include <QLabel>
+#include <QLineEdit>
+#include <QSpinBox>
 
 EntityDetailShard::EntityDetailShard(Entity* e, QWidget *parent)
     : QWidget(parent), entity(e)
@@ -61,9 +60,9 @@ EntityDetailShard::EntityDetailShard(Entity* e, QWidget *parent)
     powerLayout->addWidget(powerSpinBox);
     entityDetailLayout->addLayout(powerLayout);
 
-    connect(powerSpinBox, &QSpinBox::valueChanged, this, [this, powerSpinBox](){
+    connect(powerSpinBox, &QSpinBox::textChanged, this, [this, powerSpinBox](){
         this->entity->setPower(powerSpinBox->value());
-        //emit reloadViews();  TODO!!
+        //emit reloadViews(); // TODO!!
     });
 
 }

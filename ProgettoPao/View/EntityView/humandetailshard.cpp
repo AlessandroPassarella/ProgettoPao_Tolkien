@@ -1,5 +1,5 @@
 #include "humandetailshard.h"
-#include "qcombobox.h"
+#include <QComboBox>
 
 HumanDetailShard::HumanDetailShard(Human* h, QWidget *parent):
     HumanoidDetailShard(h, parent)

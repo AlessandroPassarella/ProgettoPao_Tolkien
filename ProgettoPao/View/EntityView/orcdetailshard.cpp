@@ -1,5 +1,5 @@
 #include "orcdetailshard.h"
-#include "qcombobox.h"
+#include <QComboBox>
 
 OrcDetailShard::OrcDetailShard(Orc *o, QWidget *parent):
     HumanoidDetailShard(o, parent)

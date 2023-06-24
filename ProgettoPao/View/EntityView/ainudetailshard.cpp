@@ -1,5 +1,5 @@
 #include "ainudetailshard.h"
-#include "qcombobox.h"
+#include <QComboBox>
 
 AinuDetailShard::AinuDetailShard(Ainu* a, QWidget *parent):
     EntityDetailShard(a, parent)
