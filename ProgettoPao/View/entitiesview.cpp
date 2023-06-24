@@ -32,11 +32,10 @@ EntitiesView::EntitiesView(QWidget *parent, EntitiesController* controller):
 
     connect(listView, &EntityListView::entityChanged, detailView, &EntityDetailView::load);
     connect(detailView, &EntityDetailView::updatedEntity, listView, &EntityListView::load);
-    //connect(detailView->shard, &EntityDetailShard::reloadListView, listView, &EntityListView::load);
-
 }
 
 void EntitiesView::load(int army) {
     title->setText("<h1>" + entitiesController->getName(army) + "</h1>");
     listView->load(army);
 }
+

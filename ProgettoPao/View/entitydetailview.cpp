@@ -39,6 +39,7 @@ EntityDetailView::EntityDetailView(EntitiesController* entitiesController, QWidg
             shard = nullptr;
         }
         delSoldierBtn->hide();
+
     });
 
 }
@@ -71,9 +72,12 @@ void EntityDetailView::load(int army, int entity){
         delSoldierBtn->show();
     }
 
-    connect(shard, &EntityDetailShard::reloadViews, this, [this](){
-        emit updatedEntity(this->army);
-        this->load(this->army, this->entity);
+    connect(shard, &EntityDetailShard::reloadViews, this, [this](bool i){
+        if(i){
+            emit updatedEntity(this->army);
+            this->load(this->army, this->entity);
+        }else
+            emit updatedEntity(this->army);
     });
 }
 

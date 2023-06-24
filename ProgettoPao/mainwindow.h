@@ -27,6 +27,7 @@ private:
     EntitiesView* entitiesView;
 
 private slots:
-    void openFile();
+    void newFile(bool justOpenedProgram = false);
+    void openFile(bool justOpenedProgram = false);
 };
 #endif // MAINWINDOW_H

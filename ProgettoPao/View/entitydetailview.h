@@ -16,11 +16,10 @@ private:
 
     QVBoxLayout* shardLayout;
     QPushButton *delSoldierBtn;
-
-
-public:
     int army;
     int entity;
+
+public:
     explicit EntityDetailView(EntitiesController* entitiesController, QWidget *parent = nullptr);
 
     EntityDetailShard* shard;

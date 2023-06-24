@@ -1,14 +1,16 @@
-- connettere power di detailView a listView
-- add search by class
 - icone
-- deselezionare quando serve riga entity list
-- //ok// sistemare include
-- file -> new file
-- edit -> ??
+- edit -> ?? cancella tutte le armate/ cancella tutte le entita (altrimenti da togliere)
 - rinominare il Qontainer
-- scegli file non chiudibile
+- controllo information hiding
+
+- FATTO connettere power di detailView a listView
+- FATTO deselezionare quando serve riga entity list
+- FATTO sistemare include
+- FATTO file -> new file
+- FATTO scegli file è non chiudibile
 
 se ho tempo e voglia:
+- add search by class
 - add new entity in popup
 - resize colonne entityView
 - grafica entity details view

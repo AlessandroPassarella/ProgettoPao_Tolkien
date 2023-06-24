@@ -31,7 +31,7 @@ EntityDetailShard::EntityDetailShard(Entity* e, QWidget *parent)
 
     connect(insertName, &QLineEdit::editingFinished, this, [this, insertName](){
         this->entity->setName(insertName->text().toStdString());
-        emit reloadViews();
+        emit reloadViews(true);
     });
 
     //
@@ -60,9 +60,9 @@ EntityDetailShard::EntityDetailShard(Entity* e, QWidget *parent)
     powerLayout->addWidget(powerSpinBox);
     entityDetailLayout->addLayout(powerLayout);
 
-    connect(powerSpinBox, &QSpinBox::textChanged, this, [this, powerSpinBox](){
+    connect(powerSpinBox, &QSpinBox::valueChanged, this, [this, powerSpinBox](){
         this->entity->setPower(powerSpinBox->value());
-        //emit reloadViews(); // TODO!!
+        emit reloadViews(false);
     });
 
 }

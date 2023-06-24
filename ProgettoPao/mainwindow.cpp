@@ -7,7 +7,22 @@
 MainWindow::~MainWindow() {}
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
-  openFile();
+
+    QMessageBox msgBox;
+    msgBox.setText("New save or open old one?:");
+    msgBox.addButton("New File", QMessageBox::AcceptRole);
+    msgBox.addButton("Open File", QMessageBox::AcceptRole);
+    msgBox.addButton("Cancel", QMessageBox::RejectRole);
+
+    int choice = msgBox.exec();
+
+    if (choice == 0)
+        newFile(true);
+    else if (choice == 1)
+        openFile(true);
+    else if (choice == 2)
+        exit(0);
+
 
   // CENTRAL LAYOUT AND HEADER
 
@@ -41,6 +56,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
   menu->addMenu(fileMenu);
   menu->addMenu(editMenu);
 
+  connect(newFileAction, &QAction::triggered, this, &MainWindow::newFile);
   connect(openFileAction, &QAction::triggered, this, &MainWindow::openFile);
   connect(saveFileAction, &QAction::triggered, this, [this](){this->model.save(openedFileName);});
 
@@ -58,17 +74,48 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
   openArmiesView();
 }
 
-void MainWindow::openFile() {
+void MainWindow::newFile(bool justOpenedProgram) {
+  QString dir = QFileDialog::getExistingDirectory(
+      this, tr("Open Directory"), "/home",
+      QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+
+  if (dir == "") {
+      if (justOpenedProgram)
+          exit(0);
+      return;
+  }
+  bool ok;
+  QString fileName = QInputDialog::getText(this, "Select File name",
+                               "Name :", QLineEdit::Normal, "", &ok);
+  if (!ok)
+      exit(0);
+
+  fileName = dir + '/' + fileName;
+  if (!fileName.endsWith(".xml"))
+      fileName += ".xml";
+  QFile file( fileName );
+  QTextStream stream( &file );
+  file.open(QIODevice::ReadWrite);
+  stream << "<?xml version=\"1.0\" encoding=\"UTF-8\"?><armies></armies>";
+  file.close();
+  openedFileName = fileName;
+  model.open(openedFileName);
+  if(!justOpenedProgram)
+      armiesView->load();
+}
+
+void MainWindow::openFile(bool justOpenedProgram) {
   openedFileName =
-      QFileDialog::getOpenFileName(this, "Apri salvataggio", "/home",
-                                   "Salvataggio armate (*.xml)")
+      QFileDialog::getOpenFileName(this, "Open Save", "/home",
+                                   "Army save file (*.xml)")
           .toStdString()
           .c_str();
   if (openedFileName == "") {
-    openFile();
-    return;
+      exit(0);
   }
   model.open(openedFileName);
+  if(!justOpenedProgram)
+      armiesView->load();
 }
 
 void MainWindow::openArmiesView() {

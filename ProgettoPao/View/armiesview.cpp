@@ -55,8 +55,8 @@ ArmiesView::ArmiesView(QWidget *parent, ArmiesController *armiesController)
       bool ok = false;
       QString text = "";
       do {
-        text = QInputDialog::getText(parent, "Nuova armata",
-                                     "Nome:", QLineEdit::Normal, "", &ok);
+        text = QInputDialog::getText(parent, "New Army",
+                                     "Name:", QLineEdit::Normal, "", &ok);
         if (!ok)
           return;
       } while (text.length() < 3 || text.length() > 14);

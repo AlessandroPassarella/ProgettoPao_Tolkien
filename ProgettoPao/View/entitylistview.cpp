@@ -105,7 +105,6 @@ EntityListView::EntityListView(EntitiesController* entitiesController, QWidget *
     entitiesTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
     entitiesTable->setSelectionMode(QAbstractItemView::SingleSelection);
     entitiesTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-
     const QStringList& headerStrings = { "" , "Name", "Power" };
     entitiesTable->setColumnCount(headerStrings.size());
     entitiesTable->setHorizontalHeaderLabels(headerStrings);
@@ -116,12 +115,12 @@ EntityListView::EntityListView(EntitiesController* entitiesController, QWidget *
         int entity = this->selectedItems.results[entitiesTable->currentRow()].index;
         emit entityChanged(army, entity);
     });
-
     entityListLayout->addWidget(entitiesTable);
 }
 
 void EntityListView::load(int army) {
     this->army = army;
+    entitiesTable->setCurrentItem(nullptr);
     selectedItems = entitiesController->getEntities(army).search([this](const Entity* e) {
         bool classMatches=true;
 //        TODO .......
