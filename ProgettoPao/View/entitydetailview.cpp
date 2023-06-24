@@ -34,14 +34,18 @@ EntityDetailView::EntityDetailView(EntitiesController* entitiesController, QWidg
     connect(delSoldierBtn, &QPushButton::clicked, this, [this](){
         this->entitiesController->deleteEntity(army, entity);
         emit updatedEntity(army);
-        if(shard) {
-            delete shard;
-            shard = nullptr;
-        }
-        delSoldierBtn->hide();
+        this->deleteShard();
 
     });
 
+}
+
+void EntityDetailView::deleteShard() {
+    if(shard) {
+        delete shard;
+        shard = nullptr;
+    }
+    delSoldierBtn->hide();
 }
 
 

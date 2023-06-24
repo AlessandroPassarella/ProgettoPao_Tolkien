@@ -1,8 +1,8 @@
 - icone
-- edit -> ?? cancella tutte le armate/ cancella tutte le entita (altrimenti da togliere)
 - rinominare il Qontainer
 - controllo information hiding
 
+- FATTO edit -> ?? cancella tutte le armate/ cancella tutte le entita
 - FATTO connettere power di detailView a listView
 - FATTO deselezionare quando serve riga entity list
 - FATTO sistemare include

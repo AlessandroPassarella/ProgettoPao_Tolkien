@@ -25,7 +25,8 @@ EntitiesView::EntitiesView(QWidget *parent, EntitiesController* controller):
     QHBoxLayout *labelLayout = new QHBoxLayout;
     QPushButton *backBtn = new QPushButton("< All Armies");
     labelLayout->addWidget(backBtn);
-    connect(backBtn, &QPushButton::clicked, this, [parent](){
+    connect(backBtn, &QPushButton::clicked, this, [this, parent](){
+        detailView->deleteShard();
         dynamic_cast<MainWindow*>(parent)->openArmiesView();
     });
     mainLayout->addLayout(labelLayout);
@@ -37,5 +38,6 @@ EntitiesView::EntitiesView(QWidget *parent, EntitiesController* controller):
 void EntitiesView::load(int army) {
     title->setText("<h1>" + entitiesController->getName(army) + "</h1>");
     listView->load(army);
+//    detailView->load(999,999);
 }
 

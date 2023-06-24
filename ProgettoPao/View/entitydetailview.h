@@ -14,6 +14,7 @@ class EntityDetailView : public QWidget
 private:
     EntitiesController* entitiesController;
 
+    EntityDetailShard* shard;
     QVBoxLayout* shardLayout;
     QPushButton *delSoldierBtn;
     int army;
@@ -22,7 +23,7 @@ private:
 public:
     explicit EntityDetailView(EntitiesController* entitiesController, QWidget *parent = nullptr);
 
-    EntityDetailShard* shard;
+    void deleteShard();
 
 signals:
     void updatedEntity(int army);

@@ -21,6 +21,7 @@ public:
 
     void addArmy(Army* const army);
     void removeArmy(unsigned int army);
+    void clearArmies();
 
     void addEntity(int army, Entity* entity);
 

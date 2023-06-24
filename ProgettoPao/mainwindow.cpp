@@ -3,13 +3,14 @@
 #include <QFileDialog>
 #include <QMenuBar>
 #include <QtWidgets>
+#include <QtWidgets>
 
 MainWindow::~MainWindow() {}
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
     QMessageBox msgBox;
-    msgBox.setText("New save or open old one?:");
+    msgBox.setText("New save or open old one?");
     msgBox.addButton("New File", QMessageBox::AcceptRole);
     msgBox.addButton("Open File", QMessageBox::AcceptRole);
     msgBox.addButton("Cancel", QMessageBox::RejectRole);
@@ -37,7 +38,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
   // MENU
 
-  QMenuBar *menu = new QMenuBar(centralWidget);
+  QMenuBar *menu = new QMenuBar;
 
   QMenu *fileMenu = new QMenu("File");
   QAction *newFileAction = new QAction("New File", fileMenu);
@@ -46,20 +47,35 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
   fileMenu->addAction(newFileAction);
   fileMenu->addAction(openFileAction);
   fileMenu->addAction(saveFileAction);
+  //fileMenu->setStyleSheet("QMenu {border: 1px solid #ccc;}");
 
   QMenu *editMenu = new QMenu("Edit");
-  QAction *cleanEditAction = new QAction("Clean", editMenu);
-  QAction *restoreEditAction = new QAction("Restore Army", editMenu);
+  QAction *cleanEditAction = new QAction("Clean armies", editMenu);
+  QAction *creditsAction = new QAction("Credits", editMenu);
   editMenu->addAction(cleanEditAction);
-  editMenu->addAction(restoreEditAction);
+  editMenu->addAction(creditsAction);
 
   menu->addMenu(fileMenu);
   menu->addMenu(editMenu);
+
+  menu->setStyleSheet("QMenuBar { background-color: #f3f3f3; border-bottom: 1px solid #ccc;} QMenuBar::item {border-right: 1px solid #ccc; border-left: 1px solid #ccc; border-top: 1px solid #ccc; padding:3px 10px 3px 10px;}");
+
+  mainLayout->addWidget(menu);
+
+
 
   connect(newFileAction, &QAction::triggered, this, &MainWindow::newFile);
   connect(openFileAction, &QAction::triggered, this, &MainWindow::openFile);
   connect(saveFileAction, &QAction::triggered, this, [this](){this->model.save(openedFileName);});
 
+  connect(cleanEditAction, &QAction::triggered, this, [this](){
+      this->model.clearArmies();
+      this->openArmiesView();
+  });
+
+  connect(creditsAction, &QAction::triggered, this, [this](){
+      QMessageBox::information(this, "Credits", "Lavoro a cura di Ana Maria Niagu e Alessandro Passarella");
+  });
 
   // TABLE ARMIES
 
