@@ -155,14 +155,12 @@ void EntityListView::load(int army) {
 
       // a color attivare la stringa 'C', in B/W la striga 'BW'
         QString colorSchema = "C";
-//      QString colorSchema = "BW";
+      //QString colorSchema = "BW";
 
         QString iconFileName = ":/Extra/icons/" +
                                getIconPath(*selectedItems.results[i].e) +
                                colorSchema + ".png";
         QFile file(iconFileName);
-        qDebug() << "path: " << iconFileName;
-        qDebug() << "esiste?" << file.exists();
         QIcon icon(iconFileName);
         QTableWidgetItem *item = new QTableWidgetItem;
         item->setIcon(icon);

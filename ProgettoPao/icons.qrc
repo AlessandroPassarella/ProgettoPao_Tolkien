@@ -1,18 +1,19 @@
 <RCC>
     <qresource prefix="/">
-        <file>Extra/icons/dwarfBW.png</file>
-        <file>Extra/icons/dwarfC.png</file>
-        <file>Extra/icons/elfBW.png</file>
-        <file>Extra/icons/elfC.png</file>
-        <file>Extra/icons/hobbitBW.png</file>
-        <file>Extra/icons/hobbitC.png</file>
-        <file>Extra/icons/humanBW.png</file>
-        <file>Extra/icons/humanC.png</file>
-        <file>Extra/icons/maiaC.png</file>
-        <file>Extra/icons/orcBW.png</file>
-        <file>Extra/icons/orcC.png</file>
-        <file>Extra/icons/valaBW.png</file>
-        <file>Extra/icons/valaC.png</file>
-        <file>Extra/icons/wizardBW.png</file>
-    </qresource>
+	    <file>Extra/icons/dwarfBW.png</file>
+		<file>Extra/icons/dwarfC.png</file>
+		<file>Extra/icons/elfBW.png</file>
+		<file>Extra/icons/elfC.png</file>
+		<file>Extra/icons/hobbitBW.png</file>
+		<file>Extra/icons/hobbitC.png</file>
+		<file>Extra/icons/humanBW.png</file>
+		<file>Extra/icons/humanC.png</file>
+		<file>Extra/icons/maiaC.png</file>
+		<file>Extra/icons/orcBW.png</file>
+		<file>Extra/icons/orcC.png</file>
+		<file>Extra/icons/valaBW.png</file>
+		<file>Extra/icons/valaC.png</file>
+		<file>Extra/icons/maiaBW.png</file>
+		<file>Extra/icons/sauron.png</file>
+		</qresource>
 </RCC>

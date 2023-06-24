@@ -12,6 +12,9 @@ int main(int argc, char *argv[]) {
 
     QApplication a(argc, argv);
 
+    QIcon icon(":/Extra/icons/sauron.png");
+    a.setWindowIcon(icon);
+
     MainWindow main;
     main.show();
 
