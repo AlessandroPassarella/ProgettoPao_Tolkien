@@ -127,8 +127,68 @@ void EntityListView::load(int army) {
         return classMatches && QString::fromStdString(e->getName()).contains(searchByName->text(), Qt::CaseInsensitive);
     });
     entitiesTable->setRowCount(selectedItems.size);
+
+
+
     for(unsigned i = 0; i < selectedItems.size; i++) {
+
+        QTableWidgetItem *item = new QTableWidgetItem;
+        QPixmap* icon = new QPixmap(getIconPath(*(selectedItems.results[i].e)));
+        if(icon) std::cout << "puntatore funzionante";
+        int h = 10, w = 10;
+
+        item->setData(Qt::DecorationRole, icon->scaled(h ,w)); // NON VAAAAAAA
+        if(!icon->scaled(h ,w)) std::cout << "puntatore nullo";
+
+        entitiesTable->setItem( i, 0, item);
         entitiesTable->setItem( i, 1, new QTableWidgetItem(QString::fromStdString(selectedItems.results[i].e->getName())));
         entitiesTable->setItem( i, 2, new QTableWidgetItem(QString::number(selectedItems.results[i].e->getPower())));
     }
+}
+
+
+//void EntityListView::load(int army) {
+//    this->army = army;
+//    selectedItems = entitiesController->getEntities(army).search([this](const Entity* e) {
+//        return QString::fromStdString(e->getName()).contains(searchByName->text(), Qt::CaseInsensitive);
+//    });
+//    entitiesTable->setRowCount(selectedItems.size);
+
+//    for(unsigned i = 0; i < selectedItems.size; i++) {
+//        QTableWidgetItem *item = new QTableWidgetItem;
+//        QPixmap* icon = new QPixmap(getIconPath(*(selectedItems.results[i].e)));
+//        if(icon) std::cout << "puntatore funzionante";
+//        int h = 10, w = 10;
+
+//        item->setData(Qt::DecorationRole, icon->scaled(h ,w)); // NON VAAAAAAA
+//        if(!icon->scaled(h ,w)) std::cout << "puntatore nullo";
+
+//        //item->setIcon(icon->scaled(h, w));
+
+//        entitiesTable->setItem( i, 0, item);
+//        entitiesTable->setItem( i, 1, new QTableWidgetItem(QString::fromStdString(selectedItems.results[i].e->getName())));
+//        entitiesTable->setItem( i, 2, new QTableWidgetItem(QString::number(selectedItems.results[i].e->getPower())));
+
+//        //entitiesTable->setRowHeight(i, 60);
+//    }
+//    //entitiesTable->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+//}
+
+const QString EntityListView::getIconPath(const Entity& entity) const {
+    QString basePath = "Icons/";
+
+    if (typeid(entity) == typeid(Elf))
+        return basePath + "elf.png";
+    else if (typeid(entity) == typeid(Hobbit))
+        return basePath + "hobbit.png";
+    else if (typeid(entity) == typeid(Dwarf))
+        return basePath + "dwarf.png";
+    else if (typeid(entity) == typeid(Human))
+        return basePath + "human.png";
+    else if (typeid(entity) == typeid(Orc))
+        return basePath + "orc.png";
+    else if (typeid(entity) == typeid(Vala))
+        return basePath + "vala.png";
+    else
+        return basePath + "maia.png";
 }
