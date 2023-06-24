@@ -1,7 +1,7 @@
 #include "entitylistview.h"
 #include "Model/races.h"
 #include <QLabel>
-#include <QCombobox>
+#include <QComboBox>
 #include <QInputDialog>
 #include <QHeaderView>
 #include <QTableWidget>

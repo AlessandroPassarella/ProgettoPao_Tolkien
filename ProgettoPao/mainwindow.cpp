@@ -92,7 +92,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
 void MainWindow::newFile(bool justOpenedProgram) {
   QString dir = QFileDialog::getExistingDirectory(
-      this, tr("Open Directory"), "/home",
+      this, tr("Open Directory"), "/home/student",
       QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
 
   if (dir == "") {
@@ -122,7 +122,7 @@ void MainWindow::newFile(bool justOpenedProgram) {
 
 void MainWindow::openFile(bool justOpenedProgram) {
   openedFileName =
-      QFileDialog::getOpenFileName(this, "Open Save", "/home",
+      QFileDialog::getOpenFileName(this, "Open Save", "/home/student",
                                    "Army save file (*.xml)")
           .toStdString()
           .c_str();
