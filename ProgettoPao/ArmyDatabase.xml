@@ -66,6 +66,13 @@
             <power>1</power>
             <age>300</age>
         </entity>
+        <entity type="Maia">
+            <typology>1</typology>
+            <level>1</level>
+            <name>gandalf</name>
+            <power>10000</power>
+            <age>150</age>
+        </entity>
     </army>
     <armies/>
 </armies>
