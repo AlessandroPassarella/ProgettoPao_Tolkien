@@ -1,10 +1,11 @@
 #include "humanoiddetailshard.h"
 #include <QComboBox>
+#include <QProgressBar>
 
 HumanoidDetailShard::HumanoidDetailShard(Humanoid* h, QWidget *parent):
     EntityDetailShard(h, parent)
 {
-    QHBoxLayout* humanoidLayout = new QHBoxLayout;
+    QHBoxLayout* humanoidLayout1 = new QHBoxLayout;
     QLabel* roleLabel = new QLabel("Role : ");
     QComboBox* roleMenu = new QComboBox();
     QStringList stringListElement;
@@ -18,10 +19,21 @@ HumanoidDetailShard::HumanoidDetailShard(Humanoid* h, QWidget *parent):
     stringListElement.append("assistant");
     roleMenu->addItems(stringListElement);
     roleMenu->setCurrentIndex(h->getRole());
-    humanoidLayout->addWidget(roleLabel);
-    humanoidLayout->addWidget(roleMenu);
+    humanoidLayout1->addWidget(roleLabel);
+    humanoidLayout1->addWidget(roleMenu);
 
-    entityDetailLayout->addLayout(humanoidLayout);
+    entityDetailLayout->addLayout(humanoidLayout1);
+
+    QHBoxLayout* humanoidLayout2 = new QHBoxLayout;
+    QLabel* combatPowerLabel = new QLabel("Combat Power : ");
+    QProgressBar* combatPowerBar = new QProgressBar;
+    combatPowerBar->setTextVisible(false);
+    combatPowerBar->setRange(0,100);
+    combatPowerBar->setValue(min(100, h->combatPower()));
+    humanoidLayout2->addWidget(combatPowerLabel);
+    humanoidLayout2->addWidget(combatPowerBar);
+
+    entityDetailLayout->addLayout(humanoidLayout2);
 
     connect(roleMenu, &QComboBox::activated, this, [h](int i){
             h->setRole(static_cast<Humanoid::Role>(i));

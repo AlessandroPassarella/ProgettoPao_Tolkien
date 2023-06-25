@@ -21,4 +21,6 @@ signals:
     void reloadViews(bool);
 };
 
+#define min(a,b) ((b>a)?a:b)
+
 #endif // ENTITYDETAILSHARD_H
