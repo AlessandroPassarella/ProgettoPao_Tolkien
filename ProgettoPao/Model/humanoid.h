@@ -5,7 +5,7 @@
 
 class Humanoid : public Entity{
 public:
-    enum Role {hunter, knight, archer, worrior, thief, king, queen, assistant}; //da inserire
+    enum Role {hunter, knight, archer, warrior, thief, king, queen, assistant};
 
     Humanoid();
     Humanoid(string name, int power, unsigned age, Role role);

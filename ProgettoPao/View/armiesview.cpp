@@ -59,7 +59,7 @@ ArmiesView::ArmiesView(QWidget *parent, ArmiesController *armiesController)
                                      "Name:", QLineEdit::Normal, "", &ok);
         if (!ok)
           return;
-      } while (text.length() < 3 || text.length() > 14);
+      } while (text.length() < 3 || text.length() > 21);
       this->armiesController->addArmy(text);
       load();
     });

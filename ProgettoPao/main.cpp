@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
 
     QApplication a(argc, argv);
 
-    a.setApplicationName("Tolkien");
+    a.setApplicationName("TolkienCollector");
 
     QIcon icon(":/Extra/icons/sauron.png");
     a.setWindowIcon(icon);

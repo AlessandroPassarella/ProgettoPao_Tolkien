@@ -1,77 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <armies>
-    <army name="pollos">
-        <entity type="Vala">
-            <element>0</element>
-            <level>1</level>
-            <name>pippo</name>
-            <power>5</power>
-            <age>15</age>
+    <army name="Compagnia dell'anello">
+        <entity type="Hobbit">
+            <family>0</family>
+            <role>4</role>
+            <name>Frodo Baggins</name>
+            <power>50</power>
+            <age>53</age>
         </entity>
-        <entity type="Vala">
-            <element>3</element>
-            <level>1</level>
-            <name>pluto</name>
-            <power>5</power>
-            <age>15</age>
+        <entity type="Hobbit">
+            <family>0</family>
+            <role>7</role>
+            <name>Sam Gamgee</name>
+            <power>55</power>
+            <age>50</age>
         </entity>
-        <entity type="Vala">
-            <element>0</element>
-            <level>1</level>
-            <name>topolino</name>
-            <power>5</power>
-            <age>15</age>
+        <entity type="Hobbit">
+            <family>0</family>
+            <role>7</role>
+            <name>Merry</name>
+            <power>45</power>
+            <age>45</age>
+        </entity>
+        <entity type="Hobbit">
+            <family>0</family>
+            <role>7</role>
+            <name>Pipino</name>
+            <power>45</power>
+            <age>45</age>
         </entity>
         <entity type="Human">
             <descent>0</descent>
             <role>5</role>
-            <name>obama binladen</name>
-            <power>120000</power>
-            <age>44</age>
+            <name>Aragorn</name>
+            <power>1800</power>
+            <age>122</age>
         </entity>
-        <entity type="Maia">
-            <typology>1</typology>
-            <level>1</level>
-            <name>ganjalf</name>
-            <power>12000</power>
-            <age>44</age>
+        <entity type="Human">
+            <descent>0</descent>
+            <role>1</role>
+            <name>Boromir</name>
+            <power>900</power>
+            <age>41</age>
         </entity>
-        <entity type="Orc">
-            <kind>0</kind>
-            <role>6</role>
-            <name>Calippa</name>
-            <power>12000</power>
-            <age>44</age>
-        </entity>
-    </army>
-    <army name="hermanos">
         <entity type="Dwarf">
             <lineage>0</lineage>
             <role>0</role>
-            <name>gimli</name>
-            <power>12</power>
-            <age>120</age>
-        </entity>
-        <entity type="Hobbit">
-            <family>0</family>
-            <role>0</role>
-            <name>samgay</name>
-            <power>12</power>
-            <age>120</age>
+            <name>Gimli</name>
+            <power>1100</power>
+            <age>130</age>
         </entity>
         <entity type="Elf">
             <bloodline>2</bloodline>
-            <role>6</role>
-            <name>rollo</name>
-            <power>1</power>
-            <age>300</age>
+            <role>2</role>
+            <name>Legolas</name>
+            <power>1500</power>
+            <age>2931</age>
         </entity>
         <entity type="Maia">
             <typology>1</typology>
             <level>1</level>
-            <name>gandalf</name>
+            <name>Gandalf</name>
+            <power>3000</power>
+            <age>7000</age>
+        </entity>
+    </army>
+    <army name="Esercito di Sauron">
+        <entity type="Maia">
+            <typology>0</typology>
+            <level>1</level>
+            <name>Sauron</name>
             <power>10000</power>
-            <age>150</age>
+            <age>40000</age>
+        </entity>
+        <entity type="Maia">
+            <typology>1</typology>
+            <level>1</level>
+            <name>Saruman</name>
+            <power>3500</power>
+            <age>8000</age>
+        </entity>
+        <entity type="Hobbit">
+            <family>2</family>
+            <role>4</role>
+            <name>Gollum</name>
+            <power>60</power>
+            <age>600</age>
+        </entity>
+        <entity type="Human">
+            <descent>0</descent>
+            <role>5</role>
+            <name>Nazgul</name>
+            <power>2200</power>
+            <age>4000</age>
         </entity>
     </army>
     <armies/>
