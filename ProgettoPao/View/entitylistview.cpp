@@ -163,16 +163,23 @@ void EntityListView::load(int army) {
                                colorSchema + ".png";
         QFile file(iconFileName);
         QIcon icon(iconFileName);
-        QTableWidgetItem *item = new QTableWidgetItem;
-        item->setIcon(icon);
+        QTableWidgetItem *itemIcon = new QTableWidgetItem;
+        itemIcon->setIcon(icon);
 
-        entitiesTable->setItem(i, 0, item);
-        entitiesTable->setItem(i, 1,
-                               new QTableWidgetItem(QString::fromStdString(
-                                   selectedItems.results[i].e->getName())));
-        entitiesTable->setItem(i, 2,
-                               new QTableWidgetItem(QString::number(
-                                   selectedItems.results[i].e->getPower())));
+        entitiesTable->setItem(i, 0, itemIcon);
+
+        QTableWidgetItem *itemName = new QTableWidgetItem(QString::fromStdString(
+            selectedItems.results[i].e->getName()));
+        itemName->setTextAlignment(Qt::AlignCenter);
+
+        QTableWidgetItem *itemPower = new QTableWidgetItem(QTableWidgetItem(QString::number(
+            selectedItems.results[i].e->getPower())));
+        itemPower->setTextAlignment(Qt::AlignCenter);
+
+        entitiesTable->setItem(i, 1, itemName);
+        entitiesTable->setItem(i, 2, itemPower);
+        entitiesTable->verticalHeader()->setDefaultAlignment(Qt::AlignCenter);
+        entitiesTable->horizontalHeader()->setDefaultAlignment(Qt::AlignCenter);
     }
 }
 
