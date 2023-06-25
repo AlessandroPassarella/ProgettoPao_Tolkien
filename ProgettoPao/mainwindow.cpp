@@ -24,11 +24,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     else if (choice == 2)
         exit(0);
 
-
   // CENTRAL LAYOUT AND HEADER
-
-  // ridimensiona finestrra con mouse drag?
-  // setWindowFlags(Qt::Window | Qt::MSWindowsFixedSizeDialogHint);
 
   QWidget *centralWidget = new QWidget(this);
   setCentralWidget(centralWidget);
@@ -47,7 +43,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
   fileMenu->addAction(newFileAction);
   fileMenu->addAction(openFileAction);
   fileMenu->addAction(saveFileAction);
-  //fileMenu->setStyleSheet("QMenu {border: 1px solid #ccc;}");
 
   QMenu *editMenu = new QMenu("Edit");
   QAction *cleanEditAction = new QAction("Clean armies", editMenu);
@@ -61,7 +56,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
   menu->setStyleSheet("QMenuBar { background-color: #f3f3f3; border-bottom: 1px solid #ccc;} QMenuBar::item {border-right: 1px solid #ccc; border-left: 1px solid #ccc; border-top: 1px solid #ccc; padding:3px 10px 3px 10px;}");
 
   mainLayout->addWidget(menu);
-
 
 
   connect(newFileAction, &QAction::triggered, this, &MainWindow::newFile);

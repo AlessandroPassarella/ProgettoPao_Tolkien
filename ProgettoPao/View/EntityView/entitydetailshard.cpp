@@ -9,7 +9,6 @@ EntityDetailShard::EntityDetailShard(Entity* e, QWidget *parent)
 
     entityDetailLayout = new QVBoxLayout;
     setLayout(entityDetailLayout);
-    //entityDetailLayout->setSizeConstraint(QLayout::SetFixedSize);
 
     QHBoxLayout *titleLayout = new QHBoxLayout();
 

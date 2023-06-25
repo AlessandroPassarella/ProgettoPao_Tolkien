@@ -1,16 +1,4 @@
-- icone
+- controllo const !!!!!!!!!
 - controllo information hiding
-
-- FATTO rinominare il Qontainer
-- FATTO edit -> ?? cancella tutte le armate/ cancella tutte le entita
-- FATTO connettere power di detailView a listView
-- FATTO deselezionare quando serve riga entity list
-- FATTO sistemare include
-- FATTO file -> new file
-- FATTO scegli file è non chiudibile
-
-se ho tempo e voglia:
-- add search by class
-- add new entity in popup
 - resize colonne entityView
 - grafica entity details view

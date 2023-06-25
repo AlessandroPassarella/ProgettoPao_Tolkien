@@ -38,6 +38,5 @@ EntitiesView::EntitiesView(QWidget *parent, EntitiesController* controller):
 void EntitiesView::load(int army) {
     title->setText("<h1>" + entitiesController->getName(army) + "</h1>");
     listView->load(army);
-//    detailView->load(999,999);
 }
 

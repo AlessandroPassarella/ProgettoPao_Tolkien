@@ -16,7 +16,6 @@ EntityVector::~EntityVector() {
 
 void EntityVector::push(const Entity *entity){
     if (reserved==length) {
-        //e se 0??
         if (reserved)
             reserved *= 2;
         else

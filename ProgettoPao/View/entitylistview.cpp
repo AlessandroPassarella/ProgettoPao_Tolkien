@@ -143,12 +143,9 @@ void EntityListView::load(int army) {
     this->army = army;
     entitiesTable->setCurrentItem(nullptr);
     selectedItems = entitiesController->getEntities(army).search([this](const Entity* e) {
-        bool classMatches=true;
-//        TODO .......
-        return classMatches && QString::fromStdString(e->getName()).contains(searchByName->text(), Qt::CaseInsensitive);
+        return QString::fromStdString(e->getName()).contains(searchByName->text(), Qt::CaseInsensitive);
     });
     entitiesTable->setRowCount(selectedItems.size);
-
 
 
     for(unsigned i = 0; i < selectedItems.size; i++) {

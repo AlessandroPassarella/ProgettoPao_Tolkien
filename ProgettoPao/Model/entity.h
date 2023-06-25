@@ -14,8 +14,6 @@ public:
 
     // Metodi virtuali
     virtual ~Entity() = 0;
-    virtual string asString();
-    static Entity* fromString(const string);
 
     // Metodi get
     string getName() const;
@@ -26,7 +24,7 @@ public:
     void setName(string);
     void setPower(int);
     void setAge(unsigned);
-    
+
 private:
     string name;
     int power;

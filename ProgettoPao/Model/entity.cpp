@@ -31,11 +31,3 @@ void Entity::setPower(int power){
 void Entity::setAge(unsigned age){
     this->age = age;
 }
-string Entity::asString() {
-    return "TODO";
-}
-
-Entity* Entity::fromString(string s) {
-    (void)&s;
-    return nullptr;
-}
