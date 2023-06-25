@@ -7,6 +7,8 @@
 
 class NameLineEdit : public QLineEdit
 {
+private:
+    QString initialText;
 public:
     NameLineEdit(QString text, QWidget* parent = nullptr);
 protected:
