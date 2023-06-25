@@ -23,7 +23,7 @@ AinuDetailShard::AinuDetailShard(Ainu* a, QWidget *parent):
     QProgressBar* evilBar = new QProgressBar;
     evilBar->setTextVisible(false);
     evilBar->setRange(0,100);
-    evilBar->setValue(min(100, a->evilness()));
+    evilBar->setValue(a->evilness()<100?a->evilness():100);
     ainuLayout2->addWidget(evilLabel);
     ainuLayout2->addWidget(evilBar);
 

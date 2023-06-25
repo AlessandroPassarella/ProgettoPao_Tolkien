@@ -21,10 +21,4 @@ signals:
     void reloadViews(bool);
 };
 
-int min(int a, int b) {
-    if (a<b)
-        return a;
-    return b;
-}
-
 #endif // ENTITYDETAILSHARD_H

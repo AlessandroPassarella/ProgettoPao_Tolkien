@@ -29,7 +29,7 @@ HumanoidDetailShard::HumanoidDetailShard(Humanoid* h, QWidget *parent):
     QProgressBar* combatPowerBar = new QProgressBar;
     combatPowerBar->setTextVisible(false);
     combatPowerBar->setRange(0,100);
-    combatPowerBar->setValue(min(100, h->combatPower()));
+    combatPowerBar->setValue(h->combatPower()<100?h->combatPower():100);
     humanoidLayout2->addWidget(combatPowerLabel);
     humanoidLayout2->addWidget(combatPowerBar);
 
