@@ -11,7 +11,7 @@ HumanoidDetailShard::HumanoidDetailShard(Humanoid* h, QWidget *parent):
     stringListElement.append("hunter");
     stringListElement.append("knight");
     stringListElement.append("archer");
-    stringListElement.append("worrior");
+    stringListElement.append("warrior");
     stringListElement.append("thief");
     stringListElement.append("king");
     stringListElement.append("queen");

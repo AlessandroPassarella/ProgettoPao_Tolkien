@@ -117,8 +117,10 @@ void MainWindow::newFile(bool justOpenedProgram) {
   file.close();
   openedFileName = fileName;
   model.open(openedFileName);
-  if(!justOpenedProgram)
+  if(!justOpenedProgram) {
       armiesView->load();
+      this->openArmiesView();
+  }
 }
 
 void MainWindow::openFile(bool justOpenedProgram) {
@@ -131,8 +133,10 @@ void MainWindow::openFile(bool justOpenedProgram) {
       exit(0);
   }
   model.open(openedFileName);
-  if(!justOpenedProgram)
+  if(!justOpenedProgram) {
       armiesView->load();
+      this->openArmiesView();
+  }
 }
 
 void MainWindow::openArmiesView() {
