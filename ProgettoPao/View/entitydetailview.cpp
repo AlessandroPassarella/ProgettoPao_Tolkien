@@ -18,6 +18,7 @@ EntityDetailView::EntityDetailView(EntitiesController* entitiesController, QWidg
     : QWidget(parent), entitiesController(entitiesController), shard(nullptr)
 {
     QVBoxLayout *entityDetailLayout = new QVBoxLayout(this);
+    entityDetailLayout->setAlignment(Qt::AlignTop);
 
     shardLayout = new QVBoxLayout;
     entityDetailLayout->addLayout(shardLayout);

@@ -113,6 +113,10 @@ EntityListView::EntityListView(EntitiesController* entitiesController, QWidget *
     entitiesTable->setStyleSheet("QHeaderView::section{border-style:solid; font-weight:bold;}");
     entitiesTable->verticalHeader()->hide();
     entitiesTable->setSelectionBehavior(QAbstractItemView::SelectRows);
+
+    entitiesTable->setColumnWidth(0, 30);
+    entitiesTable->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Fixed);
+
     connect(entitiesTable, &QTableWidget::cellClicked, this, [this](){
         int entity = this->selectedItems.results[entitiesTable->currentRow()].index;
         emit entityChanged(army, entity);

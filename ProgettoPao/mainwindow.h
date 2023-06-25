@@ -12,6 +12,7 @@
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
+
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
@@ -25,6 +26,8 @@ private:
     EntitiesController* entitiesController;
     ArmiesView* armiesView;
     EntitiesView* entitiesView;
+
+    void closeEvent(QCloseEvent *exit) override ;
 
 private slots:
     void newFile(bool justOpenedProgram = false);

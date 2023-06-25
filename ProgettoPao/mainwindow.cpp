@@ -38,20 +38,27 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
   QMenu *fileMenu = new QMenu("File");
   QAction *newFileAction = new QAction("New File", fileMenu);
+  newFileAction->setShortcut(QKeySequence::New);
   QAction *openFileAction = new QAction("Open File", fileMenu);
+  openFileAction->setShortcut(QKeySequence::Open);
   QAction *saveFileAction = new QAction("Save File", fileMenu);
+  saveFileAction->setShortcut(QKeySequence::Save);
   fileMenu->addAction(newFileAction);
   fileMenu->addAction(openFileAction);
   fileMenu->addAction(saveFileAction);
 
+
   QMenu *editMenu = new QMenu("Edit");
   QAction *cleanEditAction = new QAction("Clean armies", editMenu);
-  QAction *creditsAction = new QAction("Credits", editMenu);
   editMenu->addAction(cleanEditAction);
-  editMenu->addAction(creditsAction);
+
+  QAction *creditsAction = new QAction("Credits", editMenu);
+  cleanEditAction->setShortcut(QKeySequence(Qt::CTRL | Qt::SHIFT |  Qt::Key_X));
 
   menu->addMenu(fileMenu);
   menu->addMenu(editMenu);
+  menu->addAction(creditsAction);
+
 
   menu->setStyleSheet("QMenuBar { background-color: #f3f3f3; border-bottom: 1px solid #ccc;} QMenuBar::item {border-right: 1px solid #ccc; border-left: 1px solid #ccc; border-top: 1px solid #ccc; padding:3px 10px 3px 10px;}");
 
@@ -141,3 +148,13 @@ void MainWindow::openEntitiesView(int i) {
   entitiesView->show();
   entitiesView->load(i);
 }
+
+void MainWindow::closeEvent(QCloseEvent *exit){
+  QMessageBox::StandardButton reply = QMessageBox::question(this, "Exit",
+                                                            "Are you sure you want to Exit? Remember to save before exiting! ",
+                                                            QMessageBox::Yes | QMessageBox::No);
+  if (reply == QMessageBox::Yes)
+      exit->accept();
+  else
+      exit->ignore();
+};
