@@ -141,7 +141,7 @@ void MainWindow::openFile(bool justOpenedProgram) {
 
 void MainWindow::openArmiesView() {
   entitiesView->hide();
-  resize(350, 400);
+  resize(450, 400);
   armiesView->show();
   armiesView->load();
 }
