@@ -21,6 +21,7 @@ SOURCES += \
 	View/EntityView/humandetailshard.cpp \
 	View/EntityView/humanoiddetailshard.cpp \
 	View/EntityView/maiadetailshard.cpp \
+    View/EntityView/namelineedit.cpp \
 	View/EntityView/orcdetailshard.cpp \
 	View/EntityView/valadetailshard.cpp \
 	View/entitydetailview.cpp \
@@ -55,6 +56,7 @@ HEADERS += \
 	View/EntityView/humandetailshard.h \
 	View/EntityView/humanoiddetailshard.h \
 	View/EntityView/maiadetailshard.h \
+    View/EntityView/namelineedit.h \
 	View/EntityView/orcdetailshard.h \
 	View/EntityView/valadetailshard.h \
 	View/entitydetailview.h \

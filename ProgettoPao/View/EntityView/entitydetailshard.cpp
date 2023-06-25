@@ -1,4 +1,5 @@
 #include "entitydetailshard.h"
+#include "View/EntityView/namelineedit.h"
 #include <QLabel>
 #include <QLineEdit>
 #include <QSpinBox>
@@ -23,7 +24,7 @@ EntityDetailShard::EntityDetailShard(Entity* e, QWidget *parent)
     //
     QHBoxLayout* nameLayout = new QHBoxLayout;
     QLabel* name = new QLabel("Name : ");
-    QLineEdit* insertName = new QLineEdit(QString::fromStdString(entity->getName()), this);
+    NameLineEdit* insertName = new NameLineEdit(QString::fromStdString(entity->getName()), this);
     nameLayout->addWidget(name);
     nameLayout->addWidget(insertName);
     entityDetailLayout->addLayout(nameLayout);
