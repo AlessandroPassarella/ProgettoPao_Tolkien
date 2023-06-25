@@ -5,64 +5,71 @@
             <family>0</family>
             <role>4</role>
             <name>Frodo Baggins</name>
-            <power>50</power>
+            <power>10</power>
             <age>53</age>
         </entity>
         <entity type="Hobbit">
             <family>0</family>
             <role>7</role>
             <name>Sam Gamgee</name>
-            <power>55</power>
+            <power>11</power>
             <age>50</age>
         </entity>
         <entity type="Hobbit">
             <family>0</family>
             <role>7</role>
             <name>Merry</name>
-            <power>45</power>
+            <power>9</power>
             <age>45</age>
         </entity>
         <entity type="Hobbit">
             <family>0</family>
             <role>7</role>
             <name>Pipino</name>
-            <power>45</power>
+            <power>9</power>
             <age>45</age>
         </entity>
         <entity type="Human">
             <descent>0</descent>
             <role>5</role>
             <name>Aragorn</name>
-            <power>1800</power>
+            <power>60</power>
             <age>122</age>
         </entity>
         <entity type="Human">
             <descent>0</descent>
             <role>1</role>
             <name>Boromir</name>
-            <power>900</power>
+            <power>45</power>
             <age>41</age>
         </entity>
         <entity type="Dwarf">
             <lineage>0</lineage>
             <role>0</role>
             <name>Gimli</name>
-            <power>1100</power>
+            <power>50</power>
             <age>130</age>
         </entity>
         <entity type="Elf">
             <bloodline>2</bloodline>
             <role>2</role>
             <name>Legolas</name>
-            <power>1500</power>
-            <age>2931</age>
+            <power>55</power>
+            <age>100</age>
         </entity>
         <entity type="Maia">
             <typology>1</typology>
             <level>1</level>
             <name>Gandalf</name>
-            <power>3000</power>
-            <age>7000</age>
+            <power>100</power>
+            <age>100</age>
+        </entity>
+        <entity type="Vala">
+            <element>4</element>
+            <level>0</level>
+            <name>Tom</name>
+            <power>99999</power>
+            <age>99999</age>
         </entity>
     </army>
     <army name="Esercito di Sauron">
@@ -71,7 +78,7 @@
             <level>1</level>
             <name>Sauron</name>
             <power>10000</power>
-            <age>40000</age>
+            <age>100</age>
         </entity>
         <entity type="Maia">
             <typology>1</typology>
@@ -85,14 +92,116 @@
             <role>4</role>
             <name>Gollum</name>
             <power>60</power>
-            <age>600</age>
+            <age>60</age>
         </entity>
         <entity type="Human">
             <descent>0</descent>
             <role>5</role>
             <name>Nazgul</name>
-            <power>2200</power>
-            <age>4000</age>
+            <power>90</power>
+            <age>85</age>
+        </entity>
+        <entity type="Vala">
+            <element>3</element>
+            <level>0</level>
+            <name>Morgoth</name>
+            <power>0</power>
+            <age>0</age>
+        </entity>
+    </army>
+    <army name="Armata di westerose">
+        <entity type="Orc">
+            <kind>2</kind>
+            <role>5</role>
+            <name>Orco bianco</name>
+            <power>20</power>
+            <age>50</age>
+        </entity>
+        <entity type="Orc">
+            <kind>0</kind>
+            <role>5</role>
+            <name>Rasp</name>
+            <power>15</power>
+            <age>60</age>
+        </entity>
+        <entity type="Elf">
+            <bloodline>1</bloodline>
+            <role>0</role>
+            <name>train</name>
+            <power>30</power>
+            <age>500</age>
+        </entity>
+        <entity type="Human">
+            <descent>2</descent>
+            <role>3</role>
+            <name>Giorgio</name>
+            <power>25</power>
+            <age>30</age>
+        </entity>
+        <entity type="Maia">
+            <typology>2</typology>
+            <level>1</level>
+            <name>Barlog</name>
+            <power>80</power>
+            <age>140</age>
+        </entity>
+        <entity type="Vala">
+            <element>1</element>
+            <level>0</level>
+            <name>Suicune</name>
+            <power>100</power>
+            <age>70</age>
+        </entity>
+        <entity type="Vala">
+            <element>4</element>
+            <level>0</level>
+            <name>Darkrai</name>
+            <power>666</power>
+            <age>999</age>
+        </entity>
+    </army>
+    <army name="Forza Roma">
+        <entity type="Human">
+            <descent>0</descent>
+            <role>5</role>
+            <name>Totti</name>
+            <power>99999</power>
+            <age>45</age>
+        </entity>
+        <entity type="Dwarf">
+            <lineage>3</lineage>
+            <role>6</role>
+            <name>Bro</name>
+            <power>0</power>
+            <age>23</age>
+        </entity>
+        <entity type="Orc">
+            <kind>0</kind>
+            <role>3</role>
+            <name>Motta</name>
+            <power>20</power>
+            <age>23</age>
+        </entity>
+        <entity type="Hobbit">
+            <family>1</family>
+            <role>0</role>
+            <name>Redefinho</name>
+            <power>3</power>
+            <age>80</age>
+        </entity>
+        <entity type="Human">
+            <descent>2</descent>
+            <role>4</role>
+            <name>Hicham</name>
+            <power>80</power>
+            <age>23</age>
+        </entity>
+        <entity type="Human">
+            <descent>0</descent>
+            <role>5</role>
+            <name>Riccio</name>
+            <power>90</power>
+            <age>23</age>
         </entity>
     </army>
     <armies/>
